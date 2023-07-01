@@ -10,7 +10,7 @@ We are excited to showcase FurnishFlow, one of our recent projects. It allowed u
 - User-friendly navigation and browsing experience
 - Modern and sleek design using Bootstrap framework
 - Attention to detail in color schemes, imagery, and typography
-  Detailed product descriptions for informed purchasing decisions
+
 
 ## Usage and Customization
 
