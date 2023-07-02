@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /* montserrat-regular - latin */
 @font-face {
   font-display: swap;
@@ -41,11 +43,20 @@
 
 // Colors
 $primary-color: #f46b45;
+
+$hover-saturation: 5%;
+$hover-brightness: -5%;
+
+$active-saturation: 10%;
+$active-brightness: -10%;
+
 $dark-mode-font-color: #adb5bd;
 $light-mode-font-color: #222222;
+
 $button-color: #ffffff;
-$button-background-color-hover: #f3582d;
-$button-background-color-active: #f24e20;
+$button-background-color-hover: color.adjust($primary-color, $saturation: $hover-saturation, $lightness: $hover-brightness);
+$button-background-color-active: color.adjust($primary-color, $saturation: $active-saturation, $lightness: $active-brightness);
+
 $form-range-active-background-color: rgba(244, 107, 69, 0.5);
 $form-range-outline: 0.2em solid rgba(244, 107, 69, 0.5);
 $input-checkbox-box-shadow: 0 0 5px 2px rgba(244, 107, 69, 0.5);
@@ -391,7 +402,7 @@ input[type="checkbox"]:focus {
 .btn-orange:active:focus {
   background-color: $button-background-color-active;
   color: $button-color;
-  border: 1px solid $primary-color;
+  border: 1px solid $button-background-color-active;
 }
 
 .btn-primary {
