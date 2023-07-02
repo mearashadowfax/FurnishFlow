@@ -406,7 +406,7 @@ input[type="checkbox"]:focus {
   border: 1px solid $button-background-color-hover;
 }
 
-:not(.btn-check) + .btn:active {
+:not(.btn-check) + .btn-primary:active {
   background-color: $button-background-color-active;
   color: $button-color;
   border: 1px solid $button-background-color-active;
