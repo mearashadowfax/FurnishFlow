@@ -509,6 +509,10 @@ input[type=checkbox]:focus {
   opacity: 1;
 }
 
+#carouselExampleCaptions .carousel-indicators {
+  margin-bottom: -3em !important;
+}
+
 #carouselExampleCaptions .carousel-indicators .active {
   background-color: transparent;
   border-color: #f46b45;
