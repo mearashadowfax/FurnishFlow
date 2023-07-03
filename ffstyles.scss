@@ -51,11 +51,12 @@ $active-saturation: 10%;
 $active-brightness: -10%;
 
 $dark-mode-font-color: #adb5bd;
-$light-mode-font-color: #222222;
+$light-mode-font-color: #232323;
 
+$button-fill-color: #cc4927;
 $button-color: #ffffff;
-$button-background-color-hover: color.adjust($primary-color, $saturation: $hover-saturation, $lightness: $hover-brightness);
-$button-background-color-active: color.adjust($primary-color, $saturation: $active-saturation, $lightness: $active-brightness);
+$button-background-color-hover: color.adjust($button-fill-color, $saturation: $hover-saturation, $lightness: $hover-brightness);
+$button-background-color-active: color.adjust($button-fill-color, $saturation: $active-saturation, $lightness: $active-brightness);
 
 $form-range-active-background-color: rgba(244, 107, 69, 0.5);
 $form-range-outline: 0.2em solid rgba(244, 107, 69, 0.5);
@@ -151,7 +152,7 @@ body {
 // *Carousel & Main ----------------------------------------------------------------------------------------------------
 
 .first {
-  background-color: #f7d060;
+  background-color: #ffc94d;
 }
 .second {
   background-color: #dddddd;
@@ -300,8 +301,8 @@ body {
   border-color: #3aa6b9;
 }
 #radioNoLabelgrey {
-  background-color: #bdcdd6;
-  border-color: #bdcdd6;
+  background-color: #d1d1d1;
+  border-color: #d1d1d1;
 }
 #radioNoLabelpink {
   background-color: #d5b4b4;
@@ -309,13 +310,13 @@ body {
 }
 
 #radioNoLabelpurple {
-  background-color: #9ea1d4;
-  border-color: #9ea1d4;
+  background-color: #c1b4e3;
+  border-color: #c1b4e3;
 }
 
 #radioNoLabeldark {
-  background-color: #6d8299;
-  border-color: #6d8299;
+  background-color: #7f8794;
+  border-color: #7f8794;
 }
 
 .form-check-input:checked[type="radio"],
@@ -389,7 +390,7 @@ input[type="checkbox"]:focus {
 // Styles for the buttons  ---------------------------------------------------------------------------------------------
 
 .btn-orange {
-  background-color: $primary-color;
+  background-color: $button-fill-color;
   color: $button-color;
   padding: 1em 2.5em;
   max-width: 30em;
@@ -408,7 +409,7 @@ input[type="checkbox"]:focus {
 .btn-primary {
   background: none;
   color: $button-color;
-  border: 1px solid $primary-color;
+  border: 1px solid $button-fill-color;
 }
 
 .btn-primary:hover {
@@ -427,7 +428,7 @@ input[type="checkbox"]:focus {
   color: $light-mode-font-color;
 }
 .button-fill {
-  background-color: $primary-color;
+  background-color: $button-fill-color;
 }
 
 .clear-all {
