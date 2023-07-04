@@ -136,31 +136,12 @@
 
     <link href="./dist/css/bootstrap.css" rel="stylesheet" />
     <link href="./ffstyles.css" rel="stylesheet" />
-
-    <style>
-      .card-title {
-        font-size: 3em;
-        font-style: normal;
-        font-weight: 800;
-      }
-      .contactform {
-        max-width: 40em;
-        padding: 3em;
-        margin: auto;
-      }
-
-      @media (max-width: 44em) {
-        .contactform {
-          padding: 1em;
-        }
-      }
-    </style>
   </head>
   <body>
     <!--Navigation----------------------------------------------------------------------------------------------------->
     <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
       <div class="container px-4">
-        <a class="navbar-brand" href="./ffhome.html"
+        <a class="navbar-brand" href="./index.html"
           ><strong>FurnishFlow</strong></a
         >
         <button
@@ -178,13 +159,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item mx-3">
-              <a class="nav-link" href="./ffhome.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link" href="#">New Arrivals</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link" href="fffurniture.html">Furniture</a>
+              <a class="nav-link" href="furniture.html">Furniture</a>
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link" href="#">About</a>
@@ -193,7 +176,7 @@
           <div class="ml-auto">
             <button
               type="button"
-              class="btn icon-btn navsvg"
+              class="btn icon-btn nav-svg"
               data-bs-toggle="modal"
               data-bs-target="#modalSignin"
             >
@@ -202,7 +185,7 @@
                 width="25"
                 height="25"
                 fill="currentColor"
-                class="bi binav bi-person"
+                class="bi bi-nav bi-person"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -212,7 +195,7 @@
             </button>
             <button
               type="button"
-              class="btn mx-3 search-btn icon-btn navsvg"
+              class="btn mx-3 search-btn icon-btn nav-svg"
               data-bs-toggle="collapse"
               data-bs-target="#searchForm"
               aria-expanded="false"
@@ -223,7 +206,7 @@
                 width="20"
                 height="20"
                 fill="currentColor"
-                class="bi binav bi-search"
+                class="bi bi-nav bi-search"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -233,7 +216,7 @@
             </button>
             <button
               type="button"
-              class="btn icon-btn navsvg"
+              class="btn icon-btn nav-svg"
               data-bs-toggle="modal"
               data-bs-target="#modalCart"
             >
@@ -242,7 +225,7 @@
                 width="20"
                 height="20"
                 fill="currentColor"
-                class="bi binav bi-bag"
+                class="bi bi-nav bi-bag"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -270,85 +253,402 @@
       </div>
     </nav>
 
-    <!--Contact Form--------------------------------------------------------------------------------------------------->
-    <div class="container-xl rounded-4 overflow-hidden" style="margin-bottom: 6em;">
+    <!--Main Poster--------------------------------------------------------------------------------------------------->
+    <div class="container rounded-4 overflow-hidden mt-4">
       <div class="row">
-        <div class="col-lg-6 px-0">
+        <div class="col-lg-7 px-0">
           <img
-            src="./img/SpaceJoy.jpg"
+            src="./img/Main.jpg"
             class="img-fluid"
-            alt="Accent Chair"
+            alt="Living room with sofa and armchair"
             loading="eager"
           />
         </div>
-        <div class="col-lg-6 contactform">
+        <div class="col-lg-5 main-slide d-flex align-items-center">
           <div class="row">
             <div class="col">
-              <div class="display text-left">
-                <h1 class="card-title">Get in Touch</h1>
-                <p class="py-2">
-                  <small
-                    >Simply fill out the form below with your inquiry or
-                    message, and we'll respond promptly to assist you</small
-                  >
+              <div class="display text-left mx-5">
+                <h2 class="font-color new-collection">
+                  <strong>New Collection</strong>
+                </h2>
+                <h1 class="card-header">Sofas & Armchairs</h1>
+                <p class="lead font-color my-3">
+                  Explore our exquisite sofas and armchairs, meticulously
+                  designed to transform your space
                 </p>
-                <form>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-floating">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="name"
-                          placeholder="Enter your name"
-                          required
-                        />
-                        <label for="name">Name</label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-floating my-2">
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="emailC"
-                          placeholder="Enter your email"
-                          required
-                        />
-                        <label for="emailC">Email</label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-floating mb-3">
-                        <textarea
-                          class="form-control"
-                          id="message"
-                          placeholder="Enter your message"
-                          rows="5"
-                          required
-                        ></textarea>
-                        <label for="message">Message</label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button
-                        type="submit"
-                        class="btn btn-orange text-uppercase"
-                        style="padding: 1em; width: 50%"
-                      >
-                        Submit
-                      </button>
-                      <button
-                        type="reset"
-                        class="btn btn-secondary text-uppercase"
-                        style="padding: 1em; width: 30%"
-                      >
-                        Reset
-                      </button>
-                    </div>
-                  </div>
-                </form>
+
+                <button
+                  class="btn text-uppercase d-inline-flex align-items-center btn-orange btn-padding"
+                  type="button"
+                >
+                  <span class="me-4">Shop now</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    class="bi bi-arrow-right-short align-self-center"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                    />
+                  </svg>
+                </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Main Section  --------------------------------------------------------------------------------------------------->
+    <div class="container filter">
+      <div class="row mb-3">
+        <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-3 themed-grid-col">
+          <div class="container">
+            <div class="container mb-5">
+              <p><strong>Summer Sale</strong></p>
+              <h2 class="subheading-index">Up to 25% off</h2>
+              <hr class="underline-line layout my-3 horizontal-index" />
+              <p>on stunning furniture pieces</p>
+            </div>
+            <div class="container mb-5">
+              <div class="flex-shrink-0 fw-normal">
+                <div class="mb-2">
+                  <a
+                    href="#"
+                    class="text-decoration-none"
+                    style="color: inherit"
+                  >
+                    New Arrivals</a
+                  >
+                </div>
+                <div class="mb-2">
+                  <a
+                    href="#"
+                    class="text-decoration-none"
+                    style="color: inherit"
+                  >
+                    Best Sellers</a
+                  >
+                </div>
+                <div class="mb-2">
+                  <button
+                    class="btn btn-toggle p-0 white"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#dashboard-collapse"
+                    aria-expanded="true"
+                  >
+                    <b>Decor Inspiration</b>
+                  </button>
+                  <div class="collapse show px-4" id="dashboard-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                      <li class="py-1">
+                        <a
+                          href="#"
+                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                          >Living Room Elegance</a
+                        >
+                      </li>
+                      <li class="py-1">
+                        <a
+                          href="#"
+                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                          >Bedroom Bliss</a
+                        >
+                      </li>
+                      <li class="py-1">
+                        <a
+                          href="#"
+                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                          >Dining Delight</a
+                        >
+                      </li>
+                      <li class="py-1">
+                        <a
+                          href="#"
+                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                          >Home Office</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <a
+                    href="#"
+                    class="text-decoration-none"
+                    style="color: inherit"
+                  >
+                    Special Offers</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-7 col-lg-9 themed-grid-col">
+          <div class="d-flex justify-content-center">
+            <div class="grid-container">
+              <div class="A">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Chairs.jpg"
+                    class="img-fluid rounded-4"
+                    alt="Accent Chair"
+                    loading="eager"
+                /></a>
+              </div>
+              <div class="E">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Sofas.jpg"
+                    class="img-fluid rounded-4"
+                    style="margin-top: 0.75em"
+                    alt="Sofa & chairs"
+                    loading="eager"
+                /></a>
+              </div>
+              <div class="C">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Accessories.jpg"
+                    class="img-fluid rounded-4"
+                    alt="Accessories"
+                    loading="eager"
+                /></a>
+              </div>
+              <div class="D">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Bed.jpg"
+                    class="img-fluid rounded-4"
+                    alt="Bed"
+                    loading="eager"
+                /></a>
+              </div>
+              <div class="F">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Desk.jpg"
+                    class="img-fluid rounded-4"
+                    style="margin-top: 0.15em"
+                    alt="Desk"
+                    loading="eager"
+                /></a>
+              </div>
+              <div class="B">
+                <a href="furniture.html"
+                  ><img
+                    src="./img/Lighting.jpg"
+                    class="img-fluid rounded-4"
+                    alt="Lighting"
+                    loading="eager"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Join Form--------------------------------------------------------------------------------------------------->
+    <div class="container rounded-4 overflow-hidden sections">
+      <div class="row">
+        <div class="col-lg-6 join-form d-flex align-items-center">
+          <div class="display text-left">
+            <div class="container font-grey">
+              <p><strong>Join Us for </strong></p>
+              <h2 class="heading-smaller subheading-index">
+                Exclusive Offers and Updates
+              </h2>
+              <hr class="underline-line layout my-3 horizontal-join" />
+              <p class="lead">
+                Stay in the loop with our latest furniture trends, exclusive
+                offers, and insider updates by joining our community
+              </p>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-floating my-2">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="emailC"
+                      placeholder="Enter your email"
+                      required
+                    />
+                    <label for="emailC">Email</label>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-join-form text-uppercase"
+                  >
+                    Subscribe
+                  </button>
+                  <div class="form-check text-start mt-3">
+                    <input
+                      class="form-check-input custom-checkbox"
+                      type="checkbox"
+                      value="remember-me"
+                      id="flexCheck"
+                    />
+                    <label class="form-check-label font-grey" for="flexCheck">
+                      <small
+                        >By joining our newsletter, you agree to our Privacy
+                        Policy and Terms of Service</small
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-6 px-0">
+          <img
+            src="./img/DeskChair.jpg"
+            class="img-fluid h-100"
+            alt="Desk & Chair"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!--Blog ---------------------------------------------------------------------------------------------------------->
+    <div class="container rounded-4 overflow-hidden sections">
+      <div class="row align-items-center white">
+        <div class="col-lg-5">
+          <div class="row">
+            <div class="col">
+              <div class="display text-left p-0">
+                <div class="container">
+                  <p><strong>Trend Watch:</strong></p>
+                  <h2 class="heading-smaller subheading-index">Explore</h2>
+                  <hr class="underline-line layout my-3 horizontal-index" />
+                  <p class="lead">
+                    Dive into the captivating world of furniture design and home
+                    decor, where inspiration knows no bounds
+                  </p>
+
+                  <button
+                    class="btn text-uppercase d-inline-flex align-items-center btn-primary btn-border p-3"
+                    type="button"
+                  >
+                    <span class="me-4">Explore all articles</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-arrow-right-short align-self-center"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 px-0 d-flex justify-content-center">
+          <img
+            src="./img/Grey.jpg"
+            class="img-fluid rounded-4"
+            style="max-height: 30em"
+            alt="Grey Armchair"
+            loading="eager"
+          />
+        </div>
+        <div class="col-lg-4">
+          <div class="display text-left">
+            <div class="container p-4">
+              <h3>Elevate Your Space: Grey Armchair Harmony</h3>
+              <p class="lead">
+                Elevate your space with our elegant grey armchair, harmoniously
+                enhancing stylish monochromatic rooms with complementing serene
+                tones and timeless elegance
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Carousel ---------------------------------------------------------------------------------------------->
+    <div class="container sections">
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner rounded-4">
+          <div class="carousel-item active carousel2img">
+            <img
+              src="./img/DreamyBedroomRetreat3.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+              <p>
+                Indulge in blissful comfort with our luxurious bed collection
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item carousel2img">
+            <img
+              src="./img/ElevateYourSpace3.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+              <p>
+                Unleash your creativity and design a captivating room ambiance
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item carousel2img">
+            <img
+              src="./img/UnwindinStyle3.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+              <p>
+                Experience ultimate comfort and sophistication with our
+                exquisite couch collection
+              </p>
             </div>
           </div>
         </div>
@@ -365,7 +665,10 @@
             <p>
               <small
                 >Need assistance or have a question? Our friendly customer
-                support team is here to help:</small
+                support team is
+                <a href="getintouch.html" class="footer-link"
+                  >here to help</a
+                ></small
               >
             </p>
             <ul class="nav flex-column">
@@ -533,14 +836,14 @@
     <script src="./dist/js/bootstrap.js"></script>
     <script src="./main.js"></script>
 
-    <!--Log in Form------------------------------------------------------------------------------------------------------>
+    <!--Log in Form --------------------------------------------------------------------------------------------------->
     <div
       class="modal fade bg-body-secondary"
       tabindex="-1"
       role="dialog"
       id="modalSignin"
     >
-      <div class="modal-dialog custom-modal" style="max-width: 25em">
+      <div class="modal-dialog custom-modal log-in-modal">
         <div class="modal-content rounded-4 shadow">
           <div class="modal-header p-5 pb-4 border-bottom-0">
             <h1 class="fw-bold mb-0 fs-2">Join Now</h1>
@@ -638,7 +941,7 @@
       role="dialog"
       id="modalCart"
     >
-      <div class="modal-dialog modal-dialog-centered" style="max-width: 80%; margin: 3em auto;">
+      <div class="modal-dialog modal-dialog-centered check-out-modal">
         <div class="modal-content rounded-4 shadow">
           <div class="modal-header border-bottom-0">
             <div class="container-fluid">
@@ -652,7 +955,7 @@
                     class="d-flex justify-content-between align-items-center mb-3"
                   >
                     <span class="cart">Your cart</span>
-                    <span class="badge rounded-pill cartnumber">3</span>
+                    <span class="badge rounded-pill total-cart-item">3</span>
                   </h4>
                   <ul class="list-group mb-3">
                     <li
@@ -699,9 +1002,10 @@
 
                   <form class="card p-2">
                     <div class="input-group">
+                      <label for="promoCode"></label>
                       <input
                         type="text"
-                        id="Promo code"
+                        id="promoCode"
                         class="form-control"
                         placeholder="Promo code"
                       />

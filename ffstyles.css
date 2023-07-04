@@ -1,3 +1,11 @@
+/*!
+Theme Name: FurnishFlow
+Theme URI: https://sobstvennoai.dev/
+Author: Emil Gulamov
+Author URI: https://sobstvennoai.dev/
+Description: Sleek and modern prototype website built using the Bootstrap framework
+Version: 1.0
+*/
 /* montserrat-regular - latin */
 @font-face {
   font-display: swap;
@@ -59,24 +67,157 @@ body {
   display: none;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.5em 1em;
+  grid-auto-flow: row;
+  grid-template-areas: ". A A . . ." ". A A B B ." ". A A B B ." "C C C B B ." "C C C D D D" ". F F D D D" ". F F E E ." ". F F E E ." ". F F E E .";
+}
+
+.A {
+  grid-area: A;
+}
+
+.B {
+  grid-area: B;
+}
+
+.C {
+  grid-area: C;
+}
+
+.F {
+  grid-area: F;
+}
+
+.E {
+  grid-area: E;
+}
+
+.D {
+  grid-area: D;
+}
+
+.btn-padding {
+  padding: 1.5em 2.5em;
+}
+
+@media (max-width: 74em) {
+  .heading-smaller {
+    font-size: 80%;
+  }
+  .btn-padding {
+    padding: 1em 2.5em;
+  }
+}
+.new-collection {
+  font-size: 1.2em;
+}
+
+.subheading-index {
+  font-size: 2.5em;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.horizontal-index {
+  max-width: 60% !important;
+}
+
+.horizontal-join {
+  max-width: 60% !important;
+  border-top: 4px solid #232323 !important;
+}
+
+.btn-join-form {
+  padding: 1.5em;
+  width: 100%;
+  border: 1px solid #232323 !important;
+}
+
+.card-title {
+  font-size: 2.5em;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.descriptionS {
+  font-size: 1em;
+}
+
+.layout {
+  max-width: 60%;
+}
+
+@media (max-width: 48em) {
+  .layout {
+    width: 100%;
+    max-width: none;
+  }
+}
+.menu {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.related-product {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.item-card-album-section {
+  margin: 6em auto 3em;
+}
+
+.card-title-get-in-touch {
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.contact-form {
+  max-width: 40em;
+  padding: 3em;
+  margin: auto;
+}
+
+@media (max-width: 44em) {
+  .contact-form {
+    padding: 1em;
+  }
+}
+.contact-form-container {
+  margin-bottom: 6em;
+}
+
+.btn-submit {
+  padding: 1em;
+  width: 50%;
+}
+
+.btn-reset {
+  padding: 1em;
+  width: 30%;
+}
+
 .navbar-brand,
-.color,
-.desc,
+.font-color,
+.card-header,
 .filter,
 .btn-wider,
 .modal-header,
 .nav,
 .nav:active,
 .link-body-emphasis,
-.navsvg {
+.nav-svg {
   color: #232323 !important;
-  --bs-nav-link-color: $light-mode-font-color !important;
-  --bs-nav-link-hover-color: $light-mode-font-color !important;
+  --bs-nav-link-color: #232323 !important;
+  --bs-nav-link-hover-color: #232323 !important;
 }
 
 .menu,
 .white,
-.grey2 {
+.font-grey {
   color: #232323;
 }
 
@@ -91,7 +232,7 @@ body {
   font-weight: bolder;
 }
 
-.binav {
+.bi-nav {
   display: inline-block;
   vertical-align: -0.125em;
 }
@@ -105,7 +246,7 @@ body {
   color: #f46b45;
 }
 
-.cartnumber {
+.total-cart-item {
   background-color: #f46b45;
 }
 
@@ -124,31 +265,31 @@ body {
   font-weight: bold;
 }
 
-.first {
+.first-slide {
   background-color: #ffc94d;
 }
 
-.second {
+.second-slide {
   background-color: #dddddd;
 }
 
-.third {
+.third-slide {
   background-color: #a8d1d1;
 }
 
-.fourth {
+.fourth-slide {
   background-color: #e3caa5;
 }
 
-.fifth {
+.main-slide {
   background-color: #c8bcae;
 }
 
-.menutitle {
+.menu-title {
   color: #e9ecef;
 }
 
-.desc {
+.card-header {
   font-size: 3em;
   font-style: normal;
   font-weight: 800;
@@ -158,7 +299,7 @@ body {
   .display {
     margin: 1.5em !important;
   }
-  .desc {
+  .card-header {
     font-size: 1.8em;
   }
 }
@@ -245,7 +386,7 @@ body {
     align-items: center;
   }
 }
-.joinform {
+.join-form {
   padding: 3em;
   background-color: #f46b45;
 }
@@ -264,8 +405,8 @@ body {
 }
 
 #radioNoLabelgreen {
-  background-color: #a0c49d;
-  border-color: #a0c49d;
+  background-color: #829460;
+  border-color: #829460;
 }
 
 #radioNoLabelyellow {
@@ -278,24 +419,24 @@ body {
   border-color: #3aa6b9;
 }
 
-#radioNoLabelgrey {
-  background-color: #d1d1d1;
-  border-color: #d1d1d1;
-}
-
-#radioNoLabelpink {
-  background-color: #d5b4b4;
-  border-color: #d5b4b4;
-}
-
 #radioNoLabelpurple {
-  background-color: #c1b4e3;
-  border-color: #c1b4e3;
+  background-color: #AC7D88;
+  border-color: #AC7D88;
+}
+
+#radioNoLabelbrown {
+  background-color: #795341;
+  border-color: #795341;
+}
+
+#radioNoLabelwhite {
+  background-color: #f9f9f9;
+  border-color: #f9f9f9;
 }
 
 #radioNoLabeldark {
-  background-color: #7f8794;
-  border-color: #7f8794;
+  background-color: #4b4b4b;
+  border-color: #4b4b4b;
 }
 
 .form-check-input:checked[type=radio],
@@ -373,12 +514,10 @@ input[type=checkbox]:focus {
   padding: 1em 2.5em;
   max-width: 30em;
 }
-
 .btn-orange:hover {
   background-color: #bc3e1d;
   color: #ffffff;
 }
-
 .btn-orange:active:focus {
   background-color: #ab3415;
   color: #ffffff;
@@ -390,7 +529,6 @@ input[type=checkbox]:focus {
   color: #ffffff;
   border: 1px solid #cc4927;
 }
-
 .btn-primary:hover {
   background-color: #bc3e1d;
   color: #ffffff;
@@ -561,6 +699,15 @@ input[type=checkbox]:focus {
   display: block;
 }
 
+.log-in-modal {
+  max-width: 25em;
+}
+
+.check-out-modal {
+  max-width: 80%;
+  margin: 3em auto;
+}
+
 @media (prefers-color-scheme: dark) {
   .navbar-brand,
   .filter,
@@ -569,10 +716,10 @@ input[type=checkbox]:focus {
   .nav,
   .nav:active,
   .link-body-emphasis,
-  .navsvg {
+  .nav-svg {
     color: #adb5bd !important;
-    --bs-nav-link-color: $dark-mode-font-color !important;
-    --bs-nav-link-hover-color: $dark-mode-font-color !important;
+    --bs-nav-link-color: #adb5bd !important;
+    --bs-nav-link-hover-color: #adb5bd !important;
   }
   .menu,
   .white {
