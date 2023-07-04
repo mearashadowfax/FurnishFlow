@@ -1,0 +1,63 @@
+@media (max-width: 48em) {
+  .layout {
+    width: 100%;
+    max-width: none;
+  }
+  .carousel2img img {
+    max-height: 15em;
+  }
+}
+
+@media (max-width: 62em) {
+  .display {
+    margin: 1.5em !important;
+  }
+  .card-header {
+    font-size: 1.8em;
+  }
+  .hide-img {
+    display:none;
+  }
+}
+
+@media (max-width: 66.25em) {
+  #carouselExampleIndicators .carousel-indicators {
+    margin-bottom: -3em !important;
+    flex-direction: row;
+    align-items: unset;
+    top: unset;
+    left: 0;
+    margin-right: unset;
+  }
+}
+
+@media (max-width: 74em) {
+  .heading-smaller {
+    font-size: 80%;
+  }
+  .btn-padding {
+    padding: 1em 2.5em;
+  }
+}
+
+@media (min-width: 120em) {
+  .carousel-layout {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+  }
+}
+@media (min-width: 160em) {
+  .carousel-layout {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+}
+@media (min-width: 240em) {
+  .carousel-layout {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+  }
+}

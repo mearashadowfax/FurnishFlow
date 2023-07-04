@@ -6,13 +6,16 @@ Author URI: https://sobstvennoai.dev/
 Description: Sleek and modern prototype website built using the Bootstrap framework
 Version: 1.0
 */
+
+@import "config";
+
 /* montserrat-regular - latin */
 @font-face {
   font-display: swap;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
-  src: url("./fonts/montserrat-v25-latin-regular.woff2") format("woff2");
+  src: url("../fonts/montserrat-v25-latin-regular.woff2") format("woff2");
 }
 /* montserrat-500 - latin */
 @font-face {
@@ -20,7 +23,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
-  src: url("./fonts/montserrat-v25-latin-500.woff2") format("woff2");
+  src: url("../fonts/montserrat-v25-latin-500.woff2") format("woff2");
 }
 /* montserrat-600 - latin */
 @font-face {
@@ -28,7 +31,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
-  src: url("./fonts/montserrat-v25-latin-600.woff2") format("woff2");
+  src: url("../fonts/montserrat-v25-latin-600.woff2") format("woff2");
 }
 /* montserrat-700 - latin */
 @font-face {
@@ -36,7 +39,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
-  src: url("./fonts/montserrat-v25-latin-700.woff2") format("woff2");
+  src: url("../fonts/montserrat-v25-latin-700.woff2") format("woff2");
 }
 /* montserrat-800 - latin */
 @font-face {
@@ -44,8 +47,10 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 800;
-  src: url("./fonts/montserrat-v25-latin-800.woff2") format("woff2");
+  src: url("../fonts/montserrat-v25-latin-800.woff2") format("woff2");
 }
+
+// Body
 body {
   font-family: Montserrat, sans-serif;
   -webkit-user-select: none;
@@ -67,13 +72,24 @@ body {
   display: none;
 }
 
+// index.html
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 0.5em 1em;
   grid-auto-flow: row;
-  grid-template-areas: ". A A . . ." ". A A B B ." ". A A B B ." "C C C B B ." "C C C D D D" ". F F D D D" ". F F E E ." ". F F E E ." ". F F E E .";
+  grid-template-areas:
+    ". A A . . ."
+    ". A A B B ."
+    ". A A B B ."
+    "C C C B B ."
+    "C C C D D D"
+    ". F F D D D"
+    ". F F E E ."
+    ". F F E E ."
+    ". F F E E .";
 }
 
 .A {
@@ -104,14 +120,6 @@ body {
   padding: 1.5em 2.5em;
 }
 
-@media (max-width: 74em) {
-  .heading-smaller {
-    font-size: 80%;
-  }
-  .btn-padding {
-    padding: 1em 2.5em;
-  }
-}
 .new-collection {
   font-size: 1.2em;
 }
@@ -128,14 +136,16 @@ body {
 
 .horizontal-join {
   max-width: 60% !important;
-  border-top: 4px solid #232323 !important;
+  border-top: 4px solid $light-mode-font-color !important;
 }
 
 .btn-join-form {
   padding: 1.5em;
   width: 100%;
-  border: 1px solid #232323 !important;
+  border: 1px solid $light-mode-font-color !important;
 }
+
+// itemcard.html
 
 .card-title {
   font-size: 2.5em;
@@ -151,12 +161,6 @@ body {
   max-width: 60%;
 }
 
-@media (max-width: 48em) {
-  .layout {
-    width: 100%;
-    max-width: none;
-  }
-}
 .menu {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
 }
@@ -169,23 +173,19 @@ body {
   margin: 6em auto 3em;
 }
 
+// getintouch.html
+
 .card-title-get-in-touch {
   font-size: 3em;
   font-style: normal;
   font-weight: 800;
 }
-
 .contact-form {
   max-width: 40em;
   padding: 3em;
   margin: auto;
 }
 
-@media (max-width: 44em) {
-  .contact-form {
-    padding: 1em;
-  }
-}
 .contact-form-container {
   margin-bottom: 6em;
 }
@@ -200,6 +200,7 @@ body {
   width: 30%;
 }
 
+// Navigation &  Colors  -----------------------------------------------------------------------------------------------
 .navbar-brand,
 .font-color,
 .card-header,
@@ -210,7 +211,7 @@ body {
 .nav:active,
 .link-body-emphasis,
 .nav-svg {
-  color: #232323 !important;
+  color: $light-mode-font-color !important;
   --bs-nav-link-color: #232323 !important;
   --bs-nav-link-hover-color: #232323 !important;
 }
@@ -218,17 +219,17 @@ body {
 .menu,
 .white,
 .font-grey {
-  color: #232323;
+  color: $light-mode-font-color;
 }
 
 .nav-link:hover {
-  color: #f46b45;
+  color: $primary-color;
 }
 
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show,
 .menu.active {
-  color: #f46b45;
+  color: $primary-color;
   font-weight: bolder;
 }
 
@@ -242,16 +243,16 @@ body {
 }
 
 .cart,
-.semicolon {
-  color: #f46b45;
+.colon {
+  color: $primary-color;
 }
 
 .total-cart-item {
-  background-color: #f46b45;
+  background-color: $primary-color;
 }
 
 .footer-link {
-  color: #f46b45;
+  color: $primary-color;
   text-decoration: none;
 }
 
@@ -265,26 +266,23 @@ body {
   font-weight: bold;
 }
 
+// Carousel & Main -----------------------------------------------------------------------------------------------------
+
 .first-slide {
   background-color: #ffc94d;
 }
-
 .second-slide {
   background-color: #dddddd;
 }
-
 .third-slide {
   background-color: #a8d1d1;
 }
-
 .fourth-slide {
   background-color: #e3caa5;
 }
-
 .main-slide {
   background-color: #c8bcae;
 }
-
 .menu-title {
   color: #e9ecef;
 }
@@ -295,14 +293,6 @@ body {
   font-weight: 800;
 }
 
-@media (max-width: 62em) {
-  .display {
-    margin: 1.5em !important;
-  }
-  .card-header {
-    font-size: 1.8em;
-  }
-}
 .lead {
   font-size: 1em;
 }
@@ -332,68 +322,39 @@ body {
   margin-right: -3.5em;
   flex-direction: column;
   align-items: center;
+
+  button {
+    width: 1.3em;
+    height: 1.3em;
+    box-sizing: border-box;
+    background-color: $primary-color;
+    border: 0.25em solid transparent;
+    border-radius: 50%;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    transition: 0.3s;
+    opacity: 0.8;
+  }
+
+  .active {
+    background-color: transparent;
+    border-color: $primary-color;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 1;
+  }
 }
 
-#carouselExampleIndicators .carousel-indicators button {
-  width: 1.3em;
-  height: 1.3em;
-  box-sizing: border-box;
-  background-color: #f46b45;
-  border: 0.25em solid transparent;
-  border-radius: 50%;
-  -webkit-transform: scale(0.7);
-  transform: scale(0.7);
-  transition: 0.3s;
-  opacity: 0.8;
-}
-
-#carouselExampleIndicators .carousel-indicators .active {
-  background-color: transparent;
-  border-color: #f46b45;
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  opacity: 1;
-}
-
-@media (max-width: 66.25em) {
-  #carouselExampleIndicators .carousel-indicators {
-    margin-bottom: -3em !important;
-    flex-direction: row;
-    align-items: unset;
-    top: unset;
-    left: 0;
-    margin-right: unset;
-  }
-}
-@media (min-width: 120em) {
-  .carousel-layout {
-    height: 75vh;
-    display: flex;
-    align-items: center;
-  }
-}
-@media (min-width: 160em) {
-  .carousel-layout {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-  }
-}
-@media (min-width: 240em) {
-  .carousel-layout {
-    height: 40vh;
-    display: flex;
-    align-items: center;
-  }
-}
 .join-form {
   padding: 3em;
-  background-color: #f46b45;
+  background-color: $primary-color;
 }
 
 .sections {
   margin: 6em auto;
 }
+
+// Sidebar and Album ---------------------------------------------------------------------------------------------------
 
 .filter {
   margin-top: 5em;
@@ -403,27 +364,22 @@ body {
   background-color: #e97777;
   border-color: #e97777;
 }
-
 #radioNoLabelgreen {
   background-color: #829460;
   border-color: #829460;
 }
-
 #radioNoLabelyellow {
   background-color: #ffd966;
   border-color: #ffd966;
 }
-
 #radioNoLabelblue {
   background-color: #3aa6b9;
   border-color: #3aa6b9;
 }
-
 #radioNoLabelpurple {
-  background-color: #AC7D88;
-  border-color: #AC7D88;
+  background-color: #ac7d88;
+  border-color: #ac7d88;
 }
-
 #radioNoLabelbrown {
   background-color: #795341;
   border-color: #795341;
@@ -439,54 +395,54 @@ body {
   border-color: #4b4b4b;
 }
 
-.form-check-input:checked[type=radio],
-.form-check-input:active:focus[type=radio] {
-  box-shadow: 0 0 5px 2px rgba(244, 107, 69, 0.5);
-  border-color: #f46b45;
+.form-check-input:checked[type="radio"],
+.form-check-input:active:focus[type="radio"] {
+  box-shadow: $input-checkbox-box-shadow;
+  border-color: $primary-color;
 }
 
-.form-check-input.outline:checked[type=radio],
-.form-check-input.outline:active:focus[type=radio] {
+.form-check-input.outline:checked[type="radio"],
+.form-check-input.outline:active:focus[type="radio"] {
   box-shadow: none !important;
   outline-offset: 0.3em;
-  outline: 0.2em solid #f46b45;
+  outline: 0.2em solid $primary-color;
 }
 
 .price {
-  color: #f46b45;
+  color: $primary-color;
 }
 
+// Styles for the input  -----------------------------------------------------------------------------------------------
+
 .form-check-input:checked {
-  background-color: #f46b45;
-  border-color: #f46b45;
+  background-color: $primary-color;
+  border-color: $primary-color;
 }
 
 .form-control,
 input,
 .input-btn-focus-color,
 .form-check-input {
-  color: #f46b45;
+  color: $primary-color;
 }
-
 .form-check-reverse {
   text-align: left;
 }
-
 textarea:focus,
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=datetime]:focus,
-input[type=datetime-local]:focus,
-input[type=date]:focus,
-input[type=month]:focus,
-input[type=time]:focus,
-input[type=week]:focus,
-input[type=number]:focus,
-input[type=email]:focus,
-input[type=url]:focus,
-input[type=search]:focus,
-input[type=tel]:focus,
-input[type=color]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
 .uneditable-input:focus,
 .form-control:focus,
 .form-select:focus {
@@ -495,72 +451,74 @@ input[type=color]:focus,
   outline: 0 none;
 }
 
-input[type=checkbox]:checked {
-  background-color: #f46b45;
+input[type="checkbox"]:checked {
+  background-color: $primary-color;
   border-color: #f2994a;
-  box-shadow: 0 0 5px 2px rgba(244, 107, 69, 0.5);
+  box-shadow: $input-checkbox-box-shadow;
+  outline: 0 none;
+}
+input[type="checkbox"]:focus {
+  border-color: #f2994a;
+  box-shadow: $input-checkbox-box-shadow;
   outline: 0 none;
 }
 
-input[type=checkbox]:focus {
-  border-color: #f2994a;
-  box-shadow: 0 0 5px 2px rgba(244, 107, 69, 0.5);
-  outline: 0 none;
-}
+// Styles for the buttons  ---------------------------------------------------------------------------------------------
 
 .btn-orange {
-  background-color: #cc4927;
-  color: #ffffff;
+  background-color: $button-fill-color;
+  color: $button-color;
   padding: 1em 2.5em;
   max-width: 30em;
-}
-.btn-orange:hover {
-  background-color: #bc3e1d;
-  color: #ffffff;
-}
-.btn-orange:active:focus {
-  background-color: #ab3415;
-  color: #ffffff;
-  border: 1px solid #ab3415;
-}
 
+  &:hover {
+    background-color: $button-background-color-hover;
+    color: $button-color;
+  }
+
+  &:active:focus {
+    background-color: $button-background-color-active;
+    color: $button-color;
+    border: 1px solid $button-background-color-active;
+  }
+}
 .btn-primary {
   background: none;
-  color: #ffffff;
-  border: 1px solid #cc4927;
-}
-.btn-primary:hover {
-  background-color: #bc3e1d;
-  color: #ffffff;
-  border: 1px solid #bc3e1d;
+  color: $button-color;
+  border: 1px solid $button-fill-color;
+
+  &:hover {
+    background-color: $button-background-color-hover;
+    color: $button-color;
+    border: 1px solid $button-background-color-hover;
+  }
 }
 
 :not(.btn-check) + .btn-primary:active {
-  background-color: #ab3415;
-  color: #ffffff;
-  border: 1px solid #ab3415;
+  background-color: $button-background-color-active;
+  color: $button-color;
+  border: 1px solid $button-background-color-active;
 }
 
 .btn-border {
-  color: #232323;
+  color: $light-mode-font-color;
 }
-
 .button-fill {
-  background-color: #cc4927;
+  background-color: $button-fill-color;
 }
 
 .clear-all {
-  color: #f46b45;
+  color: $primary-color;
 }
 
 .btn-wider {
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
 
-.btn-wider svg {
-  margin-left: auto;
+  svg {
+    margin-left: auto;
+  }
 }
 
 .btn-toggle {
@@ -571,56 +529,58 @@ input[type=checkbox]:focus {
   font-size: 0.8em;
 }
 
+// Styles for the range input  -----------------------------------------------------------------------------------------
+
 .form-range::-webkit-slider-thumb {
-  background-color: #f46b45;
+  background-color: $primary-color;
 }
 
 .form-range::-moz-range-thumb {
-  background-color: #f46b45;
+  background-color: $primary-color;
 }
 
 .form-range::-ms-thumb {
-  background-color: #f46b45;
+  background-color: $primary-color;
 }
 
 .form-range:active::-webkit-slider-thumb {
-  background-color: rgba(244, 107, 69, 0.5);
+  background-color: $form-range-active-background-color;
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
-
 .form-range:active::-moz-range-thumb {
-  background-color: rgba(244, 107, 69, 0.5);
+  background-color: $form-range-active-background-color;
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
-
 .form-range:active::-ms-thumb {
-  background-color: rgba(244, 107, 69, 0.5);
+  background-color: $form-range-active-background-color;
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
 
 .form-range:focus::-ms-thumb {
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
 
 .form-range:focus::-webkit-slider-thumb {
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
 
 .form-range:focus::-moz-range-thumb {
   box-shadow: none;
   outline-offset: 0.2em;
-  outline: 0.2em solid rgba(244, 107, 69, 0.5);
+  outline: $form-range-outline;
 }
+
+// Bottom Carousel  ----------------------------------------------------------------------------------------------------
 
 .carousel2img img {
   max-height: 31.25em;
@@ -629,34 +589,29 @@ input[type=checkbox]:focus {
   object-fit: cover;
 }
 
-@media (max-width: 48em) {
-  .carousel2img img {
-    max-height: 15em;
-  }
-}
-#carouselExampleCaptions .carousel-indicators button {
-  width: 1.3em;
-  height: 1.3em;
-  box-sizing: border-box;
-  background-color: #f46b45;
-  border: 0.25em solid transparent;
-  border-radius: 50%;
-  -webkit-transform: scale(0.7);
-  transform: scale(0.7);
-  transition: 0.3s;
-  opacity: 1;
-}
-
 #carouselExampleCaptions .carousel-indicators {
   margin-bottom: -3em !important;
-}
 
-#carouselExampleCaptions .carousel-indicators .active {
-  background-color: transparent;
-  border-color: #f46b45;
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  opacity: 1;
+  button {
+    width: 1.3em;
+    height: 1.3em;
+    box-sizing: border-box;
+    background-color: $primary-color;
+    border: 0.25em solid transparent;
+    border-radius: 50%;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    transition: 0.3s;
+    opacity: 1;
+  }
+
+  .active {
+    background-color: transparent;
+    border-color: $primary-color;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 1;
+  }
 }
 
 .carousel-caption {
@@ -666,18 +621,19 @@ input[type=checkbox]:focus {
   left: 60%;
   bottom: unset;
   text-align: right;
-}
 
-.carousel-caption p {
-  font-weight: 600;
-  font-size: 1.3em;
-  background-color: #f46b45;
-  margin: 0 auto;
-  padding: 0.5em 1em;
-  color: #232323;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  p {
+    font-weight: 600;
+    font-size: 1.3em;
+    background-color: $primary-color;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    color: $light-mode-font-color;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+  }
 }
+// Footer & Misc  ------------------------------------------------------------------------------------------------------
 
 .underline-title {
   margin-bottom: 0;
@@ -687,7 +643,7 @@ input[type=checkbox]:focus {
 .underline-line {
   margin: 0;
   max-width: 5em;
-  border-top: 4px solid #f46b45;
+  border-top: 4px solid $primary-color;
   opacity: 1;
 }
 
@@ -708,6 +664,7 @@ input[type=checkbox]:focus {
   margin: 3em auto;
 }
 
+// Dark Mode  ----------------------------------------------------------------------------------------------------------
 @media (prefers-color-scheme: dark) {
   .navbar-brand,
   .filter,
@@ -717,20 +674,22 @@ input[type=checkbox]:focus {
   .nav:active,
   .link-body-emphasis,
   .nav-svg {
-    color: #adb5bd !important;
+    color: $dark-mode-font-color !important;
     --bs-nav-link-color: #adb5bd !important;
     --bs-nav-link-hover-color: #adb5bd !important;
   }
   .menu,
   .white {
-    color: #adb5bd;
+    color: $dark-mode-font-color;
   }
+
   .clear-all:active {
-    border-color: #adb5bd;
+    border-color: $dark-mode-font-color;
   }
+
   .btn-border {
-    color: #adb5bd;
+    color: $dark-mode-font-color;
   }
 }
 
-/*# sourceMappingURL=ffstyles.css.map */
+@import "responsive";
