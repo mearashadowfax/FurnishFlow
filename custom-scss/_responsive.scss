@@ -6,6 +6,9 @@
   .carousel2img img {
     max-height: 15em;
   }
+  .join-form {
+    padding: 2em;
+  }
 }
 
 @media (max-width: 62em) {
@@ -13,7 +16,7 @@
     margin: 1.5em !important;
   }
   .card-header {
-    font-size: 1.8em;
+    font-size: 1.9em;
   }
   .hide-img {
     display:none;
@@ -32,9 +35,6 @@
 }
 
 @media (max-width: 74em) {
-  .heading-smaller {
-    font-size: 80%;
-  }
   .btn-padding {
     padding: 1em 2.5em;
   }

@@ -459,9 +459,9 @@ input[type=checkbox]:focus {
   color: #ffffff;
 }
 .btn-orange:active:focus {
-  background-color: #c43a16;
+  background-color: #c13b18;
   color: #ffffff;
-  border: 1px solid #c43a16;
+  border: 1px solid #c13b18;
 }
 
 .btn-primary {
@@ -476,9 +476,9 @@ input[type=checkbox]:focus {
 }
 
 :not(.btn-check) + .btn-primary:active {
-  background-color: #c43a16;
+  background-color: #c13b18;
   color: #ffffff;
-  border: 1px solid #c43a16;
+  border: 1px solid #c13b18;
 }
 
 .btn-border {
@@ -671,13 +671,16 @@ input[type=checkbox]:focus {
   .carousel2img img {
     max-height: 15em;
   }
+  .join-form {
+    padding: 2em;
+  }
 }
 @media (max-width: 62em) {
   .display {
     margin: 1.5em !important;
   }
   .card-header {
-    font-size: 1.8em;
+    font-size: 1.9em;
   }
   .hide-img {
     display: none;
@@ -694,9 +697,6 @@ input[type=checkbox]:focus {
   }
 }
 @media (max-width: 74em) {
-  .heading-smaller {
-    font-size: 80%;
-  }
   .btn-padding {
     padding: 1em 2.5em;
   }
