@@ -73,7 +73,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 0.5em 1em;
   grid-auto-flow: row;
-  grid-template-areas: ". A A . . ." ". A A B B ." ". A A B B ." "C C C B B ." "C C C D D D" ". F F D D D" ". F F E E ." ". F F E E ." ". F F E E .";
+  grid-template-areas: ". A A . . ." ". A A B B ." ". A A B B ." "C C C B B ." "C C C D D D" ". E E D D D" ". E E F F ." ". E E F F ." ". E E F F .";
 }
 
 .A {
@@ -153,6 +153,10 @@ body {
 
 .item-card-album-section {
   margin: 6em auto 3em;
+}
+
+.specs-subhead {
+  font-weight: 400;
 }
 
 .card-title-get-in-touch {
@@ -346,6 +350,62 @@ body {
 
 .sections {
   margin: 6em auto;
+}
+
+.A,
+.B,
+.C,
+.D,
+.E,
+.F {
+  position: relative;
+  overflow: hidden;
+}
+.A:hover .grid-title,
+.B:hover .grid-title,
+.C:hover .grid-title,
+.D:hover .grid-title,
+.E:hover .grid-title,
+.F:hover .grid-title {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.A .grid-title,
+.B .grid-title,
+.C .grid-title,
+.D .grid-title,
+.E .grid-title,
+.F .grid-title {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.A .grid-title,
+.E .grid-title {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  margin: 0;
+  padding: 0 0.5em;
+}
+
+.B .grid-title,
+.D .grid-title {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  margin: 0;
+  padding: 0.5em;
+}
+
+.C .grid-title,
+.F .grid-title {
+  position: absolute;
+  text-align: end;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  padding: 1em 0.5em;
 }
 
 .filter {
@@ -676,6 +736,11 @@ input[type=checkbox]:focus {
     color: #adb5bd;
   }
 }
+@media (max-width: 30em) {
+  .grid-title {
+    font-size: 100%;
+  }
+}
 @media (max-width: 48em) {
   .layout {
     width: 100%;
@@ -684,12 +749,18 @@ input[type=checkbox]:focus {
   .carousel2img img {
     max-height: 15em;
   }
-  .join-form, .contact-form {
+  .join-form,
+  .contact-form {
     padding: 0 0.75rem 0;
   }
   .card .menu-title,
   .card ul {
     opacity: 1;
+  }
+}
+@media (min-width: 48em) and (max-width: 62em) {
+  .grid-title {
+    font-size: 120%;
   }
 }
 @media (max-width: 62em) {

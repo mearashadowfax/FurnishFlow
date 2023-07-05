@@ -86,10 +86,10 @@ body {
     ". A A B B ."
     "C C C B B ."
     "C C C D D D"
-    ". F F D D D"
-    ". F F E E ."
-    ". F F E E ."
-    ". F F E E .";
+    ". E E D D D"
+    ". E E F F ."
+    ". E E F F ."
+    ". E E F F .";
 }
 
 .A {
@@ -173,6 +173,9 @@ body {
   margin: 6em auto 3em;
 }
 
+.specs-subhead {
+  font-weight: 400;
+}
 // getintouch.html
 
 .card-title-get-in-touch {
@@ -371,6 +374,59 @@ body {
 }
 
 // Sidebar and Album ---------------------------------------------------------------------------------------------------
+.A,
+.B,
+.C,
+.D,
+.E,
+.F {
+  position: relative;
+  overflow: hidden;
+
+  &:hover .grid-title {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .grid-title {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+.A,
+.E {
+  .grid-title {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    margin: 0;
+    padding: 0 0.5em;
+  }
+}
+
+.B,
+.D {
+  .grid-title {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    margin: 0;
+    padding: 0.5em;
+  }
+}
+
+.C,
+.F {
+  .grid-title {
+    position: absolute;
+    text-align: end;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 1em 0.5em;
+  }
+}
 
 .filter {
   margin-top: 5em;

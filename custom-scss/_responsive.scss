@@ -1,3 +1,9 @@
+@media (max-width: 30em) {
+  .grid-title {
+    font-size: 100%;
+  }
+}
+
 @media (max-width: 48em) {
   .layout {
     width: 100%;
@@ -6,7 +12,8 @@
   .carousel2img img {
     max-height: 15em;
   }
-  .join-form, .contact-form {
+  .join-form,
+  .contact-form {
     padding: 0 calc(1.5rem * 0.5) 0;
   }
 
@@ -17,6 +24,13 @@
     }
   }
 }
+
+@media (min-width: 48em) and (max-width: 62em) {
+  .grid-title {
+    font-size: 120%;
+  }
+}
+
 @media (max-width: 62em) {
   .display {
     margin: 1.5em !important;
@@ -25,7 +39,7 @@
     font-size: 1.9em;
   }
   .hide-img {
-    display:none;
+    display: none;
   }
 }
 
