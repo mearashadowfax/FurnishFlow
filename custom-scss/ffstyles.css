@@ -326,6 +326,19 @@ body {
   opacity: 1;
 }
 
+.card {
+  position: relative;
+}
+.card:hover .menu-title, .card:hover ul {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.card .menu-title,
+.card ul {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .join-form {
   padding: 3em;
   background-color: #f46b45;
@@ -671,8 +684,12 @@ input[type=checkbox]:focus {
   .carousel2img img {
     max-height: 15em;
   }
-  .join-form {
-    padding: 2em;
+  .join-form, .contact-form {
+    padding: 0 0.75rem 0;
+  }
+  .card .menu-title,
+  .card ul {
+    opacity: 1;
   }
 }
 @media (max-width: 62em) {

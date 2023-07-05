@@ -345,6 +345,22 @@ body {
   }
 }
 
+.card {
+  position: relative;
+
+  &:hover .menu-title,
+  &:hover ul {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .menu-title,
+  ul {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
 .join-form {
   padding: 3em;
   background-color: $primary-color;
