@@ -194,13 +194,8 @@ body {
 }
 
 .btn-submit {
-  padding: 1em;
-  width: 50%;
-}
-
-.btn-reset {
-  padding: 1em;
-  width: 30%;
+  width: 100%;
+  max-width: unset !important;
 }
 
 // Navigation &  Colors  -----------------------------------------------------------------------------------------------
