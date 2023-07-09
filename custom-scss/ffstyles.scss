@@ -220,7 +220,8 @@ body {
   color: $light-mode-font-color;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.bi-nav:hover {
   color: $primary-color;
 }
 
@@ -731,6 +732,10 @@ input[type="checkbox"]:focus {
   margin: 3em auto;
 }
 
+.footer-nav-link {
+  color: rgba(33, 37, 41, 0.75);
+}
+
 // Dark Mode  ----------------------------------------------------------------------------------------------------------
 @media (prefers-color-scheme: dark) {
   .navbar-brand,
@@ -756,6 +761,10 @@ input[type="checkbox"]:focus {
 
   .btn-border {
     color: $dark-mode-font-color;
+  }
+
+  .footer-nav-link {
+    color: rgba(173, 181, 189, 0.75);
   }
 }
 
