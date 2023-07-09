@@ -1,5 +1,5 @@
 # FurnishFlow
-![Screenshot from 2023-07-03 23-11-31](https://github.com/mearashadowfax/FurnishFlow/assets/125820963/c8f622f0-2690-4cdc-9999-ff4b12d86e47)
+![Screenshot from 2023-07-09 04-16-43](https://github.com/mearashadowfax/FurnishFlow/assets/125820963/8cc24ac2-108a-4151-8059-4e5d5f879152)
 
 Welcome to FurnishFlow, a prototype furniture store website created using Bootstrap.
 
