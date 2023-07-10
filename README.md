@@ -4,7 +4,7 @@
 Welcome to FurnishFlow, an interactive prototype of a furniture store website, created using the Bootstrap framework.
 
 ## Overview
-We are excited to showcase FurnishFlow, one of our recent projects. It allowed us to expand our skill set and delve into the world of Bootstrap. The result is a visually captivating and user-friendly website that seamlessly blends functionality with a modern and sleek design.
+I am excited to showcase FurnishFlow, one of my recent projects. It allowed me to expand my skill set and delve into the world of Bootstrap. The result is a visually captivating and user-friendly website that seamlessly blends functionality with a modern and sleek design.
 
 ### Key Features
 - Easy-to-navigate and intuitive browsing experience  
