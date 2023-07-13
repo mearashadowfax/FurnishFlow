@@ -220,8 +220,11 @@ body {
   color: $light-mode-font-color;
 }
 
+.sbstv {
+  color: inherit;
+}
 .nav-link:hover,
-.bi-nav:hover {
+.bi-nav:hover, .sbstv:hover {
   color: $primary-color;
 }
 

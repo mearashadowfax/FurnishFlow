@@ -201,8 +201,12 @@ body {
   color: #232323;
 }
 
+.sbstv {
+  color: inherit;
+}
+
 .nav-link:hover,
-.bi-nav:hover {
+.bi-nav:hover, .sbstv:hover {
   color: #f46b45;
 }
 
