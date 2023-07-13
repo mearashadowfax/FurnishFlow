@@ -1,7 +1,8 @@
 # FurnishFlow
 ![1 min](https://github.com/mearashadowfax/FurnishFlow/assets/125820963/df05eda5-b6f2-4e50-a595-d957be48de51)
 
-Welcome to FurnishFlow, an interactive prototype of a furniture store website, created using the Bootstrap framework.
+ FurnishFlow is a prototype furniture store website developed
+            utilizing the robust capabilities of Bootstrap.
 
 ## Overview
 I am excited to showcase FurnishFlow, one of my recent projects. It allowed me to expand my skill set and delve into the world of Bootstrap. The result is a visually captivating and user-friendly website that seamlessly blends functionality with a modern and sleek design.
