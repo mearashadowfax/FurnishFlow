@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FurnishFlow | sobstvennoAI</title>
+    <meta charset="utf-8" />
     <meta
-      name="description"
       content="Explore FurnishFlow's range of premium home furniture. With stylish, functional pieces—from cozy sofas, elegant dining sets, to modern bedroom assortments—turn your vision for your dream home into reality"
+      name="description"
     />
 
-    <meta name="author" content="Emil Gulamov" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="sobstvennoAI" />
-    <meta property="og:description" content="Personal Portfolio Site" />
-    <meta property="og:url" content="https://sobstvennoai.dev" />
-    <meta property="og:site_name" content="sobstvennoAI" />
-    <meta property="og:image" content="./Social_FF.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="600" />
-    <meta property="og:image:type" content="image/png" />
+    <meta content="Emil Gulamov" name="author" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="en_US" property="og:locale" />
+    <meta content="website" property="og:type" />
+    <meta content="sobstvennoAI" property="og:title" />
+    <meta
+      content="Explore FurnishFlow's range of premium home furniture. With stylish, functional pieces—from cozy sofas, elegant dining sets, to modern bedroom assortments—turn your vision for your dream home into reality."
+      property="og:description"
+    />
+    <meta content="https://sobstvennoai.dev" property="og:url" />
+    <meta content="sobstvennoAI" property="og:site_name" />
+    <meta
+      content="https://furnishflow.sobstvennoai.dev/projects/FurnishFlow/Social_FF.png"
+      property="og:image"
+    />
+    <meta
+      content="https://furnishflow.sobstvennoai.dev/projects/FurnishFlow/Social_FF.png"
+      property="twitter:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="600" property="og:image:height" />
+    <meta content="image/png" property="og:image:type" />
 
-    <link rel="manifest" href="./site.webmanifest" />
-    <link rel="icon" href="./favicon.ico" sizes="any" />
-    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link href="/projects/FurnishFlow/site.webmanifest" rel="manifest" />
+    <link href="/projects/FurnishFlow/favicon.ico" rel="icon" sizes="any" />
+    <link
+      href="/projects/FurnishFlow/icon.svg"
+      rel="icon"
+      type="image/svg+xml"
+    />
+    <link
+      href="/projects/FurnishFlow/apple-touch-icon.png"
+      rel="apple-touch-icon"
+    />
 
     <script>
       (() => {
@@ -142,24 +158,30 @@
       type="font/woff2"
     />
 
-    <link href="./dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="./custom-scss/ffstyles.min.css" rel="stylesheet" />
+    <link
+      href="/projects/FurnishFlow/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/projects/FurnishFlow/custom-scss/ffstyles.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!--Navigation----------------------------------------------------------------------------------------------------->
     <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
       <div class="container px-4">
-        <a class="navbar-brand" href="index.html"
+        <a class="navbar-brand" href="home.html"
           ><strong>FurnishFlow</strong></a
         >
         <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          class="navbar-toggler"
+          data-bs-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          type="button"
         >
           <span class="navbar-toggler-icon me-2"></span>
           <span class="menu-text">Menu</span>
@@ -167,15 +189,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item mx-3">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="home.html">Home</a>
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link" href="#">New Arrivals</a>
             </li>
             <li class="nav-item mx-3">
               <a
-                class="nav-link active"
                 aria-current="page"
+                class="nav-link active"
                 href="./furniture.html"
                 >Furniture</a
               >
@@ -186,59 +208,62 @@
           </ul>
           <div class="ml-auto">
             <button
-              type="button"
               class="btn icon-btn nav-svg"
-              data-bs-toggle="modal"
               data-bs-target="#modalSignin"
+              data-bs-toggle="modal"
+              type="button"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="currentColor"
                 class="bi bi-nav bi-person"
+                fill="currentColor"
+                height="25"
                 viewBox="0 0 16 16"
+                width="25"
+                xmlns="http://www.w3.org/2000/svg"
               >
+                <title>Account</title>
                 <path
                   d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
                 />
               </svg>
             </button>
             <button
-              type="button"
-              class="btn mx-3 search-btn icon-btn nav-svg"
-              data-bs-toggle="collapse"
-              data-bs-target="#searchForm"
-              aria-expanded="false"
               aria-controls="searchForm"
+              aria-expanded="false"
+              class="btn mx-3 search-btn icon-btn nav-svg"
+              data-bs-target="#searchForm"
+              data-bs-toggle="collapse"
+              type="button"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
                 class="bi bi-nav bi-search"
+                fill="currentColor"
+                height="20"
                 viewBox="0 0 16 16"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
               >
+                <title>Search</title>
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
                 />
               </svg>
             </button>
             <button
-              type="button"
               class="btn icon-btn nav-svg"
-              data-bs-toggle="modal"
               data-bs-target="#modalCart"
+              data-bs-toggle="modal"
+              type="button"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
                 class="bi bi-nav bi-bag"
+                fill="currentColor"
+                height="20"
                 viewBox="0 0 16 16"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
               >
+                <title>Cart</title>
                 <path
                   d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
                 />
@@ -249,10 +274,10 @@
             <form class="d-flex smaller-form">
               <div class="input-group">
                 <input
-                  class="form-control"
-                  type="search"
-                  placeholder="Search..."
                   aria-label="Search"
+                  class="form-control"
+                  placeholder="Search..."
+                  type="search"
                 />
                 <button class="btn btn-primary btn-border" type="submit">
                   Search
@@ -268,36 +293,36 @@
     <div class="container mt-0">
       <div class="carousel-layout mb-5">
         <div
-          id="carouselExampleIndicators"
           class="vertical carousel slide mt-2"
           data-bs-ride="carousel"
+          id="carouselExampleIndicators"
         >
           <div class="carousel-indicators">
             <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              class="active"
               aria-current="true"
               aria-label="Slide 1"
+              class="active"
+              data-bs-slide-to="0"
+              data-bs-target="#carouselExampleIndicators"
+              type="button"
             ></button>
             <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
               aria-label="Slide 2"
+              data-bs-slide-to="1"
+              data-bs-target="#carouselExampleIndicators"
+              type="button"
             ></button>
             <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
               aria-label="Slide 3"
+              data-bs-slide-to="2"
+              data-bs-target="#carouselExampleIndicators"
+              type="button"
             ></button>
             <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="3"
               aria-label="Slide 4"
+              data-bs-slide-to="3"
+              data-bs-target="#carouselExampleIndicators"
+              type="button"
             ></button>
           </div>
           <div class="carousel-inner rounded-4">
@@ -306,10 +331,17 @@
                 <div class="row">
                   <div class="col-md-6 px-0">
                     <img
-                      src="./img/AccentChair.jpg"
-                      class="img-fluid"
                       alt="Accent Chair"
+                      class="img-fluid"
                       loading="eager"
+                      sizes="(max-width: 1500px) 100vw, 1500px"
+                      src="./img/AccentChair_scale_1500.avif"
+                      srcset="
+                        ./img/AccentChair_scale_310.avif   310w,
+                        ./img/AccentChair_scale_915.avif   915w,
+                        ./img/AccentChair_scale_1459.avif 1459w,
+                        ./img/AccentChair_scale_1500.avif 1500w
+                      "
                     />
                   </div>
                   <div class="col-md-6 first-slide d-flex align-items-center">
@@ -329,16 +361,16 @@
                           >
                             <span class="me-4">Explore more items</span>
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="25"
-                              height="25"
-                              fill="currentColor"
                               class="bi bi-arrow-right-short align-self-center"
+                              fill="currentColor"
+                              height="25"
                               viewBox="0 0 16 16"
+                              width="25"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                fill-rule="evenodd"
                                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                                fill-rule="evenodd"
                               />
                             </svg>
                           </button>
@@ -368,16 +400,16 @@
                           >
                             <span class="me-4">Explore more items</span>
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="25"
-                              height="25"
-                              fill="currentColor"
                               class="bi bi-arrow-right-short align-self-center"
+                              fill="currentColor"
+                              height="25"
                               viewBox="0 0 16 16"
+                              width="25"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                fill-rule="evenodd"
                                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                                fill-rule="evenodd"
                               />
                             </svg>
                           </button>
@@ -387,10 +419,16 @@
                   </div>
                   <div class="col-md-6 px-0">
                     <img
-                      src="./img/DiningChair.jpg"
-                      class="img-fluid"
                       alt="Dining Chair"
+                      class="img-fluid"
                       loading="eager"
+                      sizes="(max-width: 1500px) 100vw, 1500px"
+                      src="./img/DiningChair_scale_1500.avif"
+                      srcset="
+                        ./img/DiningChair_scale_310.avif   310w,
+                        ./img/DiningChair_scale_982.avif   982w,
+                        ./img/DiningChair_scale_1500.avif 1500w
+                      "
                     />
                   </div>
                 </div>
@@ -415,16 +453,16 @@
                           >
                             <span class="me-4">Explore more items</span>
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="25"
-                              height="25"
-                              fill="currentColor"
                               class="bi bi-arrow-right-short align-self-center"
+                              fill="currentColor"
+                              height="25"
                               viewBox="0 0 16 16"
+                              width="25"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                fill-rule="evenodd"
                                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                                fill-rule="evenodd"
                               />
                             </svg>
                           </button>
@@ -434,10 +472,10 @@
                   </div>
                   <div class="col-md-6 px-0">
                     <img
-                      src="./img/Loveseat.jpg"
-                      class="img-fluid"
                       alt="Loveseat"
+                      class="img-fluid"
                       loading="eager"
+                      src="./img/Loveseat.avif"
                     />
                   </div>
                 </div>
@@ -448,10 +486,10 @@
                 <div class="row">
                   <div class="col-md-6 px-0">
                     <img
-                      src="./img/RattanChair.jpg"
-                      class="img-fluid"
                       alt="Rattan Chair"
+                      class="img-fluid"
                       loading="eager"
+                      src="./img/RattanChair.avif"
                     />
                   </div>
                   <div class="col-md-6 fourth-slide d-flex align-items-center">
@@ -469,16 +507,16 @@
                           >
                             <span class="me-4">Explore more items</span>
                             <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="25"
-                              height="25"
-                              fill="currentColor"
                               class="bi bi-arrow-right-short align-self-center"
+                              fill="currentColor"
+                              height="25"
                               viewBox="0 0 16 16"
+                              width="25"
+                              xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                fill-rule="evenodd"
                                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                                fill-rule="evenodd"
                               />
                             </svg>
                           </button>
@@ -503,39 +541,39 @@
               <div class="list-unstyled ps-0">
                 <div class="mb-1">
                   <button
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#colors-collapse"
                     aria-expanded="false"
+                    class="btn btn-toggle rounded collapsed btn-wider"
+                    data-bs-target="#colors-collapse"
+                    data-bs-toggle="collapse"
                   >
                     <span>Colors</span>
                     <span class="svg-container">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-plus-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: inline-block"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-dash-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: none"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                     </span>
@@ -550,96 +588,96 @@
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelred"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelgreen"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelbrown"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelblue"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelyellow"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelpurple"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
+                            aria-label="..."
                             class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
                             id="radioNoLabelwhite"
+                            name="radioNoLabel"
+                            type="radio"
                             value=""
-                            aria-label="..."
                           />
                         </div>
                       </div>
                       <div class="col">
                         <div>
                           <input
-                            class="form-check-input outline"
-                            type="radio"
-                            name="radioNoLabel"
-                            id="radioNoLabeldark"
-                            value=""
                             aria-label="..."
+                            class="form-check-input outline"
+                            id="radioNoLabeldark"
+                            name="radioNoLabel"
+                            type="radio"
+                            value=""
                           />
                         </div>
                       </div>
@@ -649,39 +687,39 @@
 
                 <div class="mb-1">
                   <button
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#filter-collapse"
                     aria-expanded="false"
+                    class="btn btn-toggle rounded collapsed btn-wider"
+                    data-bs-target="#filter-collapse"
+                    data-bs-toggle="collapse"
                   >
                     <span>Furniture Type</span>
                     <span class="svg-container">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-plus-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: inline-block"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-dash-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: none"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                     </span>
@@ -702,9 +740,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck1"
                           type="checkbox"
                           value=""
-                          id="reverseCheck1"
                         />
                       </div>
                     </li>
@@ -718,9 +756,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck2"
                           type="checkbox"
                           value=""
-                          id="reverseCheck2"
                         />
                       </div>
                     </li>
@@ -734,9 +772,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck3"
                           type="checkbox"
                           value=""
-                          id="reverseCheck3"
                         />
                       </div>
                     </li>
@@ -750,9 +788,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck4"
                           type="checkbox"
                           value=""
-                          id="reverseCheck4"
                         />
                       </div>
                     </li>
@@ -766,9 +804,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck5"
                           type="checkbox"
                           value=""
-                          id="reverseCheck5"
                         />
                       </div>
                     </li>
@@ -782,9 +820,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck6"
                           type="checkbox"
                           value=""
-                          id="reverseCheck6"
                         />
                       </div>
                     </li>
@@ -798,9 +836,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck7"
                           type="checkbox"
                           value=""
-                          id="reverseCheck7"
                         />
                       </div>
                     </li>
@@ -814,9 +852,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck8"
                           type="checkbox"
                           value=""
-                          id="reverseCheck8"
                         />
                       </div>
                     </li>
@@ -830,9 +868,9 @@
                         >
                         <input
                           class="form-check-input ms-auto"
+                          id="reverseCheck9"
                           type="checkbox"
                           value=""
-                          id="reverseCheck9"
                         />
                       </div>
                     </li>
@@ -840,39 +878,39 @@
                 </div>
                 <div class="mb-1">
                   <button
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#price-collapse"
                     aria-expanded="false"
+                    class="btn btn-toggle rounded collapsed btn-wider"
+                    data-bs-target="#price-collapse"
+                    data-bs-toggle="collapse"
                   >
                     <span>Price</span>
                     <span class="svg-container">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-plus-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: inline-block"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
                         class="bi bi-dash-lg"
-                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        height="16"
                         style="display: none"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
                           d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                          fill-rule="evenodd"
                         />
                       </svg>
                     </span>
@@ -882,17 +920,18 @@
                 <div class="collapse small mb-3 py-3 px-3" id="price-collapse">
                   <form class="form-group">
                     <input
-                      type="range"
                       class="form-range"
-                      min="0"
-                      max="8444"
-                      value="0"
                       id="pricerange"
+                      step="50"
+                      max="8500"
+                      min="0"
+                      type="range"
+                      value="0"
                     />
 
                     <label
-                      for="pricerange"
                       class="form-label d-flex justify-content-between"
+                      for="pricerange"
                       >0$<span id="pricetext">0</span></label
                     >
                   </form>
@@ -907,12 +946,12 @@
                   >
                     <span class="me-3">Clear all</span>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
                       class="bi bi-x-lg"
+                      fill="currentColor"
+                      height="16"
                       viewBox="0 0 16 16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
@@ -929,8 +968,8 @@
             <ul class="nav">
               <li class="nav-item">
                 <a
-                  class="nav-link text-uppercase active menu"
                   aria-current="page"
+                  class="nav-link text-uppercase active menu"
                   href="#"
                   >All</a
                 >
@@ -956,7 +995,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/CitrusChicChair.jpg');
+                        background-image: url('./img/CitrusChicChair.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -971,10 +1010,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -982,7 +1021,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -998,7 +1037,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/ArtisanWingChair.jpg');
+                        background-image: url('./img/ArtisanWingChair.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1013,10 +1052,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1024,7 +1063,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>Limited</small>
@@ -1040,7 +1079,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/AzureWingchair.jpg');
+                        background-image: url('./img/AzureWingchair.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1055,10 +1094,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1066,7 +1105,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -1082,7 +1121,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/TimberFusionChair.jpg');
+                        background-image: url('./img/TimberFusionChair.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1097,10 +1136,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1108,7 +1147,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -1124,7 +1163,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/WoodMetalFusion.jpg');
+                        background-image: url('./img/WoodMetalFusion.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1139,10 +1178,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1150,7 +1189,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>Limited</small>
@@ -1166,7 +1205,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/WorkshopOasis.jpg');
+                        background-image: url('./img/WorkshopOasis.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1181,10 +1220,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1192,7 +1231,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -1208,7 +1247,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/OpulentWingChair.jpg');
+                        background-image: url('./img/OpulentWingChair.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1223,10 +1262,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1234,7 +1273,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -1250,7 +1289,7 @@
                     <div
                       class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                       style="
-                        background-image: url('./img/CozyWoodSeating.jpg');
+                        background-image: url('./img/CozyWoodSeating.avif');
                         background-size: cover;
                         background-position: center;
                       "
@@ -1265,10 +1304,10 @@
                         </h3>
                         <ul class="d-flex list-unstyled mt-auto">
                           <li class="me-auto">
-                            <button type="button" class="btn btn-secondary">
+                            <button class="btn btn-secondary" type="button">
                               <a
-                                href="itemcard.html"
                                 class="text-decoration-none"
+                                href="itemcard.html"
                                 style="color: inherit"
                               >
                                 View Details</a
@@ -1276,7 +1315,7 @@
                             </button>
                           </li>
                           <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
+                            <svg class="bi me-2" height="1em" width="1em">
                               <use xlink:href="#geo-fill"></use>
                             </svg>
                             <small>In Stock</small>
@@ -1307,38 +1346,39 @@
     <!-- Bottom Carousel ---------------------------------------------------------------------------------------------->
     <div class="container sections">
       <div
-        id="carouselExampleCaptions"
         class="carousel slide"
         data-bs-ride="carousel"
+        id="carouselExampleCaptions"
       >
         <div class="carousel-indicators">
           <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
             aria-current="true"
             aria-label="Slide 1"
+            class="active"
+            data-bs-slide-to="0"
+            data-bs-target="#carouselExampleCaptions"
+            type="button"
           ></button>
           <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
             aria-label="Slide 2"
+            data-bs-slide-to="1"
+            data-bs-target="#carouselExampleCaptions"
+            type="button"
           ></button>
           <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
             aria-label="Slide 3"
+            data-bs-slide-to="2"
+            data-bs-target="#carouselExampleCaptions"
+            type="button"
           ></button>
         </div>
         <div class="carousel-inner rounded-4">
           <div class="carousel-item active carousel2img">
             <img
-              src="./img/DreamyBedroomRetreat.jpg"
-              class="d-block w-100"
               alt="..."
+              class="d-block w-100"
+              loading="lazy"
+              src="./img/DreamyBedroomRetreat.avif"
             />
             <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
               <p>
@@ -1348,9 +1388,10 @@
           </div>
           <div class="carousel-item carousel2img">
             <img
-              src="./img/ElevateYourSpace.jpg"
-              class="d-block w-100"
               alt="..."
+              class="d-block w-100"
+              loading="lazy"
+              src="./img/ElevateYourSpace.avif"
             />
             <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
               <p>
@@ -1360,9 +1401,10 @@
           </div>
           <div class="carousel-item carousel2img">
             <img
-              src="./img/UnwindinStyle.jpg"
-              class="d-block w-100"
               alt="..."
+              class="d-block w-100"
+              loading="lazy"
+              src="./img/UnwindinStyle.avif"
             />
             <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
               <p>
@@ -1386,7 +1428,7 @@
               <small
                 >Need assistance or have a question? Our friendly customer
                 support team is
-                <a href="getintouch.html" class="footer-link"
+                <a class="footer-link" href="getintouch.html"
                   >here to help</a
                 ></small
               >
@@ -1394,19 +1436,20 @@
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
                 <a
-                  href="tel:+15551234567"
                   class="nav-link p-0 text-body-secondary text-nowrap"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
+                  href="tel:+15551234567"
+                >
+                  <svg
                     class="me-3 bi bi-telephone-fill"
+                    fill="currentColor"
+                    height="16"
                     viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
                       d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+                      fill-rule="evenodd"
                     />
                   </svg>
                   +1 (555) 123-4567</a
@@ -1414,15 +1457,16 @@
               </li>
               <li class="nav-item mb-2">
                 <a
-                  href="mailto:info@furnishflow.com"
                   class="nav-link p-0 text-body-secondary text-nowrap"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
+                  href="mailto:info@furnishflow.com"
+                >
+                  <svg
                     class="me-3 bi bi-envelope-at-fill"
+                    fill="currentColor"
+                    height="16"
                     viewBox="0 0 16 16"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"
@@ -1445,19 +1489,19 @@
             <hr class="underline-line pb-3" />
             <ul class="nav flex-column">
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 footer-nav-link">FAQs</a>
+                <a class="nav-link p-0 footer-nav-link" href="#">FAQs</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 footer-nav-link"
-                >Shipping & Returns</a
+                <a class="nav-link p-0 footer-nav-link" href="#"
+                  >Shipping & Returns</a
                 >
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 footer-nav-link">Blog</a>
+                <a class="nav-link p-0 footer-nav-link" href="#">Blog</a>
               </li>
               <li class="nav-item mb-2">
-                <a href="#" class="nav-link p-0 footer-nav-link"
-                >Privacy Policy</a
+                <a class="nav-link p-0 footer-nav-link" href="#"
+                  >Privacy Policy</a
                 >
               </li>
             </ul>
@@ -1474,15 +1518,15 @@
                 >
               </p>
               <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label for="newsletter1" class="visually-hidden"
+                <label class="visually-hidden" for="newsletter1"
                   >Email address</label
                 >
                 <div class="input-group">
                   <input
-                    id="newsletter1"
-                    type="text"
                     class="form-control"
+                    id="newsletter1"
                     placeholder="Email address"
+                    type="text"
                   />
                   <button class="btn btn-primary btn-border" type="button">
                     Subscribe
@@ -1498,81 +1542,94 @@
         >
           <p>
             © 2023 <strong>FurnishFlow</strong> |
-            <small>Designed by <a href="../../../index.html" rel="noopener noreferrer" class="text-decoration-none sbstv"
-            >Emil Gulamov</a>. All rights reserved.</small>
+            <small
+              >Designed by
+              <a
+                class="text-decoration-none sbstv"
+                href="https://sobstvennoai.dev"
+                target="_blank"
+                >Emil Gulamov</a
+              >. All rights reserved.</small
+            >
           </p>
           <ul class="list-unstyled d-flex">
             <li>
-              <a class="link-body-emphasis" href="#"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
+              <a class="link-body-emphasis" href="#">
+                <svg
                   class="bi bi-twitter"
+                  fill="currentColor"
+                  height="20"
                   viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
+                  <title>Twitter</title>
                   <path
                     d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-                  /></svg
-              ></a>
+                  />
+                </svg>
+              </a>
             </li>
             <li class="mx-4">
-              <a class="link-body-emphasis" href="#"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
+              <a class="link-body-emphasis" href="#">
+                <svg
                   class="bi bi-instagram"
+                  fill="currentColor"
+                  height="20"
                   viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
+                  <title>Instagram</title>
                   <path
                     d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-                  /></svg
-              ></a>
+                  />
+                </svg>
+              </a>
             </li>
             <li>
-              <a class="link-body-emphasis" href="#"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
+              <a class="link-body-emphasis" href="#">
+                <svg
                   class="bi bi-facebook"
+                  fill="currentColor"
+                  height="20"
                   viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
+                  <title>Facebook</title>
                   <path
                     d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-                  /></svg
-              ></a>
+                  />
+                </svg>
+              </a>
             </li>
           </ul>
         </div>
       </footer>
     </div>
 
-    <script src="./jquery-3.7.0.min.js"></script>
-    <script src="./js/src/popover.js"></script>
-    <script src="./dist/js/bootstrap.js"></script>
-    <script src="./main.js"></script>
+    <script src="/projects/FurnishFlow/jquery-3.7.0.min.js"></script>
+    <script src="/projects/FurnishFlow/js/src/popover.js"></script>
+    <script src="/projects/FurnishFlow/dist/js/bootstrap.min.js"></script>
+    <script src="/projects/FurnishFlow/main.js"></script>
 
     <!--Log in Form------------------------------------------------------------------------------------------------------>
     <div
       class="modal fade bg-body-secondary"
-      tabindex="-1"
-      role="dialog"
       id="modalSignin"
+      role="dialog"
+      tabindex="-1"
     >
       <div class="modal-dialog custom-modal log-in-modal">
         <div class="modal-content rounded-4 shadow">
           <div class="modal-header p-5 pb-4 border-bottom-0">
             <h1 class="fw-bold mb-0 fs-2">Join Now</h1>
             <button
-              type="button"
+              aria-label="Close"
               class="btn-close"
               data-bs-dismiss="modal"
-              aria-label="Close"
+              type="button"
             ></button>
           </div>
 
@@ -1580,19 +1637,19 @@
             <form class="">
               <div class="form-floating mb-3">
                 <input
-                  type="email"
                   class="form-control rounded-3"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  type="email"
                 />
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
                 <input
-                  type="password"
                   class="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  type="password"
                 />
                 <label for="floatingPassword">Password</label>
               </div>
@@ -1612,19 +1669,19 @@
 
                 <div class="form-floating mb-3">
                   <input
-                    type="email"
                     class="form-control rounded-3"
                     id="floatingInputLogIn"
                     placeholder="name@example.com"
+                    type="email"
                   />
                   <label for="floatingInputLogIn">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input
-                    type="password"
                     class="form-control"
                     id="floatingPasswordLogIn"
                     placeholder="Password"
+                    type="password"
                   />
                   <label for="floatingPasswordLogIn">Password</label>
                 </div>
@@ -1632,9 +1689,9 @@
                 <div class="form-check text-start my-3">
                   <input
                     class="form-check-input custom-checkbox"
+                    id="flexCheckDefault"
                     type="checkbox"
                     value="remember-me"
-                    id="flexCheckDefault"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
                     <small class="text-body-secondary">Remember me</small>
@@ -1659,9 +1716,9 @@
     <!--Checkout form---------------------------------------------------------------------------------------------------->
     <div
       class="modal fade bg-body-secondary"
-      tabindex="-1"
-      role="dialog"
       id="modalCart"
+      role="dialog"
+      tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered check-out-modal">
         <div class="modal-content rounded-4 shadow">
@@ -1726,12 +1783,12 @@
                     <div class="input-group">
                       <label for="promoCode"></label>
                       <input
-                        type="text"
-                        id="promoCode"
                         class="form-control"
+                        id="promoCode"
                         placeholder="Promo code"
+                        type="text"
                       />
-                      <button type="submit" class="btn btn-secondary">
+                      <button class="btn btn-secondary" type="submit">
                         Redeem
                       </button>
                     </div>
@@ -1742,16 +1799,16 @@
                   <form class="needs-validation" novalidate="">
                     <div class="row g-3">
                       <div class="col-sm-6">
-                        <label for="firstName" class="form-label"
+                        <label class="form-label" for="firstName"
                           >First name</label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="firstName"
                           placeholder=""
-                          value=""
                           required=""
+                          type="text"
+                          value=""
                         />
                         <div class="invalid-feedback">
                           Valid first name is required.
@@ -1759,16 +1816,16 @@
                       </div>
 
                       <div class="col-sm-6">
-                        <label for="lastName" class="form-label"
+                        <label class="form-label" for="lastName"
                           >Last name</label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="lastName"
                           placeholder=""
-                          value=""
                           required=""
+                          type="text"
+                          value=""
                         />
                         <div class="invalid-feedback">
                           Valid last name is required.
@@ -1776,17 +1833,17 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="username" class="form-label"
+                        <label class="form-label" for="username"
                           >Username</label
                         >
                         <div class="input-group has-validation">
                           <span class="input-group-text">@</span>
                           <input
-                            type="text"
                             class="form-control"
                             id="username"
                             placeholder="Username"
                             required=""
+                            type="text"
                           />
                           <div class="invalid-feedback">
                             Your username is required.
@@ -1795,17 +1852,17 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="email" class="form-label"
+                        <label class="form-label" for="email"
                           >Email
                           <span class="text-body-secondary"
                             >(Optional)</span
                           ></label
                         >
                         <input
-                          type="email"
                           class="form-control"
                           id="email"
                           placeholder="you@example.com"
+                          type="email"
                         />
                         <div class="invalid-feedback">
                           Please enter a valid email address for shipping
@@ -1814,13 +1871,13 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="address" class="form-label">Address</label>
+                        <label class="form-label" for="address">Address</label>
                         <input
-                          type="text"
                           class="form-control"
                           id="address"
                           placeholder="1234 Main St"
                           required=""
+                          type="text"
                         />
                         <div class="invalid-feedback">
                           Please enter your shipping address.
@@ -1828,22 +1885,22 @@
                       </div>
 
                       <div class="col-12">
-                        <label for="address2" class="form-label"
+                        <label class="form-label" for="address2"
                           >Address 2
                           <span class="text-body-secondary"
                             >(Optional)</span
                           ></label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="address2"
                           placeholder="Apartment or suite"
+                          type="text"
                         />
                       </div>
 
                       <div class="col-md-5">
-                        <label for="country" class="form-label">Country</label>
+                        <label class="form-label" for="country">Country</label>
                         <select class="form-select" id="country" required="">
                           <option value="">Choose...</option>
                           <option>United States</option>
@@ -1854,7 +1911,7 @@
                       </div>
 
                       <div class="col-md-4">
-                        <label for="state" class="form-label">State</label>
+                        <label class="form-label" for="state">State</label>
                         <select class="form-select" id="state" required="">
                           <option value="">Choose...</option>
                           <option>California</option>
@@ -1865,13 +1922,13 @@
                       </div>
 
                       <div class="col-md-3">
-                        <label for="zip" class="form-label">Zip</label>
+                        <label class="form-label" for="zip">Zip</label>
                         <input
-                          type="text"
                           class="form-control"
                           id="zip"
                           placeholder=""
                           required=""
+                          type="text"
                         />
                         <div class="invalid-feedback">Zip code required.</div>
                       </div>
@@ -1881,9 +1938,9 @@
 
                     <div class="form-check">
                       <input
-                        type="checkbox"
                         class="form-check-input"
                         id="same-address"
+                        type="checkbox"
                       />
                       <label class="form-check-label" for="same-address"
                         >Shipping address is the same as my billing
@@ -1893,9 +1950,9 @@
 
                     <div class="form-check">
                       <input
-                        type="checkbox"
                         class="form-check-input"
                         id="save-info"
+                        type="checkbox"
                       />
                       <label class="form-check-label" for="save-info"
                         >Save this information for next time</label
@@ -1909,12 +1966,12 @@
                     <div class="my-3">
                       <div class="form-check">
                         <input
+                          checked=""
+                          class="form-check-input"
                           id="credit"
                           name="paymentMethod"
-                          type="radio"
-                          class="form-check-input"
-                          checked=""
                           required=""
+                          type="radio"
                         />
                         <label class="form-check-label" for="credit"
                           >Credit card</label
@@ -1922,11 +1979,11 @@
                       </div>
                       <div class="form-check">
                         <input
+                          class="form-check-input"
                           id="debit"
                           name="paymentMethod"
-                          type="radio"
-                          class="form-check-input"
                           required=""
+                          type="radio"
                         />
                         <label class="form-check-label" for="debit"
                           >Debit card</label
@@ -1934,11 +1991,11 @@
                       </div>
                       <div class="form-check">
                         <input
+                          class="form-check-input"
                           id="paypal"
                           name="paymentMethod"
-                          type="radio"
-                          class="form-check-input"
                           required=""
+                          type="radio"
                         />
                         <label class="form-check-label" for="paypal"
                           >PayPal</label
@@ -1948,15 +2005,15 @@
 
                     <div class="row gy-3">
                       <div class="col-md-6">
-                        <label for="cc-name" class="form-label"
+                        <label class="form-label" for="cc-name"
                           >Name on card</label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="cc-name"
                           placeholder=""
                           required=""
+                          type="text"
                         />
                         <small class="text-body-secondary"
                           >Full name as displayed on card</small
@@ -1967,15 +2024,15 @@
                       </div>
 
                       <div class="col-md-6">
-                        <label for="cc-number" class="form-label"
+                        <label class="form-label" for="cc-number"
                           >Credit card number</label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="cc-number"
                           placeholder=""
                           required=""
+                          type="text"
                         />
                         <div class="invalid-feedback">
                           Credit card number is required
@@ -1983,15 +2040,15 @@
                       </div>
 
                       <div class="col-md-3">
-                        <label for="cc-expiration" class="form-label"
+                        <label class="form-label" for="cc-expiration"
                           >Expiration</label
                         >
                         <input
-                          type="text"
                           class="form-control"
                           id="cc-expiration"
                           placeholder=""
                           required=""
+                          type="text"
                         />
                         <div class="invalid-feedback">
                           Expiration date required
@@ -1999,13 +2056,13 @@
                       </div>
 
                       <div class="col-md-3">
-                        <label for="cc-cvv" class="form-label">CVV</label>
+                        <label class="form-label" for="cc-cvv">CVV</label>
                         <input
-                          type="text"
                           class="form-control"
                           id="cc-cvv"
                           placeholder=""
                           required=""
+                          type="text"
                         />
                         <div class="invalid-feedback">
                           Security code required

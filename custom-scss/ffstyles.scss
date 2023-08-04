@@ -15,7 +15,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/montserrat-v25-latin-regular.woff2") format("woff2");
+  src: url("/fonts/montserrat-v25-latin-regular.woff2") format("woff2");
 }
 /* montserrat-500 - latin */
 @font-face {
@@ -23,7 +23,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/montserrat-v25-latin-500.woff2") format("woff2");
+  src: url("/fonts/montserrat-v25-latin-500.woff2") format("woff2");
 }
 /* montserrat-600 - latin */
 @font-face {
@@ -31,7 +31,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/montserrat-v25-latin-600.woff2") format("woff2");
+  src: url("/fonts/montserrat-v25-latin-600.woff2") format("woff2");
 }
 /* montserrat-700 - latin */
 @font-face {
@@ -39,7 +39,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/montserrat-v25-latin-700.woff2") format("woff2");
+  src: url("/fonts/montserrat-v25-latin-700.woff2") format("woff2");
 }
 /* montserrat-800 - latin */
 @font-face {
@@ -47,7 +47,7 @@ Version: 1.0
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 800;
-  src: url("../fonts/montserrat-v25-latin-800.woff2") format("woff2");
+  src: url("/fonts/montserrat-v25-latin-800.woff2") format("woff2");
 }
 
 // Body
@@ -72,7 +72,7 @@ body {
   display: none;
 }
 
-// index.html
+// home.html
 
 .grid-container {
   display: grid;
@@ -146,6 +146,12 @@ body {
 }
 
 // itemcard.html
+
+.item-card-layout {
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .card-title {
   font-size: 2.5em;

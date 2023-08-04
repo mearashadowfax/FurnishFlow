@@ -1,13 +1,18 @@
 /*!
-  * Bootstrap selector-engine.js v5.3.0 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap selector-engine.js v5.3.0 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../util/index.js')) :
-  typeof define === 'function' && define.amd ? define(['../util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SelectorEngine = factory(global.Index));
-})(this, (function (index_js) { 'use strict';
+  typeof exports === "object" && typeof module !== "undefined"
+    ? (module.exports = factory(require("../util")))
+    : typeof define === "function" && define.amd
+    ? define(["../util"], factory)
+    : ((global =
+        typeof globalThis !== "undefined" ? globalThis : global || self),
+      (global.SelectorEngine = factory(global.Index)));
+})(this, function (index_js) {
+  "use strict";
 
   /**
    * --------------------------------------------------------------------------
@@ -16,36 +21,44 @@
    * --------------------------------------------------------------------------
    */
 
-  const getSelector = element => {
-    let selector = element.getAttribute('data-bs-target');
-    if (!selector || selector === '#') {
-      let hrefAttribute = element.getAttribute('href');
+  const getSelector = (element) => {
+    let selector = element.getAttribute("data-bs-target");
+    if (!selector || selector === "#") {
+      let hrefAttribute = element.getAttribute("href");
 
       // The only valid content that could double as a selector are IDs or classes,
       // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
       // `document.querySelector` will rightfully complain it is invalid.
       // See https://github.com/twbs/bootstrap/issues/32273
-      if (!hrefAttribute || !hrefAttribute.includes('#') && !hrefAttribute.startsWith('.')) {
+      if (
+        !hrefAttribute ||
+        (!hrefAttribute.includes("#") && !hrefAttribute.startsWith("."))
+      ) {
         return null;
       }
 
       // Just in case some CMS puts out a full URL with the anchor appended
-      if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
-        hrefAttribute = `#${hrefAttribute.split('#')[1]}`;
+      if (hrefAttribute.includes("#") && !hrefAttribute.startsWith("#")) {
+        hrefAttribute = `#${hrefAttribute.split("#")[1]}`;
       }
-      selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null;
+      selector =
+        hrefAttribute && hrefAttribute !== "#" ? hrefAttribute.trim() : null;
     }
     return index_js.parseSelector(selector);
   };
   const SelectorEngine = {
     find(selector, element = document.documentElement) {
-      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+      return [].concat(
+        ...Element.prototype.querySelectorAll.call(element, selector)
+      );
     },
     findOne(selector, element = document.documentElement) {
       return Element.prototype.querySelector.call(element, selector);
     },
     children(element, selector) {
-      return [].concat(...element.children).filter(child => child.matches(selector));
+      return []
+        .concat(...element.children)
+        .filter((child) => child.matches(selector));
     },
     parents(element, selector) {
       const parents = [];
@@ -78,8 +91,21 @@
       return [];
     },
     focusableChildren(element) {
-      const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(',');
-      return this.find(focusables, element).filter(el => !index_js.isDisabled(el) && index_js.isVisible(el));
+      const focusables = [
+        "a",
+        "button",
+        "input",
+        "textarea",
+        "select",
+        "details",
+        "[tabindex]",
+        '[contenteditable="true"]',
+      ]
+        .map((selector) => `${selector}:not([tabindex^="-"])`)
+        .join(",");
+      return this.find(focusables, element).filter(
+        (el) => !index_js.isDisabled(el) && index_js.isVisible(el)
+      );
     },
     getSelectorFromElement(element) {
       const selector = getSelector(element);
@@ -95,10 +121,9 @@
     getMultipleElementsFromSelector(element) {
       const selector = getSelector(element);
       return selector ? SelectorEngine.find(selector) : [];
-    }
+    },
   };
 
   return SelectorEngine;
-
-}));
+});
 //# sourceMappingURL=selector-engine.js.map
