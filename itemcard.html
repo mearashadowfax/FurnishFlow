@@ -152,13 +152,27 @@
     />
 
     <link
+      as="style"
       href="/projects/FurnishFlow/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
+      rel="preload"
     />
     <link
+      as="style"
       href="/projects/FurnishFlow/custom-scss/ffstyles.min.css"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
+      rel="preload"
     />
+    <noscript>
+      <link
+        href="/projects/FurnishFlow/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <link
+        href="/projects/FurnishFlow/custom-scss/ffstyles.min.css"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body>
     <!--Navigation----------------------------------------------------------------------------------------------------->
@@ -291,7 +305,13 @@
             class="img-fluid rounded-4"
             id="bigImage"
             loading="eager"
-            src="./img/TimberFusionChair2.avif"
+            sizes="(max-width: 999px) 100vw, 999px"
+            src="./img/TimberFusionChair2_scale_999.avif"
+            srcset="
+              ./img/TimberFusionChair2_scale_310.avif 310w,
+              ./img/TimberFusionChair2_scale_931.avif 931w,
+              ./img/TimberFusionChair2_scale_999.avif 999w
+            "
           />
         </div>
         <div class="col-lg-4 d-flex align-items-center">
@@ -338,16 +358,27 @@
         </div>
         <div class="col-lg-2 p-0">
           <img
-            alt="Accent Chair"
+            alt="Timber Fusion Chair Image 2"
             class="img-fluid rounded-4 small-image"
             loading="eager"
-            src="./img/TimberFusionChair3.avif"
+            sizes="(max-width: 999px) 100vw, 999px"
+            src="./img/TimberFusionChair3_scale_999.avif"
+            srcset="
+              ./img/TimberFusionChair3_scale_310.avif 310w,
+              ./img/TimberFusionChair3_scale_999.avif 999w
+            "
           />
           <img
-            alt="Accent Chair"
+            alt="Timber Fusion Chair Image 2"
             class="img-fluid mt-5 rounded-4 small-image"
             loading="eager"
-            src="./img/TimberFusionChair4.avif"
+            sizes="(max-width: 999px) 100vw, 999px"
+            src="./img/TimberFusionChair4_scale_999.avif"
+            srcset="
+              ./img/TimberFusionChair4_scale_310.avif 310w,
+              ./img/TimberFusionChair4_scale_968.avif 968w,
+              ./img/TimberFusionChair4_scale_999.avif 999w
+            "
           />
         </div>
       </div>
@@ -884,9 +915,9 @@
                     <input
                       class="form-range"
                       id="pricerange"
-                      step="50"
                       max="8500"
                       min="0"
+                      step="50"
                       type="range"
                       value="0"
                     />
@@ -1374,7 +1405,7 @@
 
     <script src="/projects/FurnishFlow/jquery-3.7.0.min.js"></script>
     <script src="/projects/FurnishFlow/dist/js/bootstrap.min.js"></script>
-    <script src="/projects/FurnishFlow/main.js"></script>
+    <script src="/projects/FurnishFlow/main.min.js"></script>
     <script src="/projects/FurnishFlow/dist/clipboard.min.js"></script>
 
     <!-- Share Modal -------------------------------------------------------------------------------------------------->

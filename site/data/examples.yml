@@ -20,8 +20,8 @@
     - name: Parcel
       description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
       url: /examples/tree/main/parcel
-      indexPath: src/index.html
-      indexPath: src/index.html
+      indexPath: src/home.html
+      indexPath: src/home.html
     - name: React
       description: "Import and bundle Bootstrap's source Sass and JavaScript with React, Next.js, and React Bootstrap."
       url: /examples/tree/main/react-nextjs
@@ -35,7 +35,7 @@
     - name: Webpack
       description: "Import and bundle Bootstrap's source Sass and JavaScript with Webpack."
       url: /examples/tree/main/webpack
-      indexPath: src/index.html
+      indexPath: src/home.html
 
 - category: Snippets
   description: "Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more."

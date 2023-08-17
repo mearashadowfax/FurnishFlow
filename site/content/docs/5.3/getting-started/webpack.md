@@ -50,7 +50,7 @@ We've already created the `my-project` folder and initialized npm. Now we'll als
 
 ```sh
 mkdir {src,src/js,src/scss}
-touch src/index.html src/js/main.js src/scss/styles.scss webpack.config.js
+touch src/home.html src/js/main.js src/scss/styles.scss webpack.config.js
 ```
 
 When you're done, your complete project should look like this:
@@ -95,7 +95,7 @@ With dependencies installed and our project folder ready for us to start coding,
        hot: true
      },
      plugins: [
-       new HtmlWebpackPlugin({ template: './src/index.html' })
+       new HtmlWebpackPlugin({ template: './src/home.html' })
      ]
    }
    ```
@@ -171,7 +171,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
        hot: true
      },
      plugins: [
-       new HtmlWebpackPlugin({ template: './src/index.html' })
+       new HtmlWebpackPlugin({ template: './src/home.html' })
      ],
      module: {
        rules: [

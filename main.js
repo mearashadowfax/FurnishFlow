@@ -80,25 +80,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const smallImages = document.querySelectorAll(".small-image");
   const bigImage = document.getElementById("bigImage");
-  const initialBigImageSrc = bigImage.src;
 
-  // Add click event listener to each small image
   smallImages.forEach((smallImage) => {
     smallImage.addEventListener("click", () => {
-      // Get the source of the clicked small image
+      // Get the clicked small image's src and srcset attributes
       const smallImageSrc = smallImage.src;
+      const smallImageSrcset = smallImage.getAttribute("srcset");
 
-      // Get the source of the current big image
+      // Store the current big image's src and srcset attributes
       const bigImageSrc = bigImage.src;
+      const bigImageSrcset = bigImage.getAttribute("srcset");
 
-      // Set the clicked small image as the new big image
+      // Update the big image's src and srcset attributes
       bigImage.src = smallImageSrc;
+      bigImage.setAttribute("srcset", smallImageSrcset);
 
-      // Set the current big image as the small image
+      // Update the clicked small image's src and srcset attributes
       smallImage.src = bigImageSrc;
+      smallImage.setAttribute("srcset", bigImageSrcset);
     });
   });
 
-  // Initialize Clipboard.js
-  new ClipboardJS(".clipboard-btn");
+  // Initialize Clipboard.js only if the library is available
+  if (typeof ClipboardJS !== "undefined") {
+    new ClipboardJS(".clipboard-btn");
+  }
 });
