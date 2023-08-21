@@ -145,7 +145,7 @@ body {
   border: 1px solid $light-mode-font-color !important;
 }
 
-// itemcard.html
+// TimberFusion.html
 
 .item-card-layout {
   gap: 2em;
@@ -182,7 +182,8 @@ body {
 .specs-subhead {
   font-weight: 400;
 }
-// getintouch.html
+
+// contact.html
 
 .card-title-get-in-touch {
   font-size: 3em;
@@ -774,6 +775,17 @@ input[type="checkbox"]:focus {
 
   .footer-nav-link {
     color: rgba(173, 181, 189, 0.75);
+  }
+}
+
+// Light Mode  ----------------------------------------------------------------------------------------------------------
+@media (prefers-color-scheme: light) {
+  .svg-light-mode {
+    color: #212529;
+  }
+
+  .clipboard-btn:hover .svg-light-mode {
+    color: #fff;
   }
 }
 

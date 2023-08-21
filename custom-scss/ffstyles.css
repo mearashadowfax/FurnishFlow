@@ -749,6 +749,14 @@ input[type=checkbox]:focus {
     color: rgba(173, 181, 189, 0.75);
   }
 }
+@media (prefers-color-scheme: light) {
+  .svg-light-mode {
+    color: #212529;
+  }
+  .clipboard-btn:hover .svg-light-mode {
+    color: #fff;
+  }
+}
 @media (max-width: 30em) {
   .grid-title {
     font-size: 100%;
