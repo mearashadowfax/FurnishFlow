@@ -264,6 +264,14 @@ body {
   color: $primary-color;
   text-decoration: none;
 }
+.search-result {
+  text-decoration: none;
+  color: $light-mode-font-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
 
 .navbar-toggler {
   display: flex;
@@ -275,6 +283,51 @@ body {
   font-weight: bold;
 }
 
+.input-group>.form-control {
+  width: 15.25rem !important;
+  flex: unset !important;
+}
+#searchResultsContainer {
+  position: absolute;
+  display: none;
+  width: 15.25rem;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 1rem 3rem -1.5rem rgba(0, 0, 0, .8), 0 -.1rem .1rem -.25rem rgba(0, 0, 0, .9);
+}
+
+#searchForm {
+  height: auto !important;
+}
+
+#searchResults {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & li {
+    padding: 1rem;
+    margin: 0;
+    width: auto;
+  }
+}
+
+.even {
+  background-color: #3d444b;
+
+  &:hover {
+    background-color: #57616b;
+  }
+}
+
+.odd {
+  background-color: #464e56;
+
+  &:hover {
+    background-color: #58626c;
+  }
+}
 // Carousel & Main -----------------------------------------------------------------------------------------------------
 
 .first-slide {
@@ -730,7 +783,16 @@ input[type="checkbox"]:focus {
 }
 
 .show {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  margin: .2rem auto;
+}
+
+@media (max-width: 61.9em) {
+  .show {
+    display: block;
+    margin: auto;
+  }
 }
 
 .log-in-modal {
@@ -776,6 +838,16 @@ input[type="checkbox"]:focus {
   .footer-nav-link {
     color: rgba(173, 181, 189, 0.75);
   }
+
+  .search-result {
+    text-decoration: none;
+    color: $dark-mode-font-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
 }
 
 // Light Mode  ----------------------------------------------------------------------------------------------------------
@@ -786,6 +858,22 @@ input[type="checkbox"]:focus {
 
   .clipboard-btn:hover .svg-light-mode {
     color: #fff;
+  }
+
+  .even {
+    background-color: #dbdbdb;
+
+    &:hover {
+      background-color: #efefef;
+    }
+  }
+
+  .odd {
+    background-color: #e5e5e5;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
   }
 }
 

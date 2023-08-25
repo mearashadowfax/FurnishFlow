@@ -1,4 +1,6 @@
-{
+{ 
+  "short_name": "FurnishFlow",
+  "name": "FurnishFlow",
   "icons": [
     {
       "src": "/projects/FurnishFlow/android-chrome-192x192.png",
@@ -10,5 +12,9 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "display": "standalone",
+  "start_url": "/",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa"
 }

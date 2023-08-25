@@ -11,10 +11,6 @@ $(document).ready(function () {
 
   // Add click event handler for the clear filters button
   $("#clear-filters-btn").on("click", function () {
-    // Reset the filters
-    // Implement your logic to reset the filters
-    // Example: If you have checkboxes for filters, you can uncheck all checkboxes
-    // Replace 'form-check-input' with the appropriate class or selector for your filter checkboxes
     $(".form-check-input").prop("checked", false);
     $("#pricerange").val(0);
     $("#pricetext").text("0");
@@ -28,31 +24,77 @@ $(document).ready(function () {
       $("#pricetext").text(priceValue + "$");
     });
   });
-
-  // Set the initial active link
-  $("#menu .nav-link[data-content='description']").addClass("active");
-
-  // Handle link clicks
-  $("#menu .nav-link").on("click", function () {
-    let contentSection = $(this).data("content");
-
-    // Show the selected content and hide others
-    $("#content div[data-section='" + contentSection + "']")
-      .show()
-      .siblings()
-      .hide();
-
-    // Set the active link
-    $("#menu .nav-link.active").removeClass("active");
-    $(this).addClass("active");
-  });
 });
 // JavaScript code
 document.addEventListener("DOMContentLoaded", function () {
-  let searchButton = document.querySelector(".search-btn");
-  let searchForm = document.querySelector("#searchForm");
-  let iconButtons = document.querySelectorAll(".icon-btn");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const searchResultsContainer = document.getElementById(
+    "searchResultsContainer"
+  );
+  const searchButton = document.querySelector(".search-btn");
+  const searchForm = document.querySelector("#searchForm");
+  const iconButtons = document.querySelectorAll(".icon-btn");
 
+  // Hide the search bar and show the icons by default
+  searchForm.classList.add("hide");
+  for (let iconButton of iconButtons) {
+    iconButton.classList.remove("hide");
+  }
+
+  // Array to store the original item data
+  const items = [
+    // Define your item data here
+    { title: "Citrus Chic Chair", url: "TimberFusion.html" },
+    { title: "Artisan Wing Chair", url: "TimberFusion.html" },
+    { title: "Azure Wingchair", url: "TimberFusion.html" },
+    { title: "Timber Fusion Chair", url: "TimberFusion.html" },
+    { title: "Wood-Metal Fusion", url: "TimberFusion.html" },
+    { title: "Workshop Oasis", url: "TimberFusion.html" },
+    { title: "Opulent Wing Chair", url: "TimberFusion.html" },
+    { title: "Cozy Wood Seating", url: "TimberFusion.html" },
+  ];
+
+  function updateSearchResults(query) {
+    if (query === "") {
+      searchResults.innerHTML = "";
+      return;
+    }
+
+    const matchingItems = items.filter((item) =>
+      item.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    // Clear the search results container
+    searchResults.innerHTML = "";
+
+    if (matchingItems.length > 0) {
+      searchResultsContainer.style.display = "block";
+      matchingItems.forEach((item, index) => {
+        const resultItem = document.createElement("li");
+        resultItem.innerHTML = `<a href="${item.url}" class="search-result">${item.title}</a>`;
+        resultItem.classList.add(index % 2 === 0 ? "even" : "odd");
+        searchResults.appendChild(resultItem);
+      });
+    } else {
+      searchResultsContainer.style.display = "block";
+      const noMatchItem = document.createElement("li");
+      noMatchItem.innerHTML = "No matching items found";
+      noMatchItem.classList.add("even");
+      searchResults.appendChild(noMatchItem);
+    }
+  }
+
+  // Event listener for input changes in the search bar
+  searchInput.addEventListener("input", function () {
+    updateSearchResults(this.value);
+    // Adjust the position of the search results container
+    const searchInputRect = searchInput.getBoundingClientRect();
+    searchResultsContainer.style.top = `${searchInputRect.bottom}px`;
+    searchResultsContainer.style.left = `${searchInputRect.left}px`;
+  });
+
+  // Event listener for clicking the search button
   searchButton.addEventListener("click", function () {
     searchForm.classList.toggle("show");
     for (let iconButton of iconButtons) {
@@ -60,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Event listener to close the search form if a click occurs outside
   document.addEventListener("click", function (event) {
     const isClickInside =
       searchForm.contains(event.target) || searchButton.contains(event.target);
@@ -68,14 +111,10 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let iconButton of iconButtons) {
         iconButton.classList.remove("hide");
       }
+      searchInput.value = "";
+      searchResultsContainer.style.display = "none";
+      searchResults.innerHTML = "";
     }
-  });
-
-  const myModal = document.getElementById("modalSignin");
-  const myInput = document.getElementById("modal-content");
-
-  myModal.addEventListener("shown.bs.modal", () => {
-    myInput.focus();
   });
 
   const smallImages = document.querySelectorAll(".small-image");
@@ -105,4 +144,34 @@ document.addEventListener("DOMContentLoaded", function () {
   if (typeof ClipboardJS !== "undefined") {
     new ClipboardJS(".clipboard-btn");
   }
+
+  // Set the initial active link
+  const initialActiveLink = document.querySelector(
+    "#menu .nav-link[data-content='description']"
+  );
+  initialActiveLink.classList.add("active");
+
+  // Handle link clicks
+  const menuLinks = document.querySelectorAll("#menu .nav-link");
+  const contentDivs = document.querySelectorAll("#content [data-section]");
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      const contentSection = this.getAttribute("data-content");
+
+      // Show the selected content and hide others
+      contentDivs.forEach((contentDiv) => {
+        if (contentDiv.getAttribute("data-section") === contentSection) {
+          contentDiv.style.display = "block";
+        } else {
+          contentDiv.style.display = "none";
+        }
+      });
+
+      // Set the active link
+      const activeLink = document.querySelector("#menu .nav-link.active");
+      activeLink.classList.remove("active");
+      this.classList.add("active");
+    });
+  });
 });
