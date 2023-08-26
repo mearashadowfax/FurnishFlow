@@ -116,4 +116,62 @@ document.addEventListener("DOMContentLoaded", function () {
       searchResults.innerHTML = "";
     }
   });
+
+  const smallImages = document.querySelectorAll(".small-image");
+  const bigImage = document.getElementById("bigImage");
+
+  smallImages.forEach((smallImage) => {
+    smallImage.addEventListener("click", () => {
+      // Get the clicked small image's src and srcset attributes
+      const smallImageSrc = smallImage.src;
+      const smallImageSrcset = smallImage.getAttribute("srcset");
+
+      // Store the current big image's src and srcset attributes
+      const bigImageSrc = bigImage.src;
+      const bigImageSrcset = bigImage.getAttribute("srcset");
+
+      // Update the big image's src and srcset attributes
+      bigImage.src = smallImageSrc;
+      bigImage.setAttribute("srcset", smallImageSrcset);
+
+      // Update the clicked small image's src and srcset attributes
+      smallImage.src = bigImageSrc;
+      smallImage.setAttribute("srcset", bigImageSrcset);
+    });
+  });
+
+  // Initialize Clipboard.js only if the library is available
+  if (typeof ClipboardJS !== "undefined") {
+    new ClipboardJS(".clipboard-btn");
+  }
+
+  // Set the initial active link
+  const initialActiveLink = document.querySelector(
+    "#menu .nav-link[data-content='description']"
+  );
+  initialActiveLink.classList.add("active");
+
+  // Handle link clicks
+  const menuLinks = document.querySelectorAll("#menu .nav-link");
+  const contentDivs = document.querySelectorAll("#content [data-section]");
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      const contentSection = this.getAttribute("data-content");
+
+      // Show the selected content and hide others
+      contentDivs.forEach((contentDiv) => {
+        if (contentDiv.getAttribute("data-section") === contentSection) {
+          contentDiv.style.display = "block";
+        } else {
+          contentDiv.style.display = "none";
+        }
+      });
+
+      // Set the active link
+      const activeLink = document.querySelector("#menu .nav-link.active");
+      activeLink.classList.remove("active");
+      this.classList.add("active");
+    });
+  });
 });
