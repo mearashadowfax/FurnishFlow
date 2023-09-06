@@ -43,98 +43,7 @@
       rel="apple-touch-icon"
     />
 
-    <script>
-      (() => {
-        "use strict";
-
-        const getStoredTheme = () => localStorage.getItem("theme");
-        const setStoredTheme = (theme) => localStorage.setItem("theme", theme);
-
-        const getPreferredTheme = () => {
-          const storedTheme = getStoredTheme();
-          if (storedTheme) {
-            return storedTheme;
-          }
-
-          return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-        };
-
-        const setTheme = (theme) => {
-          if (
-            theme === "auto" &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-          ) {
-            document.documentElement.setAttribute("data-bs-theme", "dark");
-          } else {
-            document.documentElement.setAttribute("data-bs-theme", theme);
-          }
-        };
-
-        setTheme(getPreferredTheme());
-
-        const showActiveTheme = (theme, focus = false) => {
-          const themeSwitcher = document.querySelector("#bd-theme");
-
-          if (!themeSwitcher) {
-            return;
-          }
-
-          const themeSwitcherText = document.querySelector("#bd-theme-text");
-          const activeThemeIcon = document.querySelector(
-            ".theme-icon-active use"
-          );
-          const btnToActive = document.querySelector(
-            `[data-bs-theme-value="${theme}"]`
-          );
-          const svgOfActiveBtn = btnToActive
-            .querySelector("svg use")
-            .getAttribute("href");
-
-          document
-            .querySelectorAll("[data-bs-theme-value]")
-            .forEach((element) => {
-              element.classList.remove("active");
-              element.setAttribute("aria-pressed", "false");
-            });
-
-          btnToActive.classList.add("active");
-          btnToActive.setAttribute("aria-pressed", "true");
-          activeThemeIcon.setAttribute("href", svgOfActiveBtn);
-          const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
-          themeSwitcher.setAttribute("aria-label", themeSwitcherLabel);
-
-          if (focus) {
-            themeSwitcher.focus();
-          }
-        };
-
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", () => {
-            const storedTheme = getStoredTheme();
-            if (storedTheme !== "light" && storedTheme !== "dark") {
-              setTheme(getPreferredTheme());
-            }
-          });
-
-        window.addEventListener("DOMContentLoaded", () => {
-          showActiveTheme(getPreferredTheme());
-
-          document
-            .querySelectorAll("[data-bs-theme-value]")
-            .forEach((toggle) => {
-              toggle.addEventListener("click", () => {
-                const theme = toggle.getAttribute("data-bs-theme-value");
-                setStoredTheme(theme);
-                setTheme(theme);
-                showActiveTheme(theme, true);
-              });
-            });
-        });
-      })();
-    </script>
+    <script src="/projects/FurnishFlow/theme.min.js"></script>
 
     <link
       as="font"
@@ -184,522 +93,174 @@
     </noscript>
   </head>
   <body>
-    <!-- Start of Navigation -->
-    <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
-      <div class="container px-4">
-        <a class="navbar-brand" href="#"
-          ><strong>FurnishFlow</strong></a
-        >
-        <button
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-bs-target="#navbarSupportedContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <span class="navbar-toggler-icon me-2"></span>
-          <span class="menu-text">Menu</span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-3">
-              <a aria-current="page" class="nav-link active" href="./home"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">New Arrivals</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="furniture">Furniture</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-          <div class="ml-auto">
-            <button
-              class="btn icon-btn nav-svg"
-              data-bs-target="#modalSignin"
-              data-bs-toggle="modal"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-person"
-                fill="currentColor"
-                height="25"
-                style=""
-                viewBox="0 0 16 16"
-                width="25"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Account</title>
-                <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
-                />
-              </svg>
-            </button>
-            <button
-              aria-controls="searchForm"
-              aria-expanded="false"
-              class="btn mx-3 search-btn icon-btn nav-svg"
-              data-bs-target="#searchForm"
-              data-bs-toggle="collapse"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-search"
-                fill="currentColor"
-                height="20"
-                viewBox="0 0 16 16"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Search</title>
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                />
-              </svg>
-            </button>
-            <button
-              class="btn icon-btn nav-svg"
-              data-bs-target="#modalCart"
-              data-bs-toggle="modal"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-bag"
-                fill="currentColor"
-                height="20"
-                viewBox="0 0 16 16"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Cart</title>
-                <path
-                  d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="collapse" id="searchForm">
-            <form class="d-flex smaller-form">
-              <div class="input-group">
-                <input
-                  aria-label="Search"
-                  autocomplete="off"
-                  class="form-control"
-                  id="searchInput"
-                  placeholder="Search..."
-                  type="search"
-                />
-                <button class="btn btn-primary btn-border" type="submit">
-                  Search
-                </button>
-              </div>
-            </form>
-          </div>
-          <div id="searchResultsContainer">
-            <ul id="searchResults"></ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- End of Navigation -->
-
-    <!--    Start of Main Poster-->
-    <div class="container rounded-4 overflow-hidden mt-4">
-      <div class="row">
-        <div class="col-lg-7 px-0">
-          <img
-            alt="A living room with green walls and black furniture"
-            class="img-fluid"
-            loading="eager"
-            sizes="(max-width: 1697px) 100vw, 1697px"
-            src="./img/Main_scale_1697.avif"
-            srcset="
-              ./img/Main_scale_310.avif   310w,
-              ./img/Main_scale_574.avif   574w,
-              ./img/Main_scale_771.avif   771w,
-              ./img/Main_scale_943.avif   943w,
-              ./img/Main_scale_1081.avif 1081w,
-              ./img/Main_scale_1223.avif 1223w,
-              ./img/Main_scale_1370.avif 1370w,
-              ./img/Main_scale_1516.avif 1516w,
-              ./img/Main_scale_1687.avif 1687w,
-              ./img/Main_scale_1695.avif 1695w,
-              ./img/Main_scale_1697.avif 1697w
-            "
-            width="1000"
-          />
-        </div>
-        <div class="col-lg-5 main-slide d-flex align-items-center">
-          <div class="row">
-            <div class="col">
-              <div class="display text-left mx-5">
-                <h2 class="font-color new-collection">
-                  <strong>New Collection</strong>
-                </h2>
-                <h1 class="card-header">Sofas & Armchairs</h1>
-                <p class="lead font-color my-3">
-                  Explore our exquisite sofas and armchairs, meticulously
-                  designed to transform your space
-                </p>
-
-                <button
-                  class="btn text-uppercase d-inline-flex align-items-center btn-orange btn-padding"
-                  type="button"
+    <div id="my-scrollbar">
+      <!-- Start of Navigation -->
+      <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+        <div class="container px-4">
+          <a class="navbar-brand" href="#"><strong>FurnishFlow</strong></a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon me-2"></span>
+            <span class="menu-text">Menu</span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item mx-3">
+                <a aria-current="page" class="nav-link active" href="./home"
+                  >Home</a
                 >
-                  <span class="me-4">Shop now</span>
-                  <svg
-                    class="bi bi-arrow-right-short align-self-center"
-                    fill="currentColor"
-                    height="25"
-                    viewBox="0 0 16 16"
-                    width="25"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#">New Arrivals</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="furniture">Furniture</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+            <div class="ml-auto">
+              <button
+                class="btn icon-btn nav-svg"
+                data-bs-target="#modalSignin"
+                data-bs-toggle="modal"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-person"
+                  fill="currentColor"
+                  height="25"
+                  style=""
+                  viewBox="0 0 16 16"
+                  width="25"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Account</title>
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                  />
+                </svg>
+              </button>
+              <button
+                aria-controls="searchForm"
+                aria-expanded="false"
+                class="btn mx-3 search-btn icon-btn nav-svg"
+                data-bs-target="#searchForm"
+                data-bs-toggle="collapse"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-search"
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Search</title>
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
+              <button
+                class="btn icon-btn nav-svg"
+                data-bs-target="#modalCart"
+                data-bs-toggle="modal"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-bag"
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Cart</title>
+                  <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                  />
+                </svg>
+              </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--    End of Main Poster-->
-
-    <!--    Start of Main Section-->
-    <div class="container filter">
-      <div class="row mb-3">
-        <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-3 themed-grid-col">
-          <div class="container">
-            <div class="container mb-5">
-              <p><strong>Summer Sale</strong></p>
-              <h2 class="subheading-index">Up to 25% off</h2>
-              <hr class="underline-line layout my-3 horizontal-index" />
-              <p>on stunning furniture pieces</p>
-            </div>
-            <div class="container mb-5">
-              <div class="flex-shrink-0 fw-normal">
-                <div class="mb-2">
-                  <a
-                    class="link-body-emphasis text-decoration-none"
-                    href="#"
-                    style="color: inherit"
-                  >
-                    New Arrivals</a
-                  >
-                </div>
-                <div class="mb-2">
-                  <a
-                    class="link-body-emphasis text-decoration-none"
-                    href="#"
-                    style="color: inherit"
-                  >
-                    Best Sellers</a
-                  >
-                </div>
-                <div class="mb-2">
-                  <button
-                    aria-expanded="true"
-                    class="btn btn-toggle p-0 white"
-                    data-bs-target="#dashboard-collapse"
-                    data-bs-toggle="collapse"
-                  >
-                    <b>Decor Inspiration</b>
+            <div class="collapse" id="searchForm">
+              <form class="d-flex smaller-form">
+                <div class="input-group">
+                  <input
+                    aria-label="Search"
+                    autocomplete="off"
+                    class="form-control"
+                    id="searchInput"
+                    placeholder="Search..."
+                    type="search"
+                  />
+                  <button class="btn btn-primary btn-border" type="submit">
+                    Search
                   </button>
-                  <div class="collapse show px-4" id="dashboard-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                      <li class="py-1">
-                        <a
-                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                          href="#"
-                          >Living Room Elegance</a
-                        >
-                      </li>
-                      <li class="py-1">
-                        <a
-                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                          href="#"
-                          >Bedroom Bliss</a
-                        >
-                      </li>
-                      <li class="py-1">
-                        <a
-                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                          href="#"
-                          >Dining Delight</a
-                        >
-                      </li>
-                      <li class="py-1">
-                        <a
-                          class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                          href="#"
-                          >Home Office</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
                 </div>
-                <div class="mb-2">
-                  <a
-                    class="link-body-emphasis text-decoration-none"
-                    href="#"
-                    style="color: inherit"
-                  >
-                    Special Offers</a
-                  >
-                </div>
-              </div>
+              </form>
+            </div>
+            <div id="searchResultsContainer">
+              <ul id="searchResults"></ul>
             </div>
           </div>
         </div>
+      </nav>
+      <!-- End of Navigation -->
 
-        <div class="col-sm-12 col-md-7 col-lg-9 themed-grid-col">
-          <div class="d-flex justify-content-center">
-            <div class="grid-container">
-              <div class="A">
-                <a href="furniture">
-                  <img
-                    alt="Three colorful chairs in front of a gray wall"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1920px) 100vw, 1920px"
-                    src="./img/Chairs_scale_1920.avif"
-                    srcset="
-                      ./img/Chairs_scale_310.avif   310w,
-                      ./img/Chairs_scale_1727.avif 1727w,
-                      ./img/Chairs_scale_1920.avif 1920w
-                    "
-                  />
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Chairs & Stools
-                  </h2></a
-                >
-              </div>
-              <div class="B">
-                <a href="furniture"
-                  ><img
-                    alt="Four copper pendant lights hanging from the ceiling"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1920px) 100vw, 1920px"
-                    src="./img/Lighting_scale_1920.avif"
-                    srcset="
-                      ./img/Lighting_scale_310.avif   310w,
-                      ./img/Lighting_scale_1629.avif 1629w,
-                      ./img/Lighting_scale_1920.avif 1920w
-                    "
-                    width="1000"
-                  />
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Lighting
-                  </h2></a
-                >
-              </div>
-              <div class="C">
-                <a href="furniture">
-                  <img
-                    alt="A modern sideboard in a room with a painting on it"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1913px) 100vw, 1913px"
-                    src="./img/Accessories_scale_1913.avif"
-                    srcset="
-                      ./img/Accessories_scale_310.avif   310w,
-                      ./img/Accessories_scale_1006.avif 1006w,
-                      ./img/Accessories_scale_1247.avif 1247w,
-                      ./img/Accessories_scale_1364.avif 1364w,
-                      ./img/Accessories_scale_1475.avif 1475w,
-                      ./img/Accessories_scale_1622.avif 1622w,
-                      ./img/Accessories_scale_1741.avif 1741w,
-                      ./img/Accessories_scale_1826.avif 1826w,
-                      ./img/Accessories_scale_1911.avif 1911w,
-                      ./img/Accessories_scale_1912.avif 1912w,
-                      ./img/Accessories_scale_1913.avif 1913w
-                    "
-                    width="1000"
-                  />
-
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Accessories
-                  </h2></a
-                >
-              </div>
-              <div class="D">
-                <a href="furniture">
-                  <img
-                    alt="A bed in a room with a window"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1920px) 100vw, 1920px"
-                    src="./img/Bed_scale_1920.avif"
-                    srcset="
-                      ./img/Bed_scale_310.avif   310w,
-                      ./img/Bed_scale_835.avif   835w,
-                      ./img/Bed_scale_1189.avif 1189w,
-                      ./img/Bed_scale_1507.avif 1507w,
-                      ./img/Bed_scale_1911.avif 1911w,
-                      ./img/Bed_scale_1902.avif 1902w,
-                      ./img/Bed_scale_1920.avif 1920w
-                    "
-                    width="1000"
-                  />
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Bedframes & mattresses
-                  </h2>
-                </a>
-              </div>
-              <div class="E">
-                <a href="furniture">
-                  <img
-                    alt="A black desk with a black chair"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1920px) 100vw, 1920px"
-                    src="./img/Desk_scale_1920.avif"
-                    srcset="
-                      ./img/Desk_scale_310.avif   310w,
-                      ./img/Desk_scale_1920.avif 1920w
-                    "
-                    style="margin-top: 0.15em"
-                    width="1000"
-                  />
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Desks & Tables
-                  </h2>
-                </a>
-              </div>
-              <div class="F">
-                <a href="furniture"
-                  ><img
-                    alt="A room with a sofa, chairs, and a table"
-                    class="img-fluid rounded-4"
-                    loading="eager"
-                    sizes="(max-width: 1920px) 100vw, 1920px"
-                    src="./img/Sofas_scale_1920.avif"
-                    srcset="
-                      ./img/Sofas_scale_310.avif   310w,
-                      ./img/Sofas_scale_1137.avif 1137w,
-                      ./img/Sofas_scale_1677.avif 1677w,
-                      ./img/Sofas_scale_1920.avif 1920w
-                    "
-                    style="margin-top: 0.75em"
-                    width="1000"
-                  />
-                  <h2 class="lh-1 fw-bold menu-title grid-title">
-                    Sofas & Armchairs
-                  </h2>
-                </a>
-              </div>
-            </div>
+      <!--    Start of Main Poster-->
+      <div class="container rounded-4 overflow-hidden mt-4">
+        <div class="row">
+          <div class="col-lg-7 px-0">
+            <img
+              alt="A living room with green walls and black furniture"
+              class="img-fluid"
+              loading="eager"
+              sizes="(max-width: 1697px) 100vw, 1697px"
+              src="./img/Main_scale_1697.avif"
+              srcset="
+                ./img/Main_scale_310.avif   310w,
+                ./img/Main_scale_574.avif   574w,
+                ./img/Main_scale_771.avif   771w,
+                ./img/Main_scale_943.avif   943w,
+                ./img/Main_scale_1081.avif 1081w,
+                ./img/Main_scale_1223.avif 1223w,
+                ./img/Main_scale_1370.avif 1370w,
+                ./img/Main_scale_1516.avif 1516w,
+                ./img/Main_scale_1687.avif 1687w,
+                ./img/Main_scale_1695.avif 1695w,
+                ./img/Main_scale_1697.avif 1697w
+              "
+              width="1000"
+            />
           </div>
-        </div>
-      </div>
-    </div>
-    <!--    End of Main Section-->
-
-    <!--    Start of Join Form-->
-    <div class="container rounded-4 overflow-hidden sections">
-      <div class="row">
-        <div class="col-lg-6 join-form d-flex align-items-center">
-          <div class="display text-left">
-            <div class="container font-grey">
-              <p><strong>Join Us for </strong></p>
-              <h2 class="subheading-index">Exclusive Offers and Updates</h2>
-              <hr class="underline-line layout my-3 horizontal-join" />
-              <p class="lead">
-                Stay in the loop with our latest furniture trends, exclusive
-                offers, and insider updates by joining our community
-              </p>
-            </div>
-            <form>
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-floating my-2">
-                    <input
-                      class="form-control"
-                      id="emailC"
-                      placeholder="Enter your email"
-                      required
-                      type="email"
-                    />
-                    <label for="emailC">Email</label>
-                  </div>
-                  <button
-                    class="btn btn-primary btn-join-form text-uppercase"
-                    type="submit"
-                  >
-                    Subscribe
-                  </button>
-                  <div class="form-check text-start mt-3">
-                    <input
-                      class="form-check-input custom-checkbox"
-                      id="flexCheck"
-                      required
-                      type="checkbox"
-                      value="remember-me"
-                    />
-                    <label class="form-check-label font-grey" for="flexCheck">
-                      <small
-                        >By joining our newsletter, you agree to our Privacy
-                        Policy and Terms of Service</small
-                      >
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-lg-6 px-0 hide-img">
-          <img
-            alt="A desk with a chair and a lamp"
-            class="img-fluid h-100"
-            loading="lazy"
-            sizes="(max-width: 1500px) 100vw, 1500px"
-            src="./img/DeskChair_scale_1500.avif"
-            srcset="
-              ./img/DeskChair_scale_310.avif   310w,
-              ./img/DeskChair_scale_841.avif   841w,
-              ./img/DeskChair_scale_1327.avif 1327w,
-              ./img/DeskChair_scale_1500.avif 1500w
-            "
-            width="1000"
-          />
-        </div>
-      </div>
-    </div>
-    <!--    End of Join Form-->
-
-    <!--    Start of Blog-->
-    <div class="container rounded-4 overflow-hidden sections">
-      <div class="row align-items-center white">
-        <div class="col-lg-5">
-          <div class="row">
-            <div class="col">
-              <div class="display text-left p-0">
-                <div class="container">
-                  <p><strong>Trend Watch:</strong></p>
-                  <h2 class="subheading-index">Explore</h2>
-                  <hr class="underline-line layout my-3 horizontal-index" />
-                  <p class="lead">
-                    Dive into the captivating world of furniture design and home
-                    decor, where inspiration knows no bounds
+          <div class="col-lg-5 main-slide d-flex align-items-center">
+            <div class="row">
+              <div class="col">
+                <div class="display text-left mx-5">
+                  <h2 class="font-color new-collection">
+                    <strong>New Collection</strong>
+                  </h2>
+                  <h1 class="card-header">Sofas & Armchairs</h1>
+                  <p class="lead font-color my-3">
+                    Explore our exquisite sofas and armchairs, meticulously
+                    designed to transform your space
                   </p>
 
                   <button
-                    class="btn text-uppercase d-inline-flex align-items-center btn-primary btn-border p-3"
+                    class="btn text-uppercase d-inline-flex align-items-center btn-orange btn-padding"
                     type="button"
                   >
-                    <span class="me-4">Explore all articles</span>
+                    <span class="me-4">Shop now</span>
                     <svg
                       class="bi bi-arrow-right-short align-self-center"
                       fill="currentColor"
@@ -719,322 +280,666 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 px-0 d-flex justify-content-center">
-          <img
-            alt="An office with a black and white rug and a gray armchair."
-            class="img-fluid rounded-4"
-            loading="lazy"
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            src="./img/Grey_scale_1920.avif"
-            srcset="
-              ./img/Grey_scale_310.avif   310w,
-              ./img/Grey_scale_516.avif   516w,
-              ./img/Grey_scale_713.avif   713w,
-              ./img/Grey_scale_805.avif   805w,
-              ./img/Grey_scale_902.avif   902w,
-              ./img/Grey_scale_998.avif   998w,
-              ./img/Grey_scale_1139.avif 1139w,
-              ./img/Grey_scale_1235.avif 1235w,
-              ./img/Grey_scale_1330.avif 1330w,
-              ./img/Grey_scale_1382.avif 1382w,
-              ./img/Grey_scale_1510.avif 1510w,
-              ./img/Grey_scale_1682.avif 1682w,
-              ./img/Grey_scale_1775.avif 1775w,
-              ./img/Grey_scale_1862.avif 1862w,
-              ./img/Grey_scale_1919.avif 1919w,
-              ./img/Grey_scale_1920.avif 1920w
-            "
-            style="max-height: 30em; width: auto"
-          />
-        </div>
-        <div class="col-lg-4">
-          <div class="display text-left">
-            <div class="container p-4">
-              <h3>Grey Armchair Harmony</h3>
-              <p class="lead">
-                Elevate your space with our elegant grey armchair, harmoniously
-                enhancing stylish monochromatic rooms with complementing serene
-                tones and timeless elegance
-              </p>
+      </div>
+      <!--    End of Main Poster-->
+
+      <!--    Start of Main Section-->
+      <div class="container filter">
+        <div class="row mb-3">
+          <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-3 themed-grid-col">
+            <div class="container">
+              <div class="container mb-5">
+                <p><strong>Summer Sale</strong></p>
+                <h2 class="subheading-index">Up to 25% off</h2>
+                <hr class="underline-line layout my-3 horizontal-index" />
+                <p>on stunning furniture pieces</p>
+              </div>
+              <div class="container mb-5">
+                <div class="flex-shrink-0 fw-normal">
+                  <div class="mb-2">
+                    <a
+                      class="link-body-emphasis text-decoration-none"
+                      href="#"
+                      style="color: inherit"
+                    >
+                      New Arrivals</a
+                    >
+                  </div>
+                  <div class="mb-2">
+                    <a
+                      class="link-body-emphasis text-decoration-none"
+                      href="#"
+                      style="color: inherit"
+                    >
+                      Best Sellers</a
+                    >
+                  </div>
+                  <div class="mb-2">
+                    <button
+                      aria-expanded="true"
+                      class="btn btn-toggle p-0 white"
+                      data-bs-target="#dashboard-collapse"
+                      data-bs-toggle="collapse"
+                    >
+                      <b>Decor Inspiration</b>
+                    </button>
+                    <div class="collapse show px-4" id="dashboard-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                        <li class="py-1">
+                          <a
+                            class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            href="#"
+                            >Living Room Elegance</a
+                          >
+                        </li>
+                        <li class="py-1">
+                          <a
+                            class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            href="#"
+                            >Bedroom Bliss</a
+                          >
+                        </li>
+                        <li class="py-1">
+                          <a
+                            class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            href="#"
+                            >Dining Delight</a
+                          >
+                        </li>
+                        <li class="py-1">
+                          <a
+                            class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            href="#"
+                            >Home Office</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                    <a
+                      class="link-body-emphasis text-decoration-none"
+                      href="#"
+                      style="color: inherit"
+                    >
+                      Special Offers</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-7 col-lg-9 themed-grid-col">
+            <div class="d-flex justify-content-center">
+              <div class="grid-container">
+                <div class="A">
+                  <a href="furniture">
+                    <img
+                      alt="Three colorful chairs in front of a gray wall"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1920px) 100vw, 1920px"
+                      src="./img/Chairs_scale_1920.avif"
+                      srcset="
+                        ./img/Chairs_scale_310.avif   310w,
+                        ./img/Chairs_scale_1727.avif 1727w,
+                        ./img/Chairs_scale_1920.avif 1920w
+                      "
+                    />
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Chairs & Stools
+                    </h2></a
+                  >
+                </div>
+                <div class="B">
+                  <a href="furniture"
+                    ><img
+                      alt="Four copper pendant lights hanging from the ceiling"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1920px) 100vw, 1920px"
+                      src="./img/Lighting_scale_1920.avif"
+                      srcset="
+                        ./img/Lighting_scale_310.avif   310w,
+                        ./img/Lighting_scale_1629.avif 1629w,
+                        ./img/Lighting_scale_1920.avif 1920w
+                      "
+                      width="1000"
+                    />
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Lighting
+                    </h2></a
+                  >
+                </div>
+                <div class="C">
+                  <a href="furniture">
+                    <img
+                      alt="A modern sideboard in a room with a painting on it"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1913px) 100vw, 1913px"
+                      src="./img/Accessories_scale_1913.avif"
+                      srcset="
+                        ./img/Accessories_scale_310.avif   310w,
+                        ./img/Accessories_scale_1006.avif 1006w,
+                        ./img/Accessories_scale_1247.avif 1247w,
+                        ./img/Accessories_scale_1364.avif 1364w,
+                        ./img/Accessories_scale_1475.avif 1475w,
+                        ./img/Accessories_scale_1622.avif 1622w,
+                        ./img/Accessories_scale_1741.avif 1741w,
+                        ./img/Accessories_scale_1826.avif 1826w,
+                        ./img/Accessories_scale_1911.avif 1911w,
+                        ./img/Accessories_scale_1912.avif 1912w,
+                        ./img/Accessories_scale_1913.avif 1913w
+                      "
+                      width="1000"
+                    />
+
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Accessories
+                    </h2></a
+                  >
+                </div>
+                <div class="D">
+                  <a href="furniture">
+                    <img
+                      alt="A bed in a room with a window"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1920px) 100vw, 1920px"
+                      src="./img/Bed_scale_1920.avif"
+                      srcset="
+                        ./img/Bed_scale_310.avif   310w,
+                        ./img/Bed_scale_835.avif   835w,
+                        ./img/Bed_scale_1189.avif 1189w,
+                        ./img/Bed_scale_1507.avif 1507w,
+                        ./img/Bed_scale_1911.avif 1911w,
+                        ./img/Bed_scale_1902.avif 1902w,
+                        ./img/Bed_scale_1920.avif 1920w
+                      "
+                      width="1000"
+                    />
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Bedframes & mattresses
+                    </h2>
+                  </a>
+                </div>
+                <div class="E">
+                  <a href="furniture">
+                    <img
+                      alt="A black desk with a black chair"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1920px) 100vw, 1920px"
+                      src="./img/Desk_scale_1920.avif"
+                      srcset="
+                        ./img/Desk_scale_310.avif   310w,
+                        ./img/Desk_scale_1920.avif 1920w
+                      "
+                      style="margin-top: 0.15em"
+                      width="1000"
+                    />
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Desks & Tables
+                    </h2>
+                  </a>
+                </div>
+                <div class="F">
+                  <a href="furniture"
+                    ><img
+                      alt="A room with a sofa, chairs, and a table"
+                      class="img-fluid rounded-4"
+                      loading="eager"
+                      sizes="(max-width: 1920px) 100vw, 1920px"
+                      src="./img/Sofas_scale_1920.avif"
+                      srcset="
+                        ./img/Sofas_scale_310.avif   310w,
+                        ./img/Sofas_scale_1137.avif 1137w,
+                        ./img/Sofas_scale_1677.avif 1677w,
+                        ./img/Sofas_scale_1920.avif 1920w
+                      "
+                      style="margin-top: 0.75em"
+                      width="1000"
+                    />
+                    <h2 class="lh-1 fw-bold menu-title grid-title">
+                      Sofas & Armchairs
+                    </h2>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--    End of Blog-->
+      <!--    End of Main Section-->
 
-    <!--    Start of Bottom Carousel-->
-    <div class="container sections">
-      <div
-        class="carousel slide"
-        data-bs-ride="carousel"
-        id="carouselExampleCaptions"
-      >
-        <div class="carousel-indicators">
-          <button
-            aria-current="true"
-            aria-label="Slide 1"
-            class="active"
-            data-bs-slide-to="0"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-          <button
-            aria-label="Slide 2"
-            data-bs-slide-to="1"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-          <button
-            aria-label="Slide 3"
-            data-bs-slide-to="2"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-        </div>
-        <div class="carousel-inner rounded-4">
-          <div class="carousel-item active carousel2img">
-            <img
-              alt="A bedroom with brown walls and a white bed"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/DreamyBedroomRetreat3.avif"
-            />
-            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
-              <p>
-                Indulge in blissful comfort with our luxurious bed collection
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item carousel2img">
-            <img
-              alt="A dining room with a table and chairs"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/ElevateYourSpace3.avif"
-            />
-            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
-              <p>
-                Unleash your creativity and design a captivating room ambiance
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item carousel2img">
-            <img
-              alt="A living room with a yellow rug and black furniture"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/UnwindinStyle3.avif"
-            />
-            <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
-              <p>
-                Experience ultimate comfort and sophistication with our
-                exquisite couch collection
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--    End of Bottom Carousel-->
-
-    <!-- Start of Footer -->
-    <div class="container">
-      <footer>
+      <!--    Start of Join Form-->
+      <div class="container rounded-4 overflow-hidden sections">
         <div class="row">
-          <div class="col-6 col-md-4 mb-3">
-            <h5 class="py-2 underline-title text-nowrap">Get in Touch</h5>
-            <hr class="underline-line pb-3" />
-            <p>
-              <small
-                >Need assistance or have a question? Our friendly customer
-                support team is
-                <a class="footer-link" href="contact"
-                  >here to help</a
-                ></small
-              >
-            </p>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2">
-                <a
-                  class="nav-link p-0 text-body-secondary text-nowrap"
-                  href="tel:+15551234567"
-                >
-                  <svg
-                    class="me-3 bi bi-telephone-fill"
-                    fill="currentColor"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    width="16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                  +1 (555) 123-4567</a
-                >
-              </li>
-              <li class="nav-item mb-2">
-                <a
-                  class="nav-link p-0 text-body-secondary text-nowrap"
-                  href="mailto:info@furnishflow.com"
-                >
-                  <svg
-                    class="me-3 bi bi-envelope-at-fill"
-                    fill="currentColor"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    width="16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"
-                    />
-                    <path
-                      d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"
-                    />
-                  </svg>
-                  info@furnishflow.uk</a
-                >
-              </li>
-            </ul>
-            <p class="mt-1">
-              <small> Monday to Friday, 9:00 AM - 5:00 PM (GMT) </small>
-            </p>
+          <div class="col-lg-6 join-form d-flex align-items-center">
+            <div class="display text-left">
+              <div class="container font-grey">
+                <p><strong>Join Us for </strong></p>
+                <h2 class="subheading-index">Exclusive Offers and Updates</h2>
+                <hr class="underline-line layout my-3 horizontal-join" />
+                <p class="lead">
+                  Stay in the loop with our latest furniture trends, exclusive
+                  offers, and insider updates by joining our community
+                </p>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-floating my-2">
+                      <input
+                        class="form-control"
+                        id="emailC"
+                        placeholder="Enter your email"
+                        required
+                        type="email"
+                      />
+                      <label for="emailC">Email</label>
+                    </div>
+                    <button
+                      class="btn btn-primary btn-join-form text-uppercase"
+                      type="submit"
+                    >
+                      Subscribe
+                    </button>
+                    <div class="form-check text-start mt-3">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        id="flexCheck"
+                        required
+                        type="checkbox"
+                        value="remember-me"
+                      />
+                      <label class="form-check-label font-grey" for="flexCheck">
+                        <small
+                          >By joining our newsletter, you agree to our Privacy
+                          Policy and Terms of Service</small
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-
-          <div class="col-6 col-md-2 mb-3">
-            <h5 class="py-2 underline-title text-nowrap">Useful Links</h5>
-            <hr class="underline-line pb-3" />
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#">FAQs</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#"
-                  >Shipping & Returns</a
-                >
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#">Blog</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#"
-                  >Privacy Policy</a
-                >
-              </li>
-            </ul>
+          <div class="col-lg-6 px-0 hide-img">
+            <img
+              alt="A desk with a chair and a lamp"
+              class="img-fluid h-100"
+              loading="eager"
+              sizes="(max-width: 1500px) 100vw, 1500px"
+              src="./img/DeskChair_scale_1500.avif"
+              srcset="
+                ./img/DeskChair_scale_310.avif   310w,
+                ./img/DeskChair_scale_841.avif   841w,
+                ./img/DeskChair_scale_1327.avif 1327w,
+                ./img/DeskChair_scale_1500.avif 1500w
+              "
+              width="1000"
+            />
           </div>
+        </div>
+      </div>
+      <!--    End of Join Form-->
 
-          <div class="col-md-5 offset-md-1 mb-3">
-            <form>
-              <h5 class="py-2 underline-title">Be the first to know!</h5>
+      <!--    Start of Blog-->
+      <div class="container rounded-4 overflow-hidden sections">
+        <div class="row align-items-center white">
+          <div class="col-lg-5">
+            <div class="row">
+              <div class="col">
+                <div class="display text-left p-0">
+                  <div class="container">
+                    <p><strong>Trend Watch:</strong></p>
+                    <h2 class="subheading-index">Explore</h2>
+                    <hr class="underline-line layout my-3 horizontal-index" />
+                    <p class="lead">
+                      Dive into the captivating world of furniture design and
+                      home decor, where inspiration knows no bounds
+                    </p>
+
+                    <button
+                      class="btn text-uppercase d-inline-flex align-items-center btn-primary btn-border p-3"
+                      type="button"
+                    >
+                      <span class="me-4">Explore all articles</span>
+                      <svg
+                        class="bi bi-arrow-right-short align-self-center"
+                        fill="currentColor"
+                        height="25"
+                        viewBox="0 0 16 16"
+                        width="25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 px-0 d-flex justify-content-center">
+            <img
+              alt="An office with a black and white rug and a gray armchair."
+              class="img-fluid rounded-4"
+              loading="eager"
+              sizes="(max-width: 1920px) 100vw, 1920px"
+              src="./img/Grey_scale_1920.avif"
+              srcset="
+                ./img/Grey_scale_310.avif   310w,
+                ./img/Grey_scale_516.avif   516w,
+                ./img/Grey_scale_713.avif   713w,
+                ./img/Grey_scale_805.avif   805w,
+                ./img/Grey_scale_902.avif   902w,
+                ./img/Grey_scale_998.avif   998w,
+                ./img/Grey_scale_1139.avif 1139w,
+                ./img/Grey_scale_1235.avif 1235w,
+                ./img/Grey_scale_1330.avif 1330w,
+                ./img/Grey_scale_1382.avif 1382w,
+                ./img/Grey_scale_1510.avif 1510w,
+                ./img/Grey_scale_1682.avif 1682w,
+                ./img/Grey_scale_1775.avif 1775w,
+                ./img/Grey_scale_1862.avif 1862w,
+                ./img/Grey_scale_1919.avif 1919w,
+                ./img/Grey_scale_1920.avif 1920w
+              "
+              style="max-height: 30em; width: auto"
+            />
+          </div>
+          <div class="col-lg-4">
+            <div class="display text-left">
+              <div class="container p-4">
+                <h3>Grey Armchair Harmony</h3>
+                <p class="lead">
+                  Elevate your space with our elegant grey armchair,
+                  harmoniously enhancing stylish monochromatic rooms with
+                  complementing serene tones and timeless elegance
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--    End of Blog-->
+
+      <!--    Start of Bottom Carousel-->
+      <div class="container sections">
+        <div
+          class="carousel slide"
+          data-bs-ride="carousel"
+          id="carouselExampleCaptions"
+        >
+          <div class="carousel-indicators">
+            <button
+              aria-current="true"
+              aria-label="Slide 1"
+              class="active"
+              data-bs-slide-to="0"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+            <button
+              aria-label="Slide 2"
+              data-bs-slide-to="1"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+            <button
+              aria-label="Slide 3"
+              data-bs-slide-to="2"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+          </div>
+          <div class="carousel-inner rounded-4">
+            <div class="carousel-item active carousel2img">
+              <img
+                alt="A bedroom with brown walls and a white bed"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/DreamyBedroomRetreat3.avif"
+              />
+              <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+                <p>
+                  Indulge in blissful comfort with our luxurious bed collection
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item carousel2img">
+              <img
+                alt="A dining room with a table and chairs"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/ElevateYourSpace3.avif"
+              />
+              <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+                <p>
+                  Unleash your creativity and design a captivating room ambiance
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item carousel2img">
+              <img
+                alt="A living room with a yellow rug and black furniture"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/UnwindinStyle3.avif"
+              />
+              <div class="carousel-caption d-none d-md-block rounded-4 mb-4">
+                <p>
+                  Experience ultimate comfort and sophistication with our
+                  exquisite couch collection
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--    End of Bottom Carousel-->
+
+      <!-- Start of Footer -->
+      <div class="container">
+        <footer>
+          <div class="row">
+            <div class="col-6 col-md-4 mb-3">
+              <h5 class="py-2 underline-title text-nowrap">Get in Touch</h5>
               <hr class="underline-line pb-3" />
               <p>
                 <small
-                  >Subscribe for exclusive offers, trend updates, and design
-                  inspiration to transform your space</small
+                  >Need assistance or have a question? Our friendly customer
+                  support team is
+                  <a class="footer-link" href="contact">here to help</a></small
                 >
               </p>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label class="visually-hidden" for="newsletter1"
-                  >Email address</label
-                >
-                <div class="input-group">
-                  <input
-                    class="form-control"
-                    id="newsletter1"
-                    placeholder="Email address"
-                    type="text"
-                  />
-                  <button class="btn btn-primary btn-border" type="button">
-                    Subscribe
-                  </button>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link p-0 text-body-secondary text-nowrap"
+                    href="tel:+15551234567"
+                  >
+                    <svg
+                      class="me-3 bi bi-telephone-fill"
+                      fill="currentColor"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    +1 (555) 123-4567</a
+                  >
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link p-0 text-body-secondary text-nowrap"
+                    href="mailto:info@furnishflow.com"
+                  >
+                    <svg
+                      class="me-3 bi bi-envelope-at-fill"
+                      fill="currentColor"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"
+                      />
+                      <path
+                        d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"
+                      />
+                    </svg>
+                    info@furnishflow.uk</a
+                  >
+                </li>
+              </ul>
+              <p class="mt-1">
+                <small> Monday to Friday, 9:00 AM - 5:00 PM (GMT) </small>
+              </p>
+            </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <h5 class="py-2 underline-title text-nowrap">Useful Links</h5>
+              <hr class="underline-line pb-3" />
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#">FAQs</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#"
+                    >Shipping & Returns</a
+                  >
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+              <form>
+                <h5 class="py-2 underline-title">Be the first to know!</h5>
+                <hr class="underline-line pb-3" />
+                <p>
+                  <small
+                    >Subscribe for exclusive offers, trend updates, and design
+                    inspiration to transform your space</small
+                  >
+                </p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label class="visually-hidden" for="newsletter1"
+                    >Email address</label
+                  >
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      id="newsletter1"
+                      placeholder="Email address"
+                      type="text"
+                    />
+                    <button class="btn btn-primary btn-border" type="button">
+                      Subscribe
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <div
-          class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top white"
-        >
-          <p>
-            © 2023 <strong>FurnishFlow</strong> |
-            <small
-              >Designed by
-              <a
-                class="text-decoration-none sbstv"
-                href="https://sobstvennoai.dev"
-                target="_blank"
-                >Emil Gulamov</a
-              >. All rights reserved.</small
-            >
-          </p>
-          <ul class="list-unstyled d-flex">
-            <li>
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-twitter"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Twitter</title>
-                  <path
-                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li class="mx-4">
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-instagram"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Instagram</title>
-                  <path
-                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-facebook"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Facebook</title>
-                  <path
-                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-                  />
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top white"
+          >
+            <p>
+              © 2023 <strong>FurnishFlow</strong> |
+              <small
+                >Designed by
+                <a
+                  class="text-decoration-none sbstv"
+                  href="https://sobstvennoai.dev"
+                  target="_blank"
+                  >Emil Gulamov</a
+                >. All rights reserved.</small
+              >
+            </p>
+            <ul class="list-unstyled d-flex">
+              <li>
+                <a class="link-body-emphasis" href="#">
+                  <svg
+                    class="bi bi-twitter"
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Twitter</title>
+                    <path
+                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li class="mx-4">
+                <a class="link-body-emphasis" href="#">
+                  <svg
+                    class="bi bi-instagram"
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Instagram</title>
+                    <path
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="link-body-emphasis" href="#">
+                  <svg
+                    class="bi bi-facebook"
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Facebook</title>
+                    <path
+                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+      <!-- End of Footer -->
     </div>
-    <!-- End of Footer -->
-
     <script src="/projects/FurnishFlow/jquery-3.7.0.min.js"></script>
     <script src="/projects/FurnishFlow/dist/js/bootstrap.min.js"></script>
     <script src="/projects/FurnishFlow/main.min.js"></script>
-
     <!--Start of Log in Form-->
     <div
       class="modal fade bg-body-secondary"
@@ -1085,47 +990,47 @@
                 >By clicking Sign up, you agree to the terms of use.</small
               >
               <hr class="my-4" />
-                <h2 class="fs-5 fw-bold mb-3">Sign in</h2>
+              <h2 class="fs-5 fw-bold mb-3">Sign in</h2>
 
-                <div class="form-floating mb-3">
-                  <input
-                    class="form-control rounded-3"
-                    id="floatingInputLogIn"
-                    placeholder="name@example.com"
-                    type="email"
-                  />
-                  <label for="floatingInputLogIn">Email address</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input
-                    class="form-control"
-                    id="floatingPasswordLogIn"
-                    placeholder="Password"
-                    type="password"
-                  />
-                  <label for="floatingPasswordLogIn">Password</label>
-                </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control rounded-3"
+                  id="floatingInputLogIn"
+                  placeholder="name@example.com"
+                  type="email"
+                />
+                <label for="floatingInputLogIn">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  id="floatingPasswordLogIn"
+                  placeholder="Password"
+                  type="password"
+                />
+                <label for="floatingPasswordLogIn">Password</label>
+              </div>
 
-                <div class="form-check text-start my-3">
-                  <input
-                    class="form-check-input custom-checkbox"
-                    id="flexCheckDefault"
-                    type="checkbox"
-                    value="remember-me"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    <small class="text-body-secondary">Remember me</small>
-                  </label>
-                </div>
-                <button
-                  class="w-100 mb-2 btn btn-lg rounded-3 btn-primary button-fill"
-                  type="submit"
-                >
-                  Sign in
-                </button>
-                <p class="mt-5 mb-3 text-body-secondary text-center">
-                  <small>© 2023</small>
-                </p>
+              <div class="form-check text-start my-3">
+                <input
+                  class="form-check-input custom-checkbox"
+                  id="flexCheckDefault"
+                  type="checkbox"
+                  value="remember-me"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  <small class="text-body-secondary">Remember me</small>
+                </label>
+              </div>
+              <button
+                class="w-100 mb-2 btn btn-lg rounded-3 btn-primary button-fill"
+                type="submit"
+              >
+                Sign in
+              </button>
+              <p class="mt-5 mb-3 text-body-secondary text-center">
+                <small>© 2023</small>
+              </p>
             </form>
           </div>
         </div>

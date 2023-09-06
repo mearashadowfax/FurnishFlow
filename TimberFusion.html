@@ -43,98 +43,7 @@
       rel="apple-touch-icon"
     />
 
-    <script>
-      (() => {
-        "use strict";
-
-        const getStoredTheme = () => localStorage.getItem("theme");
-        const setStoredTheme = (theme) => localStorage.setItem("theme", theme);
-
-        const getPreferredTheme = () => {
-          const storedTheme = getStoredTheme();
-          if (storedTheme) {
-            return storedTheme;
-          }
-
-          return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-        };
-
-        const setTheme = (theme) => {
-          if (
-            theme === "auto" &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-          ) {
-            document.documentElement.setAttribute("data-bs-theme", "dark");
-          } else {
-            document.documentElement.setAttribute("data-bs-theme", theme);
-          }
-        };
-
-        setTheme(getPreferredTheme());
-
-        const showActiveTheme = (theme, focus = false) => {
-          const themeSwitcher = document.querySelector("#bd-theme");
-
-          if (!themeSwitcher) {
-            return;
-          }
-
-          const themeSwitcherText = document.querySelector("#bd-theme-text");
-          const activeThemeIcon = document.querySelector(
-            ".theme-icon-active use"
-          );
-          const btnToActive = document.querySelector(
-            `[data-bs-theme-value="${theme}"]`
-          );
-          const svgOfActiveBtn = btnToActive
-            .querySelector("svg use")
-            .getAttribute("href");
-
-          document
-            .querySelectorAll("[data-bs-theme-value]")
-            .forEach((element) => {
-              element.classList.remove("active");
-              element.setAttribute("aria-pressed", "false");
-            });
-
-          btnToActive.classList.add("active");
-          btnToActive.setAttribute("aria-pressed", "true");
-          activeThemeIcon.setAttribute("href", svgOfActiveBtn);
-          const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`;
-          themeSwitcher.setAttribute("aria-label", themeSwitcherLabel);
-
-          if (focus) {
-            themeSwitcher.focus();
-          }
-        };
-
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", () => {
-            const storedTheme = getStoredTheme();
-            if (storedTheme !== "light" && storedTheme !== "dark") {
-              setTheme(getPreferredTheme());
-            }
-          });
-
-        window.addEventListener("DOMContentLoaded", () => {
-          showActiveTheme(getPreferredTheme());
-
-          document
-            .querySelectorAll("[data-bs-theme-value]")
-            .forEach((toggle) => {
-              toggle.addEventListener("click", () => {
-                const theme = toggle.getAttribute("data-bs-theme-value");
-                setStoredTheme(theme);
-                setTheme(theme);
-                showActiveTheme(theme, true);
-              });
-            });
-        });
-      })();
-    </script>
+    <script src="/projects/FurnishFlow/theme.min.js"></script>
 
     <link
       as="font"
@@ -177,773 +86,1070 @@
     </noscript>
   </head>
   <body>
-    <!-- Start of Navigation -->
-    <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
-      <div class="container px-4">
-        <a class="navbar-brand" href="home"><strong>FurnishFlow</strong></a>
-        <button
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-bs-target="#navbarSupportedContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <span class="navbar-toggler-icon me-2"></span>
-          <span class="menu-text">Menu</span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="home">Home</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">New Arrivals</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a aria-current="page" class="nav-link active" href="furniture"
-                >Furniture</a
-              >
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-          <div class="ml-auto">
-            <button
-              class="btn icon-btn nav-svg"
-              data-bs-target="#modalSignin"
-              data-bs-toggle="modal"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-person"
-                fill="currentColor"
-                height="25"
-                viewBox="0 0 16 16"
-                width="25"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Account</title>
-                <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
-                />
-              </svg>
-            </button>
-            <button
-              aria-controls="searchForm"
-              aria-expanded="false"
-              class="btn mx-3 search-btn icon-btn nav-svg"
-              data-bs-target="#searchForm"
-              data-bs-toggle="collapse"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-search"
-                fill="currentColor"
-                height="20"
-                viewBox="0 0 16 16"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Search</title>
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                />
-              </svg>
-            </button>
-            <button
-              class="btn icon-btn nav-svg"
-              data-bs-target="#modalCart"
-              data-bs-toggle="modal"
-              type="button"
-            >
-              <svg
-                class="bi bi-nav bi-bag"
-                fill="currentColor"
-                height="20"
-                viewBox="0 0 16 16"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Cart</title>
-                <path
-                  d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="collapse" id="searchForm">
-            <form class="d-flex smaller-form">
-              <div class="input-group">
-                <input
-                  aria-label="Search"
-                  autocomplete="off"
-                  class="form-control"
-                  id="searchInput"
-                  placeholder="Search..."
-                  type="search"
-                />
-                <button class="btn btn-primary btn-border" type="submit">
-                  Search
-                </button>
-              </div>
-            </form>
-          </div>
-          <div id="searchResultsContainer">
-            <ul id="searchResults"></ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- End of Navigation -->
-
-    <!--  Start of Card Form-->
-    <div class="container mt-3 overflow-hidden">
-      <div class="row item-card-layout">
-        <div class="col-lg-5 px-0">
-          <img
-            alt="Timber Fusion Chair"
-            class="img-fluid rounded-4"
-            id="bigImage"
-            loading="eager"
-            sizes="(max-width: 999px) 100vw, 999px"
-            src="./img/TimberFusionChair2_scale_999.avif"
-            srcset="
-              ./img/TimberFusionChair2_scale_310.avif 310w,
-              ./img/TimberFusionChair2_scale_931.avif 931w,
-              ./img/TimberFusionChair2_scale_999.avif 999w
-            "
-          />
-        </div>
-        <div class="col-lg-4 d-flex align-items-center">
-          <div class="row">
-            <div class="col p-0">
-              <div class="display text-left mx-auto">
-                <h1 class="card-title">Timber Fusion Chair</h1>
-                <strong class="text-nowrap price">160 $</strong>
-                <p class="descriptionS my-4">
-                  <small
-                    >Elevate your space with the Timber Fusion Chair's timeless
-                    blend of style and comfort</small
-                  >
-                </p>
-
-                <button class="btn btn-orange text-uppercase" type="submit">
-                  <span class="me-4">Add to cart</span>
-                  <svg
-                    class="bi bi-arrow-right-short align-self-center"
-                    fill="currentColor"
-                    height="25"
-                    viewBox="0 0 16 16"
-                    width="25"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-                <div class="col-lg-1 my-3 text-uppercase text-nowrap">
-                  <a
-                    data-bs-target="#shareModal"
-                    data-bs-toggle="modal"
-                    style="cursor: pointer"
-                  >
-                    Share product
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 p-0">
-          <img
-            alt="Timber Fusion Chair Image 2"
-            class="img-fluid rounded-4 small-image"
-            loading="eager"
-            sizes="(max-width: 999px) 100vw, 999px"
-            src="./img/TimberFusionChair3_scale_999.avif"
-            srcset="
-              ./img/TimberFusionChair3_scale_310.avif 310w,
-              ./img/TimberFusionChair3_scale_999.avif 999w
-            "
-          />
-          <img
-            alt="Timber Fusion Chair Image 2"
-            class="img-fluid mt-5 rounded-4 small-image"
-            loading="eager"
-            sizes="(max-width: 999px) 100vw, 999px"
-            src="./img/TimberFusionChair4_scale_999.avif"
-            srcset="
-              ./img/TimberFusionChair4_scale_310.avif 310w,
-              ./img/TimberFusionChair4_scale_968.avif 968w,
-              ./img/TimberFusionChair4_scale_999.avif 999w
-            "
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-4">
-      <div class="d-flex justify-content-left">
-        <ul class="nav" id="menu">
-          <li class="nav-item">
-            <span
-              aria-current="page"
-              class="nav-link text-uppercase menu active"
-              data-content="description"
-              >Description</span
-            >
-          </li>
-          <li class="nav-item">
-            <span
-              class="nav-link text-uppercase menu"
-              data-content="specifications"
-              >Specifications</span
-            >
-          </li>
-          <li class="nav-item">
-            <span class="nav-link text-uppercase menu" data-content="reviews"
-              >Reviews</span
-            >
-          </li>
-          <li class="nav-item">
-            <span class="nav-link text-uppercase menu" data-content="styleguide"
-              >Style Guide</span
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container my-3">
-      <div class="container">
-        <h2>Timber Fusion Chair</h2>
-        <hr class="underline-line pb-3 layout horizontal-index" />
-        <div id="content">
-          <div data-section="description">
-            <p class="layout">
-              Discover the perfect blend of natural elegance and modern
-              sophistication with our Timber Fusion Chair. Effortlessly
-              enhancing any interior style, delicate natural timber accents
-              intricately weave with contemporary design. This chair offers a
-              seamless union of impeccable craftsmanship, style, and comfort,
-              creating a harmonious symphony that will captivate your senses.
-              Immerse yourself in unrivaled comfort and indulge in its exquisite
-              charm as you experience the epitome of seating perfection.
-            </p>
-          </div>
-          <div
-            class="layout"
-            data-section="specifications"
-            style="display: none"
+    <div id="my-scrollbar">
+      <!-- Start of Navigation -->
+      <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+        <div class="container px-4">
+          <a class="navbar-brand" href="home"><strong>FurnishFlow</strong></a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent"
+            data-bs-toggle="collapse"
+            type="button"
           >
-            <div class="container">
-              <div class="row">
-                <div class="col-6">
-                  <h5 class="mb-4 specs-subhead">Dimensions</h5>
-                  <ul class="list-unstyled">
-                    <li>
-                      <strong>Overall Height</strong>
-                      <p><span>40 inches</span></p>
-                    </li>
-                    <li>
-                      <strong>Overall Width</strong>
-                      <p><span> 24 inches</span></p>
-                    </li>
-                    <li>
-                      <strong>Overall Depth</strong>
-                      <p><span>22 inches</span></p>
-                    </li>
-                    <li>
-                      <strong>Seat Height</strong>
-                      <p><span>18 inches</span></p>
-                    </li>
-                    <li>
-                      <strong>Seat Width</strong>
-                      <p><span>20 inches</span></p>
-                    </li>
-                    <li>
-                      <strong>Seat Depth</strong>
-                      <p><span>18 inches</span></p>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-6">
-                  <h5 class="mb-4 specs-subhead">Details</h5>
-                  <ul class="list-unstyled">
-                    <li>
-                      <strong>Cushion</strong>
-                      <p><span>Plush, comfortable cushion</span></p>
-                    </li>
-                    <li>
-                      <strong>Frame Material</strong>
-                      <p><span>Sturdy metal frame</span></p>
-                    </li>
-                    <li>
-                      <strong>Weight Capacity</strong>
-                      <p><span>Up to 250 lbs</span></p>
-                    </li>
-                    <li>
-                      <strong>Assembly</strong>
-                      <p>
-                        <span
-                          >Some assembly required, instructions provided</span
-                        >
-                      </p>
-                    </li>
-                    <li>
-                      <strong>Warranty</strong>
-                      <p><span>Manufacturer's warranty included</span></p>
-                    </li>
-                    <li>
-                      <strong>Shipping Information</strong>
-                      <p>
-                        <span
-                          >Ships in 2 boxes, flat-packed for easy delivery</span
-                        >
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <span class="navbar-toggler-icon me-2"></span>
+            <span class="menu-text">Menu</span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="home">Home</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#">New Arrivals</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a aria-current="page" class="nav-link active" href="furniture"
+                  >Furniture</a
+                >
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+            <div class="ml-auto">
+              <button
+                class="btn icon-btn nav-svg"
+                data-bs-target="#modalSignin"
+                data-bs-toggle="modal"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-person"
+                  fill="currentColor"
+                  height="25"
+                  viewBox="0 0 16 16"
+                  width="25"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Account</title>
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+                  />
+                </svg>
+              </button>
+              <button
+                aria-controls="searchForm"
+                aria-expanded="false"
+                class="btn mx-3 search-btn icon-btn nav-svg"
+                data-bs-target="#searchForm"
+                data-bs-toggle="collapse"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-search"
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Search</title>
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
+              <button
+                class="btn icon-btn nav-svg"
+                data-bs-target="#modalCart"
+                data-bs-toggle="modal"
+                type="button"
+              >
+                <svg
+                  class="bi bi-nav bi-bag"
+                  fill="currentColor"
+                  height="20"
+                  viewBox="0 0 16 16"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Cart</title>
+                  <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                  />
+                </svg>
+              </button>
             </div>
-          </div>
-          <div class="layout" data-section="reviews" style="display: none">
-            <p>Reviews content goes here.</p>
-          </div>
-          <div class="layout" data-section="styleguide" style="display: none">
-            <p>Style Guide content goes here.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--  End of Card Form-->
-
-    <!--    Start of Sidebar and Album-->
-    <div class="container item-card-album-section">
-      <h2 class="card-title related-product">
-        Related
-        <span class="text-nowrap">Products <span class="colon">:</span></span>
-      </h2>
-    </div>
-    <div class="container">
-      <div class="row mb-3">
-        <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-3 themed-grid-col">
-          <div class="container">
-            <div class="flex-shrink-0">
-              <div class="list-unstyled ps-0">
-                <div class="mb-1">
-                  <button
-                    aria-expanded="false"
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-target="#colors-collapse"
-                    data-bs-toggle="collapse"
-                  >
-                    <span>Colors</span>
-                    <span class="svg-container">
-                      <svg
-                        class="bi bi-plus-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: inline-block"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        class="bi bi-dash-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: none"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
+            <div class="collapse" id="searchForm">
+              <form class="d-flex smaller-form">
+                <div class="input-group">
+                  <input
+                    aria-label="Search"
+                    autocomplete="off"
+                    class="form-control"
+                    id="searchInput"
+                    placeholder="Search..."
+                    type="search"
+                  />
+                  <button class="btn btn-primary btn-border" type="submit">
+                    Search
                   </button>
                 </div>
-                <div class="border-top my-2"></div>
-                <div class="collapse" id="colors-collapse">
+              </form>
+            </div>
+            <div id="searchResultsContainer">
+              <ul id="searchResults"></ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Navigation -->
+
+      <!--  Start of Card Form-->
+      <div class="container mt-3 overflow-hidden">
+        <div class="row item-card-layout">
+          <div class="col-lg-5 px-0">
+            <img
+              alt="Timber Fusion Chair"
+              class="img-fluid rounded-4"
+              id="bigImage"
+              loading="eager"
+              sizes="(max-width: 999px) 100vw, 999px"
+              src="./img/TimberFusionChair2_scale_999.avif"
+              srcset="
+                ./img/TimberFusionChair2_scale_310.avif 310w,
+                ./img/TimberFusionChair2_scale_931.avif 931w,
+                ./img/TimberFusionChair2_scale_999.avif 999w
+              "
+            />
+          </div>
+          <div class="col-lg-4 d-flex align-items-center">
+            <div class="row">
+              <div class="col p-0">
+                <div class="display text-left mx-auto">
+                  <h1 class="card-title">Timber Fusion Chair</h1>
+                  <strong class="text-nowrap price">160 $</strong>
+                  <p class="descriptionS my-4">
+                    <small
+                      >Elevate your space with the Timber Fusion Chair's
+                      timeless blend of style and comfort</small
+                    >
+                  </p>
+
+                  <button class="btn btn-orange text-uppercase" type="submit">
+                    <span class="me-4">Add to cart</span>
+                    <svg
+                      class="bi bi-arrow-right-short align-self-center"
+                      fill="currentColor"
+                      height="25"
+                      viewBox="0 0 16 16"
+                      width="25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <div class="col-lg-1 my-3 text-uppercase text-nowrap">
+                    <a
+                      data-bs-target="#shareModal"
+                      data-bs-toggle="modal"
+                      style="cursor: pointer"
+                    >
+                      Share product
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 p-0">
+            <img
+              alt="Timber Fusion Chair Image 2"
+              class="img-fluid rounded-4 small-image"
+              loading="eager"
+              sizes="(max-width: 999px) 100vw, 999px"
+              src="./img/TimberFusionChair3_scale_999.avif"
+              srcset="
+                ./img/TimberFusionChair3_scale_310.avif 310w,
+                ./img/TimberFusionChair3_scale_999.avif 999w
+              "
+            />
+            <img
+              alt="Timber Fusion Chair Image 2"
+              class="img-fluid mt-5 rounded-4 small-image"
+              loading="eager"
+              sizes="(max-width: 999px) 100vw, 999px"
+              src="./img/TimberFusionChair4_scale_999.avif"
+              srcset="
+                ./img/TimberFusionChair4_scale_310.avif 310w,
+                ./img/TimberFusionChair4_scale_968.avif 968w,
+                ./img/TimberFusionChair4_scale_999.avif 999w
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-4">
+        <div class="d-flex justify-content-left">
+          <ul class="nav" id="menu">
+            <li class="nav-item">
+              <span
+                aria-current="page"
+                class="nav-link text-uppercase menu active"
+                data-content="description"
+                >Description</span
+              >
+            </li>
+            <li class="nav-item">
+              <span
+                class="nav-link text-uppercase menu"
+                data-content="specifications"
+                >Specifications</span
+              >
+            </li>
+            <li class="nav-item">
+              <span class="nav-link text-uppercase menu" data-content="reviews"
+                >Reviews</span
+              >
+            </li>
+            <li class="nav-item">
+              <span
+                class="nav-link text-uppercase menu"
+                data-content="styleguide"
+                >Style Guide</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container my-3">
+        <div class="container">
+          <h2>Timber Fusion Chair</h2>
+          <hr class="underline-line pb-3 layout horizontal-index" />
+          <div id="content">
+            <div data-section="description">
+              <p class="layout">
+                Discover the perfect blend of natural elegance and modern
+                sophistication with our Timber Fusion Chair. Effortlessly
+                enhancing any interior style, delicate natural timber accents
+                intricately weave with contemporary design. This chair offers a
+                seamless union of impeccable craftsmanship, style, and comfort,
+                creating a harmonious symphony that will captivate your senses.
+                Immerse yourself in unrivaled comfort and indulge in its
+                exquisite charm as you experience the epitome of seating
+                perfection.
+              </p>
+            </div>
+            <div
+              class="layout"
+              data-section="specifications"
+              style="display: none"
+            >
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <h5 class="mb-4 specs-subhead">Dimensions</h5>
+                    <ul class="list-unstyled">
+                      <li>
+                        <strong>Overall Height</strong>
+                        <p><span>40 inches</span></p>
+                      </li>
+                      <li>
+                        <strong>Overall Width</strong>
+                        <p><span> 24 inches</span></p>
+                      </li>
+                      <li>
+                        <strong>Overall Depth</strong>
+                        <p><span>22 inches</span></p>
+                      </li>
+                      <li>
+                        <strong>Seat Height</strong>
+                        <p><span>18 inches</span></p>
+                      </li>
+                      <li>
+                        <strong>Seat Width</strong>
+                        <p><span>20 inches</span></p>
+                      </li>
+                      <li>
+                        <strong>Seat Depth</strong>
+                        <p><span>18 inches</span></p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-6">
+                    <h5 class="mb-4 specs-subhead">Details</h5>
+                    <ul class="list-unstyled">
+                      <li>
+                        <strong>Cushion</strong>
+                        <p><span>Plush, comfortable cushion</span></p>
+                      </li>
+                      <li>
+                        <strong>Frame Material</strong>
+                        <p><span>Sturdy metal frame</span></p>
+                      </li>
+                      <li>
+                        <strong>Weight Capacity</strong>
+                        <p><span>Up to 250 lbs</span></p>
+                      </li>
+                      <li>
+                        <strong>Assembly</strong>
+                        <p>
+                          <span
+                            >Some assembly required, instructions provided</span
+                          >
+                        </p>
+                      </li>
+                      <li>
+                        <strong>Warranty</strong>
+                        <p><span>Manufacturer's warranty included</span></p>
+                      </li>
+                      <li>
+                        <strong>Shipping Information</strong>
+                        <p>
+                          <span
+                            >Ships in 2 boxes, flat-packed for easy
+                            delivery</span
+                          >
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layout" data-section="reviews" style="display: none">
+              <p>Reviews content goes here.</p>
+            </div>
+            <div class="layout" data-section="styleguide" style="display: none">
+              <p>Style Guide content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  End of Card Form-->
+
+      <!--    Start of Sidebar and Album-->
+      <div class="container item-card-album-section">
+        <h2 class="card-title related-product">
+          Related
+          <span class="text-nowrap">Products <span class="colon">:</span></span>
+        </h2>
+      </div>
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-3 themed-grid-col">
+            <div class="container">
+              <div class="flex-shrink-0">
+                <div class="list-unstyled ps-0">
+                  <div class="mb-1">
+                    <button
+                      aria-expanded="false"
+                      class="btn btn-toggle rounded collapsed btn-wider"
+                      data-bs-target="#colors-collapse"
+                      data-bs-toggle="collapse"
+                    >
+                      <span>Colors</span>
+                      <span class="svg-container">
+                        <svg
+                          class="bi bi-plus-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: inline-block"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          class="bi bi-dash-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: none"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="border-top my-2"></div>
+                  <div class="collapse" id="colors-collapse">
+                    <div
+                      class="btn-toggle-nav list-unstyled fw-normal small mb-5 py-3 px-4"
+                    >
+                      <div
+                        class="row row-cols-4 row-cols-md-4 gy-4 text-center"
+                      >
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelred"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelgreen"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelbrown"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelblue"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelyellow"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelpurple"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabelwhite"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div>
+                            <input
+                              aria-label="..."
+                              class="form-check-input outline"
+                              id="radioNoLabeldark"
+                              name="radioNoLabel"
+                              type="radio"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-1">
+                    <button
+                      aria-expanded="false"
+                      class="btn btn-toggle rounded collapsed btn-wider"
+                      data-bs-target="#filter-collapse"
+                      data-bs-toggle="collapse"
+                    >
+                      <span>Furniture Type</span>
+                      <span class="svg-container">
+                        <svg
+                          class="bi bi-plus-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: inline-block"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          class="bi bi-dash-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: none"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="border-top my-2"></div>
+                  <div class="collapse" id="filter-collapse">
+                    <ul
+                      class="btn-toggle-nav list-unstyled fw-normal small mb-5 py-3 px-4"
+                    >
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck1"
+                            >Sofas
+                            <span class="text-body-secondary">(45)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck1"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck2"
+                            >Chairs
+                            <span class="text-body-secondary">(76)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck2"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck3"
+                            >Tables
+                            <span class="text-body-secondary">(21)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck3"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck4"
+                            >Beds
+                            <span class="text-body-secondary">(27)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck4"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck5"
+                            >Wardrobes
+                            <span class="text-body-secondary">(36)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck5"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck6"
+                            >Shelving Units
+                            <span class="text-body-secondary">(31)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck6"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck7"
+                            >Nightstands
+                            <span class="text-body-secondary">(24)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck7"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck8"
+                            >Cabinets
+                            <span class="text-body-secondary">(12)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck8"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="form-check form-check-reverse d-flex align-items-center my-2"
+                        >
+                          <label class="form-check-label" for="reverseCheck9"
+                            >Bar Stools
+                            <span class="text-body-secondary">(20)</span></label
+                          >
+                          <input
+                            class="form-check-input ms-auto"
+                            id="reverseCheck9"
+                            type="checkbox"
+                            value=""
+                          />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mb-1">
+                    <button
+                      aria-expanded="false"
+                      class="btn btn-toggle rounded collapsed btn-wider"
+                      data-bs-target="#price-collapse"
+                      data-bs-toggle="collapse"
+                    >
+                      <span>Price</span>
+                      <span class="svg-container">
+                        <svg
+                          class="bi bi-plus-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: inline-block"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                        <svg
+                          class="bi bi-dash-lg"
+                          fill="currentColor"
+                          height="16"
+                          style="display: none"
+                          viewBox="0 0 16 16"
+                          width="16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="border-top my-2"></div>
                   <div
-                    class="btn-toggle-nav list-unstyled fw-normal small mb-5 py-3 px-4"
+                    class="collapse small mb-3 py-3 px-3"
+                    id="price-collapse"
                   >
-                    <div class="row row-cols-4 row-cols-md-4 gy-4 text-center">
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelred"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
+                    <form class="form-group">
+                      <input
+                        class="form-range"
+                        id="pricerange"
+                        max="8500"
+                        min="0"
+                        step="50"
+                        type="range"
+                        value="0"
+                      />
+
+                      <label
+                        class="form-label d-flex justify-content-between"
+                        for="pricerange"
+                        >0$<span id="pricetext">0</span></label
+                      >
+                    </form>
+                  </div>
+                  <div
+                    class="d-grid gap-2 d-md-flex justify-content-md-center my-3 small"
+                  >
+                    <button
+                      class="btn text-uppercase d-inline align-items-center clear-all mb-3"
+                      id="clear-filters-btn"
+                      type="button"
+                    >
+                      <span class="me-3">Clear all</span>
+                      <svg
+                        class="bi bi-x-lg"
+                        fill="currentColor"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-7 col-lg-9 themed-grid-col">
+            <div class="row">
+              <div class="album">
+                <div class="container">
+                  <div class="row row-cols-12 row-cols-md-1 row-cols-lg-2 g-5">
+                    <div class="col">
+                      <div
+                        class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="
+                          background-image: url('./img/WoodMetalFusion.avif');
+                          background-size: cover;
+                          background-position: center;
+                        "
+                      >
+                        <div
+                          class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                        >
+                          <h3
+                            class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
+                          >
+                            Wood-Metal Fusion
+                          </h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                              <a
+                                class="btn btn-secondary text-decoration-none"
+                                href="./TimberFusion"
+                                style="color: inherit"
+                              >
+                                View Details</a
+                              >
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" height="1em" width="1em">
+                                <use xlink:href="#geo-fill"></use>
+                              </svg>
+                              <small>Limited</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <strong class="text-nowrap">190 $</strong>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelgreen"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
+                    </div>
+                    <div class="col">
+                      <div
+                        class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="
+                          background-image: url('./img/WorkshopOasis.avif');
+                          background-size: cover;
+                          background-position: center;
+                        "
+                      >
+                        <div
+                          class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                        >
+                          <h3
+                            class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
+                          >
+                            Workshop Oasis
+                          </h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                              <a
+                                class="btn btn-secondary text-decoration-none"
+                                href="./TimberFusion"
+                                style="color: inherit"
+                              >
+                                View Details</a
+                              >
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" height="1em" width="1em">
+                                <use xlink:href="#geo-fill"></use>
+                              </svg>
+                              <small>In Stock</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <strong class="text-nowrap">280 $</strong>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelbrown"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
+                    </div>
+                    <div class="col">
+                      <div
+                        class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="
+                          background-image: url('./img/OpulentWingChair.avif');
+                          background-size: cover;
+                          background-position: center;
+                        "
+                      >
+                        <div
+                          class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                        >
+                          <h3
+                            class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
+                          >
+                            Opulent Wing Chair
+                          </h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                              <a
+                                class="btn btn-secondary text-decoration-none"
+                                href="./TimberFusion"
+                                style="color: inherit"
+                              >
+                                View Details</a
+                              >
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" height="1em" width="1em">
+                                <use xlink:href="#geo-fill"></use>
+                              </svg>
+                              <small>In Stock</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <strong class="text-nowrap">190 $</strong>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelblue"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelyellow"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelpurple"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabelwhite"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div>
-                          <input
-                            aria-label="..."
-                            class="form-check-input outline"
-                            id="radioNoLabeldark"
-                            name="radioNoLabel"
-                            type="radio"
-                            value=""
-                          />
+                    </div>
+                    <div class="col">
+                      <div
+                        class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="
+                          background-image: url('./img/CozyWoodSeating.avif');
+                          background-size: cover;
+                          background-position: center;
+                        "
+                      >
+                        <div
+                          class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                        >
+                          <h3
+                            class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
+                          >
+                            Cozy Wood Seating
+                          </h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                              <a
+                                class="btn btn-secondary text-decoration-none"
+                                href="./TimberFusion"
+                                style="color: inherit"
+                              >
+                                View Details</a
+                              >
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" height="1em" width="1em">
+                                <use xlink:href="#geo-fill"></use>
+                              </svg>
+                              <small>In Stock</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <strong class="text-nowrap">225 $</strong>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--    End of Sidebar and Album-->
 
-                <div class="mb-1">
-                  <button
-                    aria-expanded="false"
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-target="#filter-collapse"
-                    data-bs-toggle="collapse"
-                  >
-                    <span>Furniture Type</span>
-                    <span class="svg-container">
-                      <svg
-                        class="bi bi-plus-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: inline-block"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        class="bi bi-dash-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: none"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                <div class="border-top my-2"></div>
-                <div class="collapse" id="filter-collapse">
-                  <ul
-                    class="btn-toggle-nav list-unstyled fw-normal small mb-5 py-3 px-4"
-                  >
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck1"
-                          >Sofas
-                          <span class="text-body-secondary">(45)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck1"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck2"
-                          >Chairs
-                          <span class="text-body-secondary">(76)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck2"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck3"
-                          >Tables
-                          <span class="text-body-secondary">(21)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck3"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck4"
-                          >Beds
-                          <span class="text-body-secondary">(27)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck4"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck5"
-                          >Wardrobes
-                          <span class="text-body-secondary">(36)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck5"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck6"
-                          >Shelving Units
-                          <span class="text-body-secondary">(31)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck6"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck7"
-                          >Nightstands
-                          <span class="text-body-secondary">(24)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck7"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck8"
-                          >Cabinets
-                          <span class="text-body-secondary">(12)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck8"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                    <li>
-                      <div
-                        class="form-check form-check-reverse d-flex align-items-center my-2"
-                      >
-                        <label class="form-check-label" for="reverseCheck9"
-                          >Bar Stools
-                          <span class="text-body-secondary">(20)</span></label
-                        >
-                        <input
-                          class="form-check-input ms-auto"
-                          id="reverseCheck9"
-                          type="checkbox"
-                          value=""
-                        />
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mb-1">
-                  <button
-                    aria-expanded="false"
-                    class="btn btn-toggle rounded collapsed btn-wider"
-                    data-bs-target="#price-collapse"
-                    data-bs-toggle="collapse"
-                  >
-                    <span>Price</span>
-                    <span class="svg-container">
-                      <svg
-                        class="bi bi-plus-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: inline-block"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                      <svg
-                        class="bi bi-dash-lg"
-                        fill="currentColor"
-                        height="16"
-                        style="display: none"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                <div class="border-top my-2"></div>
-                <div class="collapse small mb-3 py-3 px-3" id="price-collapse">
-                  <form class="form-group">
-                    <input
-                      class="form-range"
-                      id="pricerange"
-                      max="8500"
-                      min="0"
-                      step="50"
-                      type="range"
-                      value="0"
-                    />
+      <!--    Start of Bottom Carousel-->
+      <div class="container sections">
+        <div
+          class="carousel slide"
+          data-bs-ride="carousel"
+          id="carouselExampleCaptions"
+        >
+          <div class="carousel-indicators">
+            <button
+              aria-current="true"
+              aria-label="Slide 1"
+              class="active"
+              data-bs-slide-to="0"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+            <button
+              aria-label="Slide 2"
+              data-bs-slide-to="1"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+            <button
+              aria-label="Slide 3"
+              data-bs-slide-to="2"
+              data-bs-target="#carouselExampleCaptions"
+              type="button"
+            ></button>
+          </div>
+          <div class="carousel-inner rounded-4">
+            <div class="carousel-item active carousel2img">
+              <img
+                alt="A bedroom with teal walls and gold accents"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/DreamyBedroomRetreat2.avif"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <p>
+                  Indulge in blissful comfort with our luxurious bed collection
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item carousel2img">
+              <img
+                alt="A living room with a colorful rug and a coffee table"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/ElevateYourSpace2.avif"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <p>
+                  Unleash your creativity and design a captivating room ambiance
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item carousel2img">
+              <img
+                alt="Modern minimalist living room filled with natural light from a large window"
+                class="d-block w-100"
+                loading="eager"
+                src="./img/UnwindinStyle2.avif"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <p class="rounded-left">
+                  Experience ultimate comfort and sophistication with our
+                  exquisite couch collection
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--    End of Bottom Carousel-->
 
-                    <label
-                      class="form-label d-flex justify-content-between"
-                      for="pricerange"
-                      >0$<span id="pricetext">0</span></label
-                    >
-                  </form>
-                </div>
-                <div
-                  class="d-grid gap-2 d-md-flex justify-content-md-center my-3 small"
+      <!-- Start of Footer -->
+      <div class="container">
+        <footer>
+          <div class="row">
+            <div class="col-6 col-md-4 mb-3">
+              <h5 class="py-2 underline-title text-nowrap">Get in Touch</h5>
+              <hr class="underline-line pb-3" />
+              <p>
+                <small
+                  >Need assistance or have a question? Our friendly customer
+                  support team is
+                  <a class="footer-link" href="contact">here to help</a></small
                 >
-                  <button
-                    class="btn text-uppercase d-inline align-items-center clear-all mb-3"
-                    id="clear-filters-btn"
-                    type="button"
+              </p>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link p-0 text-body-secondary text-nowrap"
+                    href="tel:+15551234567"
                   >
-                    <span class="me-3">Clear all</span>
                     <svg
-                      class="bi bi-x-lg"
+                      class="me-3 bi bi-telephone-fill"
                       fill="currentColor"
                       height="16"
                       viewBox="0 0 16 16"
@@ -951,455 +1157,168 @@
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+                        fill-rule="evenodd"
                       />
                     </svg>
-                  </button>
-                </div>
-              </div>
+                    +1 (555) 123-4567</a
+                  >
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link p-0 text-body-secondary text-nowrap"
+                    href="mailto:info@furnishflow.com"
+                  >
+                    <svg
+                      class="me-3 bi bi-envelope-at-fill"
+                      fill="currentColor"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"
+                      />
+                      <path
+                        d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"
+                      />
+                    </svg>
+                    info@furnishflow.uk</a
+                  >
+                </li>
+              </ul>
+              <p class="mt-1">
+                <small> Monday to Friday, 9:00 AM - 5:00 PM (GMT) </small>
+              </p>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-7 col-lg-9 themed-grid-col">
-          <div class="row">
-            <div class="album">
-              <div class="container">
-                <div class="row row-cols-12 row-cols-md-1 row-cols-lg-2 g-5">
-                  <div class="col">
-                    <div
-                      class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                      style="
-                        background-image: url('./img/WoodMetalFusion.avif');
-                        background-size: cover;
-                        background-position: center;
-                      "
-                    >
-                      <div
-                        class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-                      >
-                        <h3
-                          class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
-                        >
-                          Wood-Metal Fusion
-                        </h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                          <li class="me-auto">
-                            <a
-                              class="btn btn-secondary text-decoration-none"
-                              href="./TimberFusion"
-                              style="color: inherit"
-                            >
-                              View Details</a
-                            >
-                          </li>
-                          <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" height="1em" width="1em">
-                              <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>Limited</small>
-                          </li>
-                          <li class="d-flex align-items-center">
-                            <strong class="text-nowrap">190 $</strong>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div
-                      class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                      style="
-                        background-image: url('./img/WorkshopOasis.avif');
-                        background-size: cover;
-                        background-position: center;
-                      "
-                    >
-                      <div
-                        class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-                      >
-                        <h3
-                          class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
-                        >
-                          Workshop Oasis
-                        </h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                          <li class="me-auto">
-                            <a
-                              class="btn btn-secondary text-decoration-none"
-                              href="./TimberFusion"
-                              style="color: inherit"
-                            >
-                              View Details</a
-                            >
-                          </li>
-                          <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" height="1em" width="1em">
-                              <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>In Stock</small>
-                          </li>
-                          <li class="d-flex align-items-center">
-                            <strong class="text-nowrap">280 $</strong>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div
-                      class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                      style="
-                        background-image: url('./img/OpulentWingChair.avif');
-                        background-size: cover;
-                        background-position: center;
-                      "
-                    >
-                      <div
-                        class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-                      >
-                        <h3
-                          class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
-                        >
-                          Opulent Wing Chair
-                        </h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                          <li class="me-auto">
-                            <a
-                              class="btn btn-secondary text-decoration-none"
-                              href="./TimberFusion"
-                              style="color: inherit"
-                            >
-                              View Details</a
-                            >
-                          </li>
-                          <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" height="1em" width="1em">
-                              <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>In Stock</small>
-                          </li>
-                          <li class="d-flex align-items-center">
-                            <strong class="text-nowrap">190 $</strong>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div
-                      class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                      style="
-                        background-image: url('./img/CozyWoodSeating.avif');
-                        background-size: cover;
-                        background-position: center;
-                      "
-                    >
-                      <div
-                        class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-                      >
-                        <h3
-                          class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold menu-title"
-                        >
-                          Cozy Wood Seating
-                        </h3>
-                        <ul class="d-flex list-unstyled mt-auto">
-                          <li class="me-auto">
-                            <a
-                              class="btn btn-secondary text-decoration-none"
-                              href="./TimberFusion"
-                              style="color: inherit"
-                            >
-                              View Details</a
-                            >
-                          </li>
-                          <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" height="1em" width="1em">
-                              <use xlink:href="#geo-fill"></use>
-                            </svg>
-                            <small>In Stock</small>
-                          </li>
-                          <li class="d-flex align-items-center">
-                            <strong class="text-nowrap">225 $</strong>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+
+            <div class="col-6 col-md-2 mb-3">
+              <h5 class="py-2 underline-title text-nowrap">Useful Links</h5>
+              <hr class="underline-line pb-3" />
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#">FAQs</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#"
+                    >Shipping & Returns</a
+                  >
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link p-0 footer-nav-link" href="#"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-5 offset-md-1 mb-3">
+              <form>
+                <h5 class="py-2 underline-title">Be the first to know!</h5>
+                <hr class="underline-line pb-3" />
+                <p>
+                  <small
+                    >Subscribe for exclusive offers, trend updates, and design
+                    inspiration to transform your space</small
+                  >
+                </p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label class="visually-hidden" for="newsletter1"
+                    >Email address</label
+                  >
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      id="newsletter1"
+                      placeholder="Email address"
+                      type="text"
+                    />
+                    <button class="btn btn-primary btn-border" type="button">
+                      Subscribe
+                    </button>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!--    End of Sidebar and Album-->
 
-    <!--    Start of Bottom Carousel-->
-    <div class="container sections">
-      <div
-        class="carousel slide"
-        data-bs-ride="carousel"
-        id="carouselExampleCaptions"
-      >
-        <div class="carousel-indicators">
-          <button
-            aria-current="true"
-            aria-label="Slide 1"
-            class="active"
-            data-bs-slide-to="0"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-          <button
-            aria-label="Slide 2"
-            data-bs-slide-to="1"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-          <button
-            aria-label="Slide 3"
-            data-bs-slide-to="2"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          ></button>
-        </div>
-        <div class="carousel-inner rounded-4">
-          <div class="carousel-item active carousel2img">
-            <img
-              alt="A bedroom with teal walls and gold accents"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/DreamyBedroomRetreat2.avif"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <p>
-                Indulge in blissful comfort with our luxurious bed collection
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item carousel2img">
-            <img
-              alt="A living room with a colorful rug and a coffee table"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/ElevateYourSpace2.avif"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <p>
-                Unleash your creativity and design a captivating room ambiance
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item carousel2img">
-            <img
-              alt="Modern minimalist living room filled with natural light from a large window"
-              class="d-block w-100"
-              loading="lazy"
-              src="./img/UnwindinStyle2.avif"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <p class="rounded-left">
-                Experience ultimate comfort and sophistication with our
-                exquisite couch collection
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--    End of Bottom Carousel-->
-
-    <!-- Start of Footer -->
-    <div class="container">
-      <footer>
-        <div class="row">
-          <div class="col-6 col-md-4 mb-3">
-            <h5 class="py-2 underline-title text-nowrap">Get in Touch</h5>
-            <hr class="underline-line pb-3" />
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top white"
+          >
             <p>
+              © 2023 <strong>FurnishFlow</strong> |
               <small
-                >Need assistance or have a question? Our friendly customer
-                support team is
-                <a class="footer-link" href="contact">here to help</a></small
+                >Designed by
+                <a
+                  class="text-decoration-none sbstv"
+                  href="https://sobstvennoai.dev"
+                  target="_blank"
+                  >Emil Gulamov</a
+                >. All rights reserved.</small
               >
             </p>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2">
-                <a
-                  class="nav-link p-0 text-body-secondary text-nowrap"
-                  href="tel:+15551234567"
-                >
+            <ul class="list-unstyled d-flex">
+              <li>
+                <a class="link-body-emphasis" href="#">
                   <svg
-                    class="me-3 bi bi-telephone-fill"
+                    class="bi bi-twitter"
                     fill="currentColor"
-                    height="16"
+                    height="20"
                     viewBox="0 0 16 16"
-                    width="16"
+                    width="20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
+                    <title>Twitter</title>
                     <path
-                      d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
-                      fill-rule="evenodd"
+                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
                     />
                   </svg>
-                  +1 (555) 123-4567</a
-                >
+                </a>
               </li>
-              <li class="nav-item mb-2">
-                <a
-                  class="nav-link p-0 text-body-secondary text-nowrap"
-                  href="mailto:info@furnishflow.com"
-                >
+              <li class="mx-4">
+                <a class="link-body-emphasis" href="#">
                   <svg
-                    class="me-3 bi bi-envelope-at-fill"
+                    class="bi bi-instagram"
                     fill="currentColor"
-                    height="16"
+                    height="20"
                     viewBox="0 0 16 16"
-                    width="16"
+                    width="20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
+                    <title>Instagram</title>
                     <path
-                      d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"
-                    />
-                    <path
-                      d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
                     />
                   </svg>
-                  info@furnishflow.uk</a
-                >
+                </a>
               </li>
-            </ul>
-            <p class="mt-1">
-              <small> Monday to Friday, 9:00 AM - 5:00 PM (GMT) </small>
-            </p>
-          </div>
-
-          <div class="col-6 col-md-2 mb-3">
-            <h5 class="py-2 underline-title text-nowrap">Useful Links</h5>
-            <hr class="underline-line pb-3" />
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#">FAQs</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#"
-                  >Shipping & Returns</a
-                >
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#">Blog</a>
-              </li>
-              <li class="nav-item mb-2">
-                <a class="nav-link p-0 footer-nav-link" href="#"
-                  >Privacy Policy</a
-                >
+              <li>
+                <a class="link-body-emphasis" href="#">
+                  <svg
+                    class="bi bi-facebook"
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Facebook</title>
+                    <path
+                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                    />
+                  </svg>
+                </a>
               </li>
             </ul>
           </div>
-
-          <div class="col-md-5 offset-md-1 mb-3">
-            <form>
-              <h5 class="py-2 underline-title">Be the first to know!</h5>
-              <hr class="underline-line pb-3" />
-              <p>
-                <small
-                  >Subscribe for exclusive offers, trend updates, and design
-                  inspiration to transform your space</small
-                >
-              </p>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label class="visually-hidden" for="newsletter1"
-                  >Email address</label
-                >
-                <div class="input-group">
-                  <input
-                    class="form-control"
-                    id="newsletter1"
-                    placeholder="Email address"
-                    type="text"
-                  />
-                  <button class="btn btn-primary btn-border" type="button">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div
-          class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top white"
-        >
-          <p>
-            © 2023 <strong>FurnishFlow</strong> |
-            <small
-              >Designed by
-              <a
-                class="text-decoration-none sbstv"
-                href="https://sobstvennoai.dev"
-                target="_blank"
-                >Emil Gulamov</a
-              >. All rights reserved.</small
-            >
-          </p>
-          <ul class="list-unstyled d-flex">
-            <li>
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-twitter"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Twitter</title>
-                  <path
-                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li class="mx-4">
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-instagram"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Instagram</title>
-                  <path
-                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a class="link-body-emphasis" href="#">
-                <svg
-                  class="bi bi-facebook"
-                  fill="currentColor"
-                  height="20"
-                  viewBox="0 0 16 16"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Facebook</title>
-                  <path
-                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-                  />
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+        </footer>
+      </div>
+      <!-- End of Footer -->
     </div>
-    <!-- End of Footer -->
-
     <script src="/projects/FurnishFlow/jquery-3.7.0.min.js"></script>
     <script src="/projects/FurnishFlow/dist/js/bootstrap.min.js"></script>
     <script src="/projects/FurnishFlow/item-card.min.js"></script>

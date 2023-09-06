@@ -1,3 +1,14 @@
+import Scrollbar from "smooth-scrollbar";
+import OverscrollPlugin from "../../node_modules/smooth-scrollbar/plugins/overscroll/index.js";
+
+Scrollbar.use(OverscrollPlugin);
+
+Scrollbar.init(document.getElementById("my-scrollbar"), {
+  plugins: {
+    overscroll: "bounce",
+  },
+});
+
 // jQuery code
 $(document).ready(function () {
   // Add event listener to the button

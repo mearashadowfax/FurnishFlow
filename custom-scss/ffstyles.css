@@ -782,6 +782,19 @@ input[type=checkbox]:focus {
   color: rgba(33, 37, 41, 0.75);
 }
 
+.scrollbar-track,
+.scrollbar-track-y,
+.scrollbar-track-x,
+.scrollbar-thumb {
+  display: none !important;
+}
+
+#my-scrollbar {
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
 @media (prefers-color-scheme: dark) {
   .navbar-brand,
   .filter,
