@@ -1,7 +1,7 @@
 # FurnishFlow
 ![1 min](https://github.com/mearashadowfax/FurnishFlow/assets/125820963/df05eda5-b6f2-4e50-a595-d957be48de51)
 
- FurnishFlow is a prototype furniture store website developed
+ [FurnishFlow](https://furnishflow.uk) is a prototype furniture store website developed
             utilizing the robust capabilities of Bootstrap.
 
 ## Overview
