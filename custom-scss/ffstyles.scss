@@ -423,6 +423,15 @@ body {
   }
 }
 
+@media (hover: none) {
+  .card {
+    .menu-title,
+    ul {
+      opacity: 1;
+    }
+  }
+}
+
 .join-form {
   padding: 3em;
   background-color: $primary-color;
@@ -450,6 +459,20 @@ body {
   .grid-title {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+  }
+}
+
+@media (hover: none) {
+  .A,
+  .B,
+  .C,
+  .D,
+  .E,
+  .F {
+    .grid-title {
+      opacity: 1;
+
+    }
   }
 }
 
@@ -765,10 +788,27 @@ input[type="checkbox"]:focus {
   }
 }
 // Footer & Misc  ------------------------------------------------------------------------------------------------------
+img {
+  width: 100%;
+  height: auto;
+}
+
+.grey-chair {
+  max-height: 30em;
+  width: auto;
+}
 
 .underline-title {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.img-F {
+  margin-top: 0.75em;
+}
+
+.img-E {
+  margin-top: 0.15em;
 }
 
 .underline-line {

@@ -401,6 +401,12 @@ body {
   transition: opacity 0.5s ease-in-out;
 }
 
+@media (hover: none) {
+  .card .menu-title,
+  .card ul {
+    opacity: 1;
+  }
+}
 .join-form {
   padding: 3em;
   background-color: #f46b45;
@@ -438,6 +444,16 @@ body {
   transition: opacity 0.5s ease-in-out;
 }
 
+@media (hover: none) {
+  .A .grid-title,
+  .B .grid-title,
+  .C .grid-title,
+  .D .grid-title,
+  .E .grid-title,
+  .F .grid-title {
+    opacity: 1;
+  }
+}
 .A .grid-title,
 .E .grid-title {
   position: absolute;
@@ -741,9 +757,27 @@ input[type=checkbox]:focus {
   border-bottom-left-radius: 1rem;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+.grey-chair {
+  max-height: 30em;
+  width: auto;
+}
+
 .underline-title {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.img-F {
+  margin-top: 0.75em;
+}
+
+.img-E {
+  margin-top: 0.15em;
 }
 
 .underline-line {
