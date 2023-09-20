@@ -882,6 +882,10 @@ img {
   .odd:hover {
     background-color: #f9f9f9;
   }
+  #radioNoLabelwhite {
+    background-color: #e2e2e2;
+    border-color: #e2e2e2;
+  }
 }
 @media (max-width: 30em) {
   .grid-title {
