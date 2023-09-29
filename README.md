@@ -5,11 +5,11 @@
             utilizing the robust capabilities of Bootstrap.
 
 ## Overview
-I am excited to showcase FurnishFlow, one of my recent projects. It allowed me to expand my skill set and delve into the world of Bootstrap. The result is a visually captivating and user-friendly website that seamlessly blends functionality with a modern and sleek design.
+FurnishFlow represents a recent project endeavor, where the focus was on mastering Bootstrap and its web development capabilities. This effort has led to the creation of a website that strives to balance practicality with a modern design approach.
 
 ### Key Features
-- Easy-to-navigate and intuitive browsing experience  
-- Modern and sleek design, all thanks to the Bootstrap framework  
+- Streamlined and user-friendly navigation
+- Utilization of the Bootstrap framework for a clean design 
 - Attention to detail in color schemes, imagery, and typography
 
 
