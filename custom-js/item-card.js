@@ -3,11 +3,16 @@ import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 Scrollbar.use(OverscrollPlugin);
 
-Scrollbar.init(document.getElementById("my-scrollbar"), {
-  plugins: {
-    overscroll: "bounce",
-  },
-});
+// Check if the device is a desktop (non-touchscreen) device
+const isDesktop = !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+if (isDesktop) {
+  Scrollbar.init(document.getElementById("my-scrollbar"), {
+    plugins: {
+      overscroll: "bounce",
+    },
+  });
+}
 
 // jQuery code
 $(document).ready(function () {
@@ -18,22 +23,6 @@ $(document).ready(function () {
 
     // Toggle the visibility of the plus and dash icons
     $(this).find(".bi-plus-lg, .bi-dash-lg").toggle();
-  });
-
-  // Add click event handler for the clear filters button
-  $("#clear-filters-btn").on("click", function () {
-    $(".form-check-input").prop("checked", false);
-    $("#pricerange").val(0);
-    $("#pricetext").text("0");
-  });
-
-  const events = ["input", "change"];
-
-  $.each(events, function (k, v) {
-    $("#pricerange").on(v, function () {
-      let priceValue = $("#pricerange").val();
-      $("#pricetext").text(priceValue + "$");
-    });
   });
 });
 // JavaScript code
@@ -111,6 +100,27 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let iconButton of iconButtons) {
       iconButton.classList.toggle("hide");
     }
+  });
+
+  // Add click event handler for the clear filters button
+  const clearFiltersBtn = document.getElementById("clear-filters-btn");
+  clearFiltersBtn.addEventListener("click", function () {
+    const formCheckInputs = document.querySelectorAll(".form-check-input");
+    formCheckInputs.forEach(function (input) {
+      input.checked = false;
+    });
+    const priceRange = document.getElementById("price-range");
+    priceRange.value = 0;
+    const priceText = document.getElementById("price-text");
+    priceText.textContent = "0";
+  });
+
+  // Add input event handler for the price range
+  const priceRange = document.getElementById("price-range");
+  priceRange.addEventListener("input", function () {
+    const priceValue = this.value;
+    const priceText = document.getElementById("price-text");
+    priceText.textContent = priceValue + "$";
   });
 
   // Event listener to close the search form if a click occurs outside

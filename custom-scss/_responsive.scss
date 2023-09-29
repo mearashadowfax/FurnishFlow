@@ -62,22 +62,6 @@
 
 @media (min-width: 120em) {
   .carousel-layout {
-    height: 75vh;
-    display: flex;
-    align-items: center;
-  }
-}
-@media (min-width: 160em) {
-  .carousel-layout {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-  }
-}
-@media (min-width: 240em) {
-  .carousel-layout {
-    height: 40vh;
-    display: flex;
-    align-items: center;
+    margin-top: 2em;
   }
 }
