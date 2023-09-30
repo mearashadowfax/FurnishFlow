@@ -1,0 +1,110 @@
+.first-slide {
+  background-color: #ffc94d;
+}
+.second-slide {
+  background-color: #dddddd;
+}
+.third-slide {
+  background-color: #a8d1d1;
+}
+.fourth-slide {
+  background-color: #e3caa5;
+}
+.main-slide {
+  background-color: #c8bcae;
+}
+.menu-title {
+  color: #e9ecef;
+}
+
+.card-header {
+  font-size: 3em;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.lead {
+  font-size: 1em;
+}
+
+.vertical.carousel .carousel-item-prev:not(.carousel-item-end),
+.vertical.carousel .active.carousel-item-start {
+  transform: translate3d(0, -100%, 0);
+  -webkit-transform: translate3d(0, -100%, 0);
+  -moz-transform: translate3d(0, -100%, 0);
+  -ms-transform: translate3d(0, -100%, 0);
+  -o-transform: translate3d(0, -100%, 0);
+}
+
+.vertical.carousel .carousel-item-next:not(.carousel-item-start),
+.vertical.carousel .active.carousel-item-end {
+  transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+}
+
+#carouselExampleIndicators .carousel-indicators {
+  top: 0;
+  left: unset;
+  margin-left: unset !important;
+  margin-right: -3.5em;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    width: 1.3em;
+    height: 1.3em;
+    box-sizing: border-box;
+    background-color: $primary-color;
+    border: 0.25em solid transparent;
+    border-radius: 50%;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    transition: 0.3s;
+    opacity: 0.8;
+  }
+
+  .active {
+    background-color: transparent;
+    border-color: $primary-color;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 1;
+  }
+}
+
+.card {
+  position: relative;
+
+  &:hover .menu-title,
+  &:hover ul {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .menu-title,
+  ul {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+@media (hover: none) {
+  .card {
+    .menu-title,
+    ul {
+      opacity: 1;
+    }
+  }
+}
+
+.join-form {
+  padding: 3em;
+  background-color: $primary-color;
+}
+
+.sections {
+  margin: 6em auto;
+}

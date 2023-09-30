@@ -14,16 +14,16 @@ Version: 1.0
 @import "base";
 
 // home.html
-@import "pages/home-components";
+@import "pages/home";
 
 // TimberFusion.html
-@import "pages/item-page-components";
+@import "pages/TimberFusion";
 
 // contact.html
-@import "pages/contact-components";
+@import "pages/contact";
 
 // furniture.html
-@import "pages/furniture-components";
+@import "pages/furniture";
 
 // Navigation &  Colors
 @import "components/navbar-and-colors";
@@ -52,4 +52,4 @@ Version: 1.0
 // Light Mode
 @import "themes/light-mode";
 
-@import "responsive";
+@import "breakpoints";

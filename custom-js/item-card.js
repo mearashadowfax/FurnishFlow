@@ -14,17 +14,6 @@ if (isDesktop) {
   });
 }
 
-// jQuery code
-$(document).ready(function () {
-  // Add event listener to the button
-  $(".btn-toggle").on("click", function () {
-    // Toggle the collapse state of the target element
-    $($(this).data("bs-target")).collapse("toggle");
-
-    // Toggle the visibility of the plus and dash icons
-    $(this).find(".bi-plus-lg, .bi-dash-lg").toggle();
-  });
-});
 // JavaScript code
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
@@ -100,6 +89,28 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let iconButton of iconButtons) {
       iconButton.classList.toggle("hide");
     }
+  });
+
+  const toggleButtons = document.querySelectorAll(".btn-toggle");
+
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // Get the target element
+      const targetElement = this;
+
+      // Get the plus and dash icons
+      const plusIcon = this.querySelector(".bi-plus-lg");
+      const dashIcon = this.querySelector(".bi-dash-lg");
+
+      // Toggle the visibility of the plus and dash icons based on the current state of the target element
+      if (plusIcon.style.display === "none") {
+        plusIcon.style.display = "inline-block";
+        dashIcon.style.display = "none";
+      } else {
+        plusIcon.style.display = "none";
+        dashIcon.style.display = "inline-block";
+      }
+    });
   });
 
   // Add click event handler for the clear filters button
