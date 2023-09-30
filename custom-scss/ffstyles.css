@@ -895,6 +895,13 @@ img {
     border-color: #e2e2e2;
   }
 }
+@media (min-width: 25em) {
+  .card-contents {
+    height: 17em;
+    align-items: center;
+    display: flex;
+  }
+}
 @media (max-width: 30em) {
   .grid-title {
     font-size: 100%;
