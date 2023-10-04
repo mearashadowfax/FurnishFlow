@@ -1,20 +1,5 @@
 import Scrollbar from "smooth-scrollbar";
-import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
-Scrollbar.use(OverscrollPlugin);
-
-// Check if the device is a desktop (non-touchscreen) device
-const isDesktop = !("ontouchstart" in window || navigator.maxTouchPoints > 0);
-
-if (isDesktop) {
-  Scrollbar.init(document.getElementById("my-scrollbar"), {
-    plugins: {
-      overscroll: "bounce",
-    },
-  });
-}
-
-// JavaScript code
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const searchResults = document.getElementById("searchResults");
@@ -24,6 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchButton = document.querySelector(".search-btn");
   const searchForm = document.querySelector("#searchForm");
   const iconButtons = document.querySelectorAll(".icon-btn");
+
+  // Check if the device is a desktop (non-touchscreen) device
+  const isDesktop = !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+  if (isDesktop) {
+    Scrollbar.init(document.getElementById("my-scrollbar"));
+  }
 
   // Hide the search bar and show the icons by default
   searchForm.classList.add("hide");
@@ -95,9 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   toggleButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      // Get the target element
-      const targetElement = this;
-
       // Get the plus and dash icons
       const plusIcon = this.querySelector(".bi-plus-lg");
       const dashIcon = this.querySelector(".bi-dash-lg");

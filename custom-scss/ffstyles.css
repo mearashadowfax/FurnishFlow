@@ -595,6 +595,10 @@ input[type=checkbox]:focus {
   outline: 0 none;
 }
 
+.input-group {
+  flex-wrap: nowrap;
+}
+
 .btn-orange {
   background-color: #cc4927;
   color: #ffffff;

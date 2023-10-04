@@ -46,3 +46,7 @@ input[type="checkbox"]:focus {
   box-shadow: $input-checkbox-box-shadow;
   outline: 0 none;
 }
+
+.input-group {
+  flex-wrap: nowrap;
+}
