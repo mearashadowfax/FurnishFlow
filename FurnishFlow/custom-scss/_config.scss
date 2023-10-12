@@ -1,0 +1,29 @@
+@use "sass:color";
+
+$primary-color: #f46b45;
+
+$hover-saturation: 10%;
+$hover-brightness: -3%;
+
+$active-saturation: 10%;
+$active-brightness: -5%;
+
+$dark-mode-font-color: #adb5bd;
+$light-mode-font-color: #232323;
+
+$button-fill-color: #cc4927;
+$button-color: #ffffff;
+$button-background-color-hover: color.adjust(
+    $button-fill-color,
+  $saturation: $hover-saturation,
+  $lightness: $hover-brightness
+);
+$button-background-color-active: color.adjust(
+    $button-fill-color,
+  $saturation: $active-saturation,
+  $lightness: $active-brightness
+);
+
+$form-range-active-background-color: rgba(244, 107, 69, 0.5);
+$form-range-outline: 0.2em solid rgba(244, 107, 69, 0.5);
+$input-checkbox-box-shadow: 0 0 5px 2px rgba(244, 107, 69, 0.5);

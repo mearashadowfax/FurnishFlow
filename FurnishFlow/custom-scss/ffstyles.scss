@@ -1,0 +1,55 @@
+/*!
+Theme Name: FurnishFlow
+Theme URI: https://sobstvennoai.dev/
+Author: Emil Gulamov
+Author URI: https://sobstvennoai.dev/
+Description: Sleek and modern prototype website built using the Bootstrap framework
+Version: 1.0
+*/
+
+@import "config";
+
+@import "assets/fonts";
+
+@import "base";
+
+// home.html
+@import "pages/home";
+
+// TimberFusion.html
+@import "pages/TimberFusion";
+
+// contact.html
+@import "pages/contact";
+
+// furniture.html
+@import "pages/furniture";
+
+// Navigation &  Colors
+@import "components/navbar-and-colors";
+
+// Sidebar
+@import "components/sidebar";
+
+// Styles for the input
+@import "components/input";
+
+// Styles for the buttons
+@import "components/buttons";
+
+// Styles for the range input
+@import "components/range";
+
+// Bottom Carousel
+@import "components/bottom-carousel";
+
+// Footer & Misc
+@import "components/footer-and-misc";
+
+// Dark Mode
+@import "themes/dark-mode";
+
+// Light Mode
+@import "themes/light-mode";
+
+@import "breakpoints";
