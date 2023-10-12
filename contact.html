@@ -501,7 +501,7 @@
       role="dialog"
       tabindex="-1"
     >
-      <div class="modal-dialog custom-modal log-in-modal">
+      <div class="modal-dialog modal-dialog-centered custom-modal log-in-modal">
         <div class="modal-content rounded-4 shadow">
           <div class="modal-header p-5 pb-4 border-bottom-0">
             <h1 class="fw-bold mb-0 fs-2">Join Now</h1>
@@ -583,9 +583,6 @@
               >
                 Sign in
               </button>
-              <p class="mt-5 mb-3 text-body-secondary text-center">
-                <small>© 2023</small>
-              </p>
             </form>
           </div>
         </div>
@@ -602,10 +599,16 @@
     >
       <div class="modal-dialog modal-dialog-centered check-out-modal">
         <div class="modal-content rounded-4 shadow">
-          <div class="modal-header border-bottom-0">
+          <div class="modal-header container border-bottom-0">
             <div class="container-fluid">
-              <div class="py-5 text-center">
-                <h2>Checkout form</h2>
+              <div class="modal-header px-sm-1 p-md-5 pb-4 border-bottom-0">
+                <h2 class="ms-auto mb-0">Checkout form</h2>
+                <button
+                  aria-label="Close"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  type="button"
+                ></button>
               </div>
 
               <div class="row g-5">
@@ -616,9 +619,9 @@
                     <span class="cart">Your cart</span>
                     <span class="badge rounded-pill total-cart-item">3</span>
                   </h4>
-                  <ul class="list-group mb-3">
+                  <ul class="list-group overflow-hidden mb-3">
                     <li
-                      class="list-group-item d-flex justify-content-between lh-sm"
+                      class="list-group-item d-flex flex-wrap justify-content-between lh-sm"
                     >
                       <div>
                         <h6 class="my-0">Harmony Haven</h6>
@@ -627,7 +630,7 @@
                       <span class="text-body-secondary">$899.99</span>
                     </li>
                     <li
-                      class="list-group-item d-flex justify-content-between lh-sm"
+                      class="list-group-item d-flex flex-wrap justify-content-between lh-sm"
                     >
                       <div>
                         <h6 class="my-0">Serene Slumber</h6>
@@ -636,7 +639,7 @@
                       <span class="text-body-secondary">$1,299.99</span>
                     </li>
                     <li
-                      class="list-group-item d-flex justify-content-between lh-sm"
+                      class="list-group-item d-flex flex-wrap justify-content-between lh-sm"
                     >
                       <div>
                         <h6 class="my-0">Elevate Essence</h6>
@@ -645,7 +648,7 @@
                       <span class="text-body-secondary">$699.99</span>
                     </li>
                     <li
-                      class="list-group-item d-flex justify-content-between bg-body-tertiary"
+                      class="list-group-item d-flex flex-wrap justify-content-between bg-body-tertiary"
                     >
                       <div class="text-success">
                         <h6 class="my-0">Promo code</h6>
@@ -653,7 +656,9 @@
                       </div>
                       <span class="text-success">−15%</span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between">
+                    <li
+                      class="list-group-item d-flex flex-wrap justify-content-between"
+                    >
                       <span>Total (USD)</span>
                       <strong>$2464.9</strong>
                     </li>

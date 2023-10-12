@@ -1,4 +1,5 @@
 import Scrollbar from "smooth-scrollbar";
+import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 import {
   searchInput,
@@ -20,9 +21,18 @@ import { initializeSearch } from "./modules/searchModule.js";
 import { initializeFilters } from "./modules/filtersModule.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  Scrollbar.use(OverscrollPlugin);
+
+  const isDesktop = !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
   if (isDesktop) {
-    Scrollbar.init(document.getElementById("my-scrollbar"));
+    Scrollbar.init(document.getElementById("my-scrollbar"), {
+      plugins: {
+        overscroll: "bounce",
+      },
+    });
   }
+
   initializeSearch(
     searchForm,
     searchInput,

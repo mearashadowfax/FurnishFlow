@@ -1,4 +1,5 @@
 import Scrollbar from "smooth-scrollbar";
+import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 import {
   searchInput,
@@ -24,8 +25,16 @@ import { initializeImageSwitcher } from "./modules/imageSwitcherModule.js";
 import { initializeMenu } from "./modules/menuModule.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+  Scrollbar.use(OverscrollPlugin);
+
+  const isDesktop = !("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
   if (isDesktop) {
-    Scrollbar.init(document.getElementById("my-scrollbar"));
+    Scrollbar.init(document.getElementById("my-scrollbar"), {
+      plugins: {
+        overscroll: "bounce",
+      },
+    });
   }
 
   // Event listener to close the search form if a click occurs outside

@@ -48,6 +48,7 @@ Version: 1.0
 }
 body {
   font-family: Montserrat, sans-serif;
+  overflow: hidden;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -815,15 +816,6 @@ img {
     margin: auto;
   }
 }
-.log-in-modal {
-  max-width: 25em;
-}
-
-.check-out-modal {
-  max-width: 80%;
-  margin: 3em auto;
-}
-
 .footer-nav-link {
   color: rgba(33, 37, 41, 0.75);
 }
@@ -839,6 +831,19 @@ img {
   height: 100vh;
   width: 100vw;
   overflow: auto;
+}
+
+.modal-dialog {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.log-in-modal {
+  max-width: 25em;
+}
+
+.check-out-modal {
+  max-width: 90%;
 }
 
 @media (prefers-color-scheme: dark) {
