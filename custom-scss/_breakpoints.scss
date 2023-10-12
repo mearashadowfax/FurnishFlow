@@ -12,6 +12,14 @@
   }
 }
 
+@media (max-width: 35.9em) {
+  .social-icons {
+    justify-content: space-evenly;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
 @media (max-width: 48em) {
   .layout {
     width: 100%;
