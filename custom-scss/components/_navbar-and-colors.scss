@@ -61,7 +61,7 @@
   color: $light-mode-font-color;
 
   &:hover {
-    color: $primary-color;
+    color: #be3d1c;
   }
 }
 
@@ -119,4 +119,8 @@
   &:hover {
     background-color: #58626c;
   }
+}
+
+.search-bar {
+  padding-block: .2em;
 }

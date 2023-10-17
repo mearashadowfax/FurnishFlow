@@ -426,7 +426,7 @@ body {
   color: #232323;
 }
 .search-result:hover {
-  color: #f46b45;
+  color: #be3d1c;
 }
 
 .navbar-toggler {
@@ -481,6 +481,10 @@ body {
 }
 .odd:hover {
   background-color: #58626c;
+}
+
+.search-bar {
+  padding-block: 0.2em;
 }
 
 .filter {
@@ -874,30 +878,33 @@ img {
   }
   .search-result {
     text-decoration: none;
-    color: #adb5bd;
+    color: #e4ecf5;
   }
   .search-result:hover {
-    color: #f46b45;
+    color: #ff9c72;
   }
 }
 @media (prefers-color-scheme: light) {
   .svg-light-mode {
     color: #212529;
   }
+  .clear-all, .footer-link {
+    color: #c05436;
+  }
   .clipboard-btn:hover .svg-light-mode {
     color: #fff;
   }
   .even {
-    background-color: #dbdbdb;
+    background-color: #adb5bd;
   }
   .even:hover {
-    background-color: #efefef;
+    background-color: #dee2e6;
   }
   .odd {
-    background-color: #e5e5e5;
+    background-color: #ced4da;
   }
   .odd:hover {
-    background-color: #f9f9f9;
+    background-color: #e9ecef;
   }
   #radioNoLabelwhite {
     background-color: #e2e2e2;
@@ -977,4 +984,4 @@ img {
   }
 }
 
-/*# sourceMappingURL=ffstyles.css.map */
+/*# sourceMappingURL=styles.css.map */

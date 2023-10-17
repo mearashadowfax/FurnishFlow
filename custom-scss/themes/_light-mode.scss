@@ -3,23 +3,27 @@
     color: #212529;
   }
 
+  .clear-all, .footer-link {
+    color: #c05436;
+  }
+
   .clipboard-btn:hover .svg-light-mode {
     color: #fff;
   }
 
   .even {
-    background-color: #dbdbdb;
+    background-color: #adb5bd;
 
     &:hover {
-      background-color: #efefef;
+      background-color: #dee2e6;
     }
   }
 
   .odd {
-    background-color: #e5e5e5;
+    background-color: #ced4da;
 
     &:hover {
-      background-color: #f9f9f9;
+      background-color: #e9ecef;
     }
   }
 
