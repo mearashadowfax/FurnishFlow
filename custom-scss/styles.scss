@@ -27,6 +27,7 @@ Version: 1.0
 
 // Navigation &  Colors
 @import "components/navbar-and-colors";
+@import "components/search-bar";
 
 // Sidebar
 @import "components/sidebar";
@@ -44,7 +45,9 @@ Version: 1.0
 @import "components/bottom-carousel";
 
 // Footer & Misc
-@import "components/footer-and-misc";
+@import "components/footer";
+@import "components/misc";
+@import "components/scroll";
 
 // Modals
 @import "components/modals";

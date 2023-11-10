@@ -1,0 +1,54 @@
+img {
+  width: 100%;
+  height: auto;
+}
+
+.grey-chair {
+  max-height: 30em;
+  width: auto;
+}
+
+.underline-title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.img-F {
+  margin-top: 0.75em;
+}
+
+.img-E {
+  margin-top: 0.15em;
+}
+
+.small-image {
+  cursor: pointer;
+}
+
+.underline-line {
+  margin: 0;
+  max-width: 5em;
+  border-top: 4px solid $primary-color;
+  opacity: 1;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.extra-space {
+  height: 1rem;
+}
+
+@media (max-width: 61.9em) {
+  .show {
+    display: block;
+    margin: auto;
+  }
+}

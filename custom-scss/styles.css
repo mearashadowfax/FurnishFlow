@@ -125,7 +125,10 @@ body {
 }
 
 .btn-join-form {
-  padding: 1.5em;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  padding: 1em;
+  text-transform: uppercase;
   width: 100%;
   border: 1px solid #232323 !important;
 }
@@ -194,6 +197,10 @@ body {
   right: 0;
   margin: 0;
   padding: 1em 0.5em;
+}
+
+.reset-padding {
+  padding: 0;
 }
 
 .item-card-layout {
@@ -421,12 +428,8 @@ body {
   text-decoration: none;
 }
 
-.search-result {
-  text-decoration: none;
-  color: #232323;
-}
-.search-result:hover {
-  color: #be3d1c;
+.footer-nav-link {
+  color: rgba(33, 37, 41, 0.75);
 }
 
 .navbar-toggler {
@@ -444,6 +447,10 @@ body {
   flex: unset !important;
 }
 
+.text-success {
+  color: #198754;
+}
+
 #searchResultsContainer {
   position: absolute;
   display: none;
@@ -456,6 +463,14 @@ body {
 
 #searchForm {
   height: auto !important;
+}
+
+.search-result {
+  text-decoration: none;
+  color: #232323;
+}
+.search-result:hover {
+  color: #be3d1c;
 }
 
 #searchResults {
@@ -604,6 +619,10 @@ input[type=checkbox]:focus {
   flex-wrap: nowrap;
 }
 
+.form-check-input {
+  cursor: pointer;
+}
+
 .btn-orange {
   background-color: #cc4927;
   color: #ffffff;
@@ -664,6 +683,12 @@ input[type=checkbox]:focus {
 
 .text-uppercase {
   font-size: 0.8em;
+}
+
+.btn-contact-form {
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .form-range::-webkit-slider-thumb {
@@ -766,6 +791,10 @@ input[type=checkbox]:focus {
   border-bottom-left-radius: 1rem;
 }
 
+.footer-nav-link {
+  color: rgba(33, 37, 41, 0.75);
+}
+
 img {
   width: 100%;
   height: auto;
@@ -820,10 +849,6 @@ img {
     margin: auto;
   }
 }
-.footer-nav-link {
-  color: rgba(33, 37, 41, 0.75);
-}
-
 .scrollbar-track,
 .scrollbar-track-y,
 .scrollbar-track-x,
