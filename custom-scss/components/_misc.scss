@@ -52,3 +52,23 @@ img {
     margin: auto;
   }
 }
+
+a:focus, a:focus:active {
+  border-radius: .25rem;
+}
+
+.nav-link:focus-visible,
+a:focus-visible, .btn:focus-visible {
+  -webkit-filter: blur(0px);
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.nav-link:focus-visible,
+a:focus-visible,
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.1rem $primary-color;
+  -webkit-filter: blur(0px);
+}
