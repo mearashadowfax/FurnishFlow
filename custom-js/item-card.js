@@ -24,6 +24,8 @@ import { initializeImageSwitcher } from "./modules/imageSwitcherModule.js";
 
 import { initializeMenu } from "./modules/menuModule.js";
 
+import "./modules/currentYear.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   Scrollbar.use(OverscrollPlugin);
 

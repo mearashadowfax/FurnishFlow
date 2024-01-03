@@ -9,21 +9,21 @@ const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Bootstrap
 module.exports = {
-  mode: "development",
-  entry: "./src/js/main.js",
+  mode: "production",
+  entry: "./custom-js/item-card.js",
   output: {
-    filename: "main2.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "item-card.min.js",
+    path: path.resolve(__dirname, "custom-js"),
   },
   // devServer: {
   //   static: path.resolve(__dirname, "dist"),
   //   port: 8080,
   //   hot: true,
   // },
-  plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
-    new miniCssExtractPlugin(),
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({ template: "./src/index.html" }),
+  //   new miniCssExtractPlugin(),
+  // ],
   // module: {
   //   rules: [
   //     {

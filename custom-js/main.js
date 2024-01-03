@@ -20,6 +20,8 @@ import { initializeSearch } from "./modules/searchModule.js";
 
 import { initializeFilters } from "./modules/filtersModule.js";
 
+import "./modules/currentYear.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   Scrollbar.use(OverscrollPlugin);
 
