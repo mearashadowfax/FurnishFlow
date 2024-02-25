@@ -97,6 +97,37 @@
   </noscript>
 </head>
 <body>
+<div class="d-flex flex-row position-fixed align-items-center justify-content-center text-center w-100 mb-3 rounded-4 p-4"
+     id="announcement-banner"
+     role="alert">
+  <div class="w-100 flex-column flex-sm-row">
+    FurnishFlow: Prototype Showcase
+    <a
+            class="btn text-uppercase d-block d-sm-inline-flex align-items-center btn-orange btn-padding mt-2 mt-sm-0 ms-sm-3"
+            href="https://github.com/mearashadowfax/FurnishFlow" target="_blank"
+    >
+      Learn more
+      <svg
+              class="bi bi-arrow-right-short ms-1 align-self-center"
+              fill="currentColor"
+              height="25"
+              viewBox="0 0 16 16"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                fill-rule="evenodd"
+        />
+      </svg>
+    </a>
+  </div>
+  <button
+          aria-label="Close"
+          class="btn-close flex-shrink-1 px-2"
+          onclick="hideBanner()" type="button"
+  ></button>
+</div>
 <div id="my-scrollbar">
   <!-- Start of Navigation -->
   <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
@@ -1411,5 +1442,6 @@
   </div>
 </div>
 <!-- End of Checkout form -->
+<script>function hideBanner(){document.getElementById("announcement-banner").remove()}</script>
 </body>
 </html>

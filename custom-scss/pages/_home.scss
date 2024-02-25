@@ -143,3 +143,18 @@
 .reset-padding {
   padding: 0;
 }
+
+#announcement-banner {
+  background-color: #212529;
+  bottom: 0;
+  inset-inline-start: 50%;
+  max-width: 56rem;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  a {
+    margin-inline: auto;
+    padding: 0.5em 1em;
+    font-size: small;
+  }
+}
