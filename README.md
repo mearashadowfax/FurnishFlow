@@ -4,6 +4,15 @@
  [FurnishFlow](https://furnishflow.uk) is a prototype furniture store website developed
             utilizing the robust capabilities of Bootstrap.
 
+
+> [!NOTE]
+> **Status: Archived / Feature Complete**
+>
+> This repository has been archived and is no longer maintained.
+> It is provided as-is for reference, learning, and personal use.
+> Feel free to fork the repository if you'd like to continue development.
+>
+
 ## Overview
 FurnishFlow represents a recent project endeavor, where the focus was on mastering Bootstrap and its web development capabilities. This effort has led to the creation of a website that strives to balance practicality with a modern design approach.
 
